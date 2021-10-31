@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace WebApplication.Shared
+namespace WebApplication.Pages
 {
     #line hidden
     using System;
@@ -82,7 +82,22 @@ using WebApplication.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\JobListings.razor"
+using WebApplication.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\JobListings.razor"
+using WebApplication.Data;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/job-listings")]
+    public partial class JobListings : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,21 +105,27 @@ using WebApplication.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Shared\NavMenu.razor"
+#line 49 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\JobListings.razor"
        
-    private bool collapseNavMenu = true;
+    private IList<JobListing> jobListings;
+    private IList<JobListing> jobListingToShow;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    protected override async Task OnInitializedAsync()
     {
-        collapseNavMenu = !collapseNavMenu;
+        jobListings = await JobListingData.GetJobListings();
+        jobListingToShow = jobListings;
     }
 
+    private void Apply(int id)
+    {
+        NavigationManager.NavigateTo($"apply/{id}");
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJobListingData JobListingData { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

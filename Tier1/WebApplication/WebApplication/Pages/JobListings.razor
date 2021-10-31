@@ -1,0 +1,63 @@
+﻿@page "/job-listings"
+@using WebApplication.Models
+@using WebApplication.Data
+
+@inject NavigationManager NavigationManager
+@inject IJobListingData JobListingData
+
+<h3>Job Listings</h3>
+
+@if (jobListingToShow == null)
+{
+    <p>
+    <em>Loading...</em>
+    </p>
+}
+else if (!jobListingToShow.Any())
+{
+    <p>
+    <em> Please add Job Listings </em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Details</th>
+            <th>Apply</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in jobListingToShow)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Details</td>
+                <td>
+                    <button @onclick="@(() => Apply(item.Id))">
+                        <i class="oi oi-pencil" style="color: green"/>
+                    </button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+ 
+@code {
+    private IList<JobListing> jobListings;
+    private IList<JobListing> jobListingToShow;
+
+    protected override async Task OnInitializedAsync()
+    {
+        jobListings = await JobListingData.GetJobListings();
+        jobListingToShow = jobListings;
+    }
+
+    private void Apply(int id)
+    {
+        NavigationManager.NavigateTo($"apply/{id}");
+    }
+}

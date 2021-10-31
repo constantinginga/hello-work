@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebApplication.Data;
+using WebApplication.Data.Applications;
 using WebApplication.Models;
 
 namespace WebApplication
@@ -30,6 +31,7 @@ namespace WebApplication
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<IJobListingData, JobListingData>();
+            services.AddScoped<IApplicationData, ApplicationData>();
             services.AddHttpClient();
         }
 

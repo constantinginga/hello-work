@@ -1,0 +1,52 @@
+﻿@page "/applications"
+@using WebApplication.Models
+@using WebApplication.Data.Applications
+
+@inject NavigationManager NavigationManager
+@inject IApplicationData ApplicationData
+
+<h3>Applications</h3>
+
+@if (applicationsToShow == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!applicationsToShow.Any())
+{
+    <p>
+        <em> No applications to show </em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Job listing Id</th>
+                <th>Application details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in applicationsToShow)
+            {
+                <tr>
+                    <td>@item.JobId</td>
+                    <td>@item.Details</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<Application> applications;
+    private IList<Application> applicationsToShow;
+
+    protected override async Task OnInitializedAsync()
+    {
+        applications = await ApplicationData.GetApplications();
+        applicationsToShow = applications;
+    }
+}

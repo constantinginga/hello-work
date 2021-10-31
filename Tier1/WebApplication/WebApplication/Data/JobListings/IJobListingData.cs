@@ -12,5 +12,7 @@ namespace WebApplication.Data
         Task<IList<JobListing>> GetJobListings();
 
         JobListing Get(int id);
+
+        Task Update(JobListing jobListing);
     }
 }
