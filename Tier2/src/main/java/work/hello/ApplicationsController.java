@@ -16,7 +16,7 @@ public class ApplicationsController {
     public synchronized String getJobListings()
     {
         RabbitMQ rabbitMQ = new RabbitMQ();
-        return gson.toJson(joblisting);
+        return gson.toJson(rabbitMQ.getJobListings());
     }
     @PutMapping("/applications/{application}")
     public synchronized void applyJobListing(@RequestBody String json, @PathVariable String application) throws Exception {
