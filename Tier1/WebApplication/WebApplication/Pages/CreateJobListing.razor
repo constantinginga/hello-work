@@ -1,0 +1,29 @@
+﻿@page "/create-job-listing"
+@using WebApplication.Models 
+@using WebApplication.Data
+@inject NavigationManager NavigationManager
+@inject IJobListingData JobListingData
+
+
+<h3>Create job listing</h3>
+<EditForm Model="@jobListing" OnValidSubmit="@CreateNewJobListing">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <p>Job Listing Details:</p>
+        <InputTextArea class="form-control" placeholder="Enter details" @bind-Value="jobListing.Details" />
+    </div>
+    <button class="btn btn-dark" type="submit">Create</button>
+</EditForm>
+
+    @code {
+        private JobListing jobListing = new JobListing();
+
+        private async void CreateNewJobListing()
+        {
+            await JobListingData.Create(jobListing);
+            IList<JobListing> jbs = await JobListingData.GetJobListings();
+            Console.WriteLine(jbs.Count);
+            NavigationManager.NavigateTo("/");
+        }
+    }
