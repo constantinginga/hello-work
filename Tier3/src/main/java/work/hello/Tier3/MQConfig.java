@@ -7,6 +7,8 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import work.hello.Tier3.Model.Model;
+import work.hello.Tier3.Model.ModelManager;
 
 @Configuration
 public class MQConfig {
@@ -19,11 +21,12 @@ public class MQConfig {
 
     @Bean
     public Queue queueA() {
-        return  new Queue(QUEUE);
+        return new Queue(QUEUE);
     }
+
     @Bean
     public Queue queueB() {
-        return  new Queue(CALLBACK_QUEUE);
+        return new Queue(CALLBACK_QUEUE);
     }
 
     @Bean
@@ -38,6 +41,7 @@ public class MQConfig {
                 .to(exchange)
                 .with(ROUTING_KEY);
     }
+
     @Bean
     public Binding bindingB(Queue queueB, TopicExchange exchange) {
         return BindingBuilder
@@ -48,14 +52,20 @@ public class MQConfig {
 
     @Bean
     public MessageConverter messageConverter() {
-        return  new Jackson2JsonMessageConverter();
+        return new Jackson2JsonMessageConverter();
     }
 
     @Bean
     public AmqpTemplate template(ConnectionFactory connectionFactory) {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
         template.setMessageConverter(messageConverter());
-        return  template;
+        return template;
+    }
+
+    @Bean
+    public Model model() {
+        Model model = new ModelManager();
+        return model;
     }
 
 }

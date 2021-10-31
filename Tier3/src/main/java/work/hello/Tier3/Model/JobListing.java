@@ -1,4 +1,4 @@
-package work.hello.Tier3;
+package work.hello.Tier3.Model;
 
 public class JobListing {
     private int JobID;

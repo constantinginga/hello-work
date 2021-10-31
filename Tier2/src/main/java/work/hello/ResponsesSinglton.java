@@ -2,13 +2,13 @@ package work.hello;
 
 import java.util.HashMap;
 
-public class TestSingleton {
+public class ResponsesSinglton {
 
     private final HashMap<String, CustomMessage> response;
     private final static Object monitor = new Object();
-    private static TestSingleton instance;
+    private static ResponsesSinglton instance;
 
-    public TestSingleton() {
+    public ResponsesSinglton() {
         this.response = new HashMap<>();
     }
 
@@ -20,9 +20,9 @@ public class TestSingleton {
         return monitor;
     }
 
-    public static TestSingleton getInstance(){
+    public static ResponsesSinglton getInstance(){
         if (instance == null){
-            instance = new TestSingleton();
+            instance = new ResponsesSinglton();
         }
         return instance;
     }

@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.amqp.rabbit.connection.Connection;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,7 @@ public class RabbitMQ implements MessagingHandler {
 
 
     public RabbitMQ(RabbitTemplate rabbitTemplate) {
-        instance = TestSingleton.getMonitor();
+        instance = ResponsesSinglton.getMonitor();
         this.template = rabbitTemplate;
         response = new HashMap<>();
         gson = new Gson();
@@ -35,7 +34,7 @@ public class RabbitMQ implements MessagingHandler {
         message.setType("getAllJobListings");
         template.convertAndSend(MQConfig.EXCHANGE,
                 MQConfig.ROUTING_KEY, message);
-        while (!TestSingleton.getInstance().getResponse().containsKey(message.getMessageId())) {
+        while (!ResponsesSinglton.getInstance().getResponse().containsKey(message.getMessageId())) {
             try {
                 synchronized (instance) {
                     instance.wait();
@@ -45,17 +44,17 @@ public class RabbitMQ implements MessagingHandler {
                 e.printStackTrace();
             }
         }
-        CustomMessage responseMessage = TestSingleton.getInstance().getResponse().get(message.getMessageId());
+        CustomMessage responseMessage = ResponsesSinglton.getInstance().getResponse().get(message.getMessageId());
         ArrayList<JobListing> jobListings = new ArrayList<>();
         Collections.addAll(jobListings, gson.fromJson(responseMessage.getContent(), JobListing[].class));
-        TestSingleton.getInstance().getResponse().remove(responseMessage.getMessageId());
+        ResponsesSinglton.getInstance().getResponse().remove(responseMessage.getMessageId());
         return jobListings;
 
     }
 
     @RabbitListener(queues = MQConfig.CALLBACK_QUEUE)
     public void listener(CustomMessage message) {
-        TestSingleton.getInstance().getResponse().put(message.getMessageId(), message);
+        ResponsesSinglton.getInstance().getResponse().put(message.getMessageId(), message);
         synchronized (instance) {
             instance.notifyAll();
         }
