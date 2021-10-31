@@ -38,21 +38,21 @@ public class RabbitMQ implements MessagingHandler {
         message.setType("getAllJobListings");
         template.convertAndSend(MQConfig.EXCHANGE,
                 MQConfig.ROUTING_KEY, message);
-        while (!response.containsKey(message.getMessageId())) {
+        while (!TestSingleton.getInstance().getResponse().containsKey(message.getMessageId())) {
             try {
                 System.out.println("here");
-                synchronized (monitor) {
-                    monitor.wait();
+                synchronized (TestSingleton.getInstance().getMonitor()) {
+                    TestSingleton.getInstance().getMonitor().wait();
                 }
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        CustomMessage responseMessage = response.get(message.getMessageId());
+        CustomMessage responseMessage = TestSingleton.getInstance().getResponse().get(message.getMessageId());
         ArrayList<JobListing> jobListings = new ArrayList<>();
         Collections.addAll(jobListings, gson.fromJson(responseMessage.getContent(), JobListing[].class));
-        response.remove(responseMessage.getMessageId());
+        TestSingleton.getInstance().getResponse().remove(responseMessage.getMessageId());
         System.out.println("here2");
         return jobListings;
 
@@ -63,9 +63,9 @@ public class RabbitMQ implements MessagingHandler {
     public void listener(CustomMessage message) {
         System.out.println("Received");
         System.out.println(message);
-        response.put(message.getMessageId(), message);
-        synchronized (monitor) {
-            monitor.notifyAll();
+        TestSingleton.getInstance().getResponse().put(message.getMessageId(), message);
+        synchronized (TestSingleton.getInstance().getMonitor()) {
+            TestSingleton.getInstance().getMonitor().notifyAll();
         }
 
     }
