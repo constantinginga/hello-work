@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/HelloWork.iml" filepath="$PROJECT_DIR$/.idea/HelloWork.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tier2/Tier2.iml" filepath="$PROJECT_DIR$/Tier2/Tier2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tier3/Tier3.iml" filepath="$PROJECT_DIR$/Tier3/Tier3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Tier3/.mvn/wrapper/wrapper.iml" filepath="$PROJECT_DIR$/Tier3/.mvn/wrapper/wrapper.iml" />
     </modules>
   </component>
 </project>
