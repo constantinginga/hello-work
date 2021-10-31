@@ -82,14 +82,45 @@ using WebApplication.Shared;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\Applications.razor"
+using WebApplication.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\Applications.razor"
+using WebApplication.Data.Applications;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/applications")]
+    public partial class Applications : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 43 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\Applications.razor"
+       
+    private IList<Application> applications;
+    private IList<Application> applicationsToShow;
+
+    protected override async Task OnInitializedAsync()
+    {
+        applications = await ApplicationData.GetApplications();
+        applicationsToShow = applications;
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApplicationData ApplicationData { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

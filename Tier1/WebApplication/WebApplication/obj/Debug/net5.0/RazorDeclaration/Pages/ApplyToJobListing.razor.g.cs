@@ -82,14 +82,66 @@ using WebApplication.Shared;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\ApplyToJobListing.razor"
+using WebApplication.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\ApplyToJobListing.razor"
+using WebApplication.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\ApplyToJobListing.razor"
+using WebApplication.Data.Applications;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/apply/{Id:int}")]
+    public partial class ApplyToJobListing : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 29 "C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\Pages\ApplyToJobListing.razor"
+       
+    [Parameter]
+    public int Id { get; set; }
+
+    private Application application;
+    private JobListing jobListing;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(() =>
+        {
+            application = new();
+            jobListing = JobListingData.Get(Id);
+            application.JobId = jobListing.Id;
+        });
+    }
+
+    private void Save()
+    {
+        ApplicationData.Create(application);
+        NavigationManager.NavigateTo("/job-listings");
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApplicationData ApplicationData { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJobListingData JobListingData { get; set; }
     }
 }
 #pragma warning restore 1591

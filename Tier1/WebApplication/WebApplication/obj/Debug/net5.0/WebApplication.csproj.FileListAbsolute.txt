@@ -114,3 +114,9 @@ C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\
 C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\WebApplication.csproj.CopyComplete
 C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\ApplyToJobListing.razor.g.cs
 C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\ApplyToJobListing.razor.g.cs
+C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\ApplyToJobListing.razor.g.cs
+C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\JobListings.razor.g.cs
+C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\ApplyToJobListing.razor.g.cs
+C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\JobListings.razor.g.cs
+C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\Applications.razor.g.cs
+C:\Users\coste\Desktop\School\3rd Semester\SEP3\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\Applications.razor.g.cs

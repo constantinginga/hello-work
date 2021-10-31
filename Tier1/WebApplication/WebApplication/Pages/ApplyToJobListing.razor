@@ -1,12 +1,51 @@
-﻿@page "/Apply/{Id:int}"
+﻿@page "/apply/{Id:int}"
 @using WebApplication.Data
 @using WebApplication.Models
+@using WebApplication.Data.Applications
 
 @inject IJobListingData JobListingData
+@inject IApplicationData ApplicationData 
 @inject NavigationManager NavigationManager
 
-<h3>Apply To Job Listing with ID: </h3>
+<h3>Applying to job listing with id: @Id</h3>
+
+@if (jobListing == null)
+{
+    <p>Job listing not found!</p>
+}
+else
+{
+<EditForm Model="application" OnValidSubmit="@Save">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <p>Application details:</p>
+        <InputTextArea class="form-control" placeholder="Enter application" @bind-Value="application.Details" />
+    </div>
+    <button class="btn btn-success" type="submit" value="Save">Save</button>
+</EditForm>
+}
 
 @code {
-   
+    [Parameter]
+    public int Id { get; set; }
+
+    private Application application;
+    private JobListing jobListing;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(() =>
+        {
+            application = new();
+            jobListing = JobListingData.Get(Id);
+            application.JobId = jobListing.Id;
+        });
+    }
+
+    private void Save()
+    {
+        ApplicationData.Create(application);
+        NavigationManager.NavigateTo("/job-listings");
+    }
 }

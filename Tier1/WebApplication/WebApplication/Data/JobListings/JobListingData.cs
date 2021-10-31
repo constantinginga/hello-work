@@ -37,9 +37,19 @@ namespace WebApplication.Data
             return JobListings;
         }
 
+        public async Task Update(JobListing jobListing)
+        {
+            JobListing toUpdate = JobListings.First(j => j.Id == jobListing.Id);
+            toUpdate.Details = jobListing.Details;
+
+            /*StringContent queryString = new(JsonConvert.SerializeObject(adult), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PatchAsync(_url + $"/{adult.Id}", queryString);
+            response.EnsureSuccessStatusCode();*/
+        }
+
         public JobListing Get(int id)
         {
-            return null;
+            return JobListings.FirstOrDefault(j => j.Id == id);
         }
     }
 }
