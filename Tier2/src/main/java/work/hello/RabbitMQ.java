@@ -21,8 +21,8 @@ import java.util.concurrent.BlockingQueue;
 
 @Component
 public class RabbitMQ implements MessagingHandler {
-    @Autowired
     private RabbitTemplate template;
+
     private final static String QUEUE_NAME = "Message_Queue";
     private Connection connection;
     private String requestQueueName = "rpc_queue";
@@ -30,13 +30,14 @@ public class RabbitMQ implements MessagingHandler {
     private Gson gson;
 
 
-    public RabbitMQ() {
+    public RabbitMQ(RabbitTemplate rabbitTemplate) {
+        this.template = rabbitTemplate;
         response = new HashMap<>();
         gson = new Gson();
     }
 
     @Override
-    public ArrayList<JobListing> getJobListings() {
+    public synchronized ArrayList<JobListing> getJobListings() {
         CustomMessage message = new CustomMessage();
         message.setMessageId(UUID.randomUUID().toString());
         message.setType("getAllJobListings");
@@ -57,7 +58,7 @@ public class RabbitMQ implements MessagingHandler {
     }
 
     @RabbitListener(queues = MQConfig.QUEUE)
-    public void listener(CustomMessage message) {
+    public synchronized void listener(CustomMessage message) {
         System.out.println("Received");
         System.out.println(message);
         response.put(message.getMessageId(), message);
