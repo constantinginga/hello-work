@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class MessageListener {
     @Autowired
     private RabbitTemplate template;
-    @RabbitListener(queues = MQConfig.QUEUE)
+    @RabbitListener(queues = MQConfig.CALLBACK_QUEUE)
     public void listener(CustomMessage message) {
         if (message.getType().equals("getAllJobListings")){
             System.out.println("Received");
@@ -23,7 +23,7 @@ public class MessageListener {
             message.setContent(gson.toJson(jobListings));
             System.out.println("Sent");
             template.convertAndSend(MQConfig.EXCHANGE,
-                    MQConfig.ROUTING_KEY, message);
+                    MQConfig.ROUTING_KEYB, message);
 
         }
     }

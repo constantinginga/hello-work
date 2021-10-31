@@ -15,10 +15,15 @@ public class MQConfig {
     public static final String CALLBACK_QUEUE = "callback_queue";
     public static final String EXCHANGE = "message_exchange";
     public static final String ROUTING_KEY = "message_routingKey";
+    public static final String ROUTING_KEYB = "message_routingKey";
 
     @Bean
-    public Queue queue() {
+    public Queue queueA() {
         return  new Queue(QUEUE);
+    }
+    @Bean
+    public Queue queueB() {
+        return  new Queue(CALLBACK_QUEUE);
     }
 
     @Bean
@@ -27,11 +32,18 @@ public class MQConfig {
     }
 
     @Bean
-    public Binding binding(Queue queue, TopicExchange exchange) {
+    public Binding bindingA(Queue queueA, TopicExchange exchange) {
         return BindingBuilder
-                .bind(queue)
+                .bind(queueA)
                 .to(exchange)
                 .with(ROUTING_KEY);
+    }
+    @Bean
+    public Binding bindingB(Queue queueB, TopicExchange exchange) {
+        return BindingBuilder
+                .bind(queueB)
+                .to(exchange)
+                .with(ROUTING_KEYB);
     }
 
     @Bean
