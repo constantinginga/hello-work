@@ -11,7 +11,6 @@ public class ApplicationsController {
     private static final Gson gson = new Gson();
 
     private TreeMap<Integer, JobListing> joblisting = new TreeMap<Integer, JobListing>();
-    private RabbitMQ rabbitMQ;
 
     @GetMapping("/joblistings/getJobListings")
     public synchronized String getJobListings()
