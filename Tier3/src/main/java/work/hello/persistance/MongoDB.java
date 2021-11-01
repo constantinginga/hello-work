@@ -1,7 +1,7 @@
-package work.hello.Tier3.persistance;
+package work.hello.persistance;
 
-import work.hello.Tier3.Model.Application;
-import work.hello.Tier3.Model.JobListing;
+import work.hello.model.data.Application;
+import work.hello.model.data.JobListing;
 
 import java.util.ArrayList;
 

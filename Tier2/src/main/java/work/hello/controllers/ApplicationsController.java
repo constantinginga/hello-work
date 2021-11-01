@@ -1,9 +1,11 @@
-package work.hello;
+package work.hello.controllers;
 
 import com.google.gson.Gson;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import work.hello.model.data.JobListing;
+import work.hello.model.RabbitMQ;
 
 import java.util.TreeMap;
 
@@ -11,22 +13,15 @@ import java.util.TreeMap;
 {
   private static final Gson gson = new Gson();
 
-  @Autowired private RabbitTemplate template;
-
-  private TreeMap<Integer, JobListing> joblisting = new TreeMap<Integer, JobListing>();
-  private RabbitMQ rabbitMQ;
 
   @GetMapping("/joblistings/getJobListings") public synchronized String getJobListings()
   {
-    return gson.toJson(getRabbitMQ().getJobListings());
+    System.out.println("Recieved");
+    return gson.toJson(RabbitMQ.getInstance().getJobListings());
   }
 
   @PutMapping("/applications/{application}") public synchronized void applyJobListing(
-      @RequestBody String json, @PathVariable String application)
-      throws Exception
-  {
-    Application application1 = new Application(++Tier2Application.deleteLater, "VERY GOOD APPLICATION");
-    getRabbitMQ().applyForJob(application1);
+      @RequestBody String json, @PathVariable String application) {
 
 //    Application newApplication = Application.fromJson(json);
 //    if (newApplication.validate())
@@ -40,12 +35,5 @@ import java.util.TreeMap;
 //    }
   }
 
-  public RabbitMQ getRabbitMQ()
-  {
-    if (rabbitMQ == null)
-    {
-      rabbitMQ = new RabbitMQ(template);
-    }
-    return rabbitMQ;
-  }
+
 }

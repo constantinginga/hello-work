@@ -1,11 +1,9 @@
-package work.hello.Tier3.Model;
+package work.hello.model.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.util.Date;
 
 @Data
 @NoArgsConstructor

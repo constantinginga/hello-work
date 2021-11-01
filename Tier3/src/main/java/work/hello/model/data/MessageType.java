@@ -1,7 +1,7 @@
-package work.hello.Tier3.Model;
+package work.hello.model.data;
 
 public enum MessageType
 {
   getAllJobListings,
-  applyForJob
+  applyForJob,
 }

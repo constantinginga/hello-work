@@ -1,4 +1,7 @@
-package work.hello.Tier3.Model;
+package work.hello.model;
+
+import work.hello.model.data.Application;
+import work.hello.model.data.JobListing;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package work.hello.Tier3;
+package work.hello;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
