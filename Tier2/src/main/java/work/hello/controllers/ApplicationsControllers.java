@@ -9,14 +9,14 @@ import work.hello.model.RabbitMQ;
 
 import java.util.TreeMap;
 
-@RestController public class ApplicationsController
+@RestController public class ApplicationsControllers
 {
   private static final Gson gson = new Gson();
 
 
   @GetMapping("/joblistings/getJobListings") public synchronized String getJobListings()
   {
-    System.out.println("Recieved");
+
     return gson.toJson(RabbitMQ.getInstance().getJobListings());
   }
 
