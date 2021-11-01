@@ -34,14 +34,14 @@ public class Application {
     }
 
 
-//    public static Application fromJson( String json )
-//    {
-//        return gson.fromJson( json, Application.class );
-//    }
+    public static Application fromJson( String json )
+    {
+        return gson.fromJson( json, Application.class );
+    }
 
     public boolean validate()
     {
-        return false;
+        return getJobID() >= 0 && getJobID() != 0 && getApplication() != null && getApplication().length() > 1;
     }
 
 }
