@@ -1,19 +1,23 @@
 package work.hello.Tier3;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Date;
-import java.util.UUID;
+import org.springframework.web.reactive.function.client.WebClient;
+import work.hello.Tier3.Model.Model;
+import work.hello.Tier3.Model.ModelManager;
 
 @SpringBootApplication
 public class Tier3Application {
-
+private static Model model;
 	public static void main(String[] args) {
-		WebClient client = WebClient.create("http://localhost:9000");
-
+		 model = new ModelManager();
 		SpringApplication.run(Tier3Application.class, args);
+	}
+
+	public static Model getModel()
+	{
+		return model;
 	}
 }

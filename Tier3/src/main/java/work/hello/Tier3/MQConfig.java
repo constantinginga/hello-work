@@ -62,10 +62,5 @@ public class MQConfig {
         return template;
     }
 
-    @Bean
-    public Model model() {
-        Model model = new ModelManager();
-        return model;
-    }
 
 }
