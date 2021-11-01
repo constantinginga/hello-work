@@ -1,4 +1,4 @@
-package work.hello.Tier3;
+package work.hello.Tier3.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +15,6 @@ public class CustomMessage {
 
     private String messageId;
     private String content;
-    private String type;
+    private MessageType type;
 
 }

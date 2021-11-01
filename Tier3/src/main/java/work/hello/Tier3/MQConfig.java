@@ -16,16 +16,12 @@ public class MQConfig {
     public static final String QUEUE = "message_queue";
     public static final String CALLBACK_QUEUE = "callback_queue";
     public static final String EXCHANGE = "message_exchange";
-    public static final String ROUTING_KEY = "message_routingKey";
-    public static final String ROUTING_KEYB = "message_routingKey";
+    public static final String ROUTING_KEY = "message_routingKey2";
+
+
 
     @Bean
-    public Queue queueA() {
-        return new Queue(QUEUE);
-    }
-
-    @Bean
-    public Queue queueB() {
+    public Queue queue() {
         return new Queue(CALLBACK_QUEUE);
     }
 
@@ -42,13 +38,6 @@ public class MQConfig {
                 .with(ROUTING_KEY);
     }
 
-    @Bean
-    public Binding bindingB(Queue queueB, TopicExchange exchange) {
-        return BindingBuilder
-                .bind(queueB)
-                .to(exchange)
-                .with(ROUTING_KEYB);
-    }
 
     @Bean
     public MessageConverter messageConverter() {
@@ -59,6 +48,7 @@ public class MQConfig {
     public AmqpTemplate template(ConnectionFactory connectionFactory) {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
         template.setMessageConverter(messageConverter());
+        template.setDefaultReceiveQueue(CALLBACK_QUEUE);
         return template;
     }
 

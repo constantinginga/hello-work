@@ -1,35 +1,48 @@
 package work.hello.Tier3;
+
 import com.google.gson.Gson;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import work.hello.Tier3.Model.JobListing;
+import work.hello.Tier3.Model.Application;
+import work.hello.Tier3.Model.CustomMessage;
 import work.hello.Tier3.Model.Model;
 
-import java.util.ArrayList;
+@Component public class MessageListener
+{
+  @Autowired private RabbitTemplate template;
+  private Model model;
+  private Gson gson;
 
-@Component
-public class MessageListener {
-    @Autowired
-    private RabbitTemplate template;
-    private Model model;
-    @RabbitListener(queues = MQConfig.CALLBACK_QUEUE)
-    public void listener(CustomMessage message) {
-        model = Tier3Application.getModel();
-        if (message.getType().equals("getAllJobListings")){
-            System.out.println("Received");
-            ArrayList<JobListing> jobListings = new ArrayList<>();
-            Gson gson = new Gson();
-            jobListings.add(new JobListing(1,"test"));
-            jobListings.add(new JobListing(2,"test1"));
-            jobListings.add(new JobListing(3,"test3"));
-            message.setContent(gson.toJson(model.getJobListings()));
-            System.out.println("Sent");
-            template.convertAndSend(MQConfig.EXCHANGE,
-                    MQConfig.ROUTING_KEYB, message);
+  public MessageListener(RabbitTemplate template)
+  {
+    this.template = template;
+    this.model = Tier3Application.getModel();
+    gson = new Gson();
+  }
 
-        }
+  @RabbitListener(queues = MQConfig.CALLBACK_QUEUE) public void listener(
+      CustomMessage message)
+  {
+    System.out.println("recieved");
+
+    model = Tier3Application.getModel();
+    switch (message.getType())
+    {
+      case getAllJobListings:
+        message.setContent(gson.toJson(model.getJobListings()));
+        template
+            .convertAndSend(MQConfig.EXCHANGE, MQConfig.ROUTING_KEY, message);
+        break;
+      case applyForJob:
+        System.out.println(message.getContent() + "here");
+        Application application = gson
+            .fromJson(message.getContent(), Application.class);
+        model.applyJobListing(application);
+
     }
+
+  }
 
 }

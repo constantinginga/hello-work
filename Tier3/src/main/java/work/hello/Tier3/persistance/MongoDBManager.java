@@ -24,15 +24,16 @@ public class MongoDBManager implements MongoDB
     {
       MongoClient mongoClient = MongoClients.create(connectionString);
       mongoDatabase = mongoClient.getDatabase("hellowork");
-      jobCollection = mongoDatabase.getCollection("JobID");
-      jobCollection.createIndex(Indexes.ascending("world"));
-      applicationCollection = mongoDatabase.getCollection("application");
+      jobCollection = mongoDatabase.getCollection("Jobs");
+      jobCollection.createIndex(Indexes.ascending("JobID"));
+      applicationCollection = mongoDatabase.getCollection("Applications");
 
     }
     catch (Exception e)
     {
       e.printStackTrace();
-    } getJobListings();
+    }
+    getJobListings();
   }
 
   public String getConnectionString()
@@ -62,8 +63,6 @@ public class MongoDBManager implements MongoDB
 
   @Override public ArrayList<JobListing> getJobListings()
   {
-    jobCollection
-        .insertOne(new Document("JobID", 1).append("Details", "Software"));
     ArrayList<JobListing> jobListings = new ArrayList<>();
     FindIterable<Document> iterDoc = jobCollection.find();
     for (Document document : iterDoc)
@@ -80,6 +79,8 @@ public class MongoDBManager implements MongoDB
 
   @Override public void applyJobListing(Application application)
   {
-
+    System.out.println(application.getApplication());
+    Document document = Document.parse(application.toJson());
+    applicationCollection.insertOne(document);
   }
 }

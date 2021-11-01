@@ -34,10 +34,10 @@ public class Application {
     }
 
 
-    public static Application fromJson( String json )
-    {
-        return gson.fromJson( json, Application.class );
-    }
+//    public static Application fromJson( String json )
+//    {
+//        return gson.fromJson( json, Application.class );
+//    }
 
     public boolean validate()
     {
