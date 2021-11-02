@@ -3,29 +3,29 @@ package work.hello.model.data;
 import com.google.gson.Gson;
 
 public class Application {
-    private int JobID;
-    private String Application;
+    private int JobId;
+    private String Details;
     private static final Gson gson = new Gson();
 
-    public Application(int jobID, String application) {
-        JobID = jobID;
-        Application = application;
+    public Application(int jobId, String details) {
+        JobId = jobId;
+        Details = details;
     }
 
     public int getJobID() {
-        return JobID;
+        return JobId;
     }
 
     public void setJobID(int jobID) {
-        JobID = jobID;
+        JobId = jobID;
     }
 
     public String getApplication() {
-        return Application;
+        return Details;
     }
 
-    public void setApplication(String application) {
-        Application = application;
+    public void setApplication(String details) {
+        Details = details;
     }
 
     public String toJson()
@@ -41,7 +41,7 @@ public class Application {
 
     public boolean validate()
     {
-        return false;
+        return getJobID() >= 0 && getJobID() != 0 && getApplication() != null && getApplication().length() > 1;
     }
 
 }

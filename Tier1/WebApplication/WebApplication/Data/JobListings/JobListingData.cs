@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WebApplication.Models;
+using Newtonsoft.Json;
 
 namespace WebApplication.Data
 {
@@ -11,7 +11,7 @@ namespace WebApplication.Data
     {
         private HttpClient client;
         public IList<JobListing> JobListings { get; private set; }
-        private const string _url = "";
+        private const string _url = "http://localhost:8082/joblistings/getJobListings";
 
         public JobListingData()
         {
@@ -34,6 +34,18 @@ namespace WebApplication.Data
         }
         public async Task<IList<JobListing>> GetJobListings()
         {
+            // load once and store in variable
+            if (!JobListings.Any())
+            {
+                HttpResponseMessage response = await client.GetAsync(_url);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                // have to do this because of the inheritance
+                JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.All };
+                JobListings = JsonConvert.DeserializeObject<List<JobListing>>(responseBody, settings);
+            }
+
             return JobListings;
         }
 

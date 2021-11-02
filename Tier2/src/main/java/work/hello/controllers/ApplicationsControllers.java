@@ -16,11 +16,11 @@ import work.hello.model.RabbitMQ;
     return gson.toJson(RabbitMQ.getInstance().getJobListings());
   }
 
-  @PutMapping("/applications/{application}") public synchronized void applyJobListing(@RequestBody String json, @PathVariable String application) {
+  @PostMapping("/applications") public synchronized void applyJobListing(@RequestBody String json) {
       Application newApplication = Application.fromJson(json);
-      if (newApplication.validate())
+      if (true)
       {
-        RabbitMQ.getInstance().applyForJob(Application.fromJson(application));
+        RabbitMQ.getInstance().applyForJob(newApplication);
       }
       else {
         System.out.println("Validation incorrect");
