@@ -34,7 +34,7 @@ public class RPCClient implements AutoCloseable {
         factory.setPassword(CommonConfigs.RABBIT_PASSWORD);
         factory.setUsername(CommonConfigs.RABBIT_USERNAME);
         factory.useSslProtocol();
-        System.out.println(CommonConfigs.AMQP_URL);
+
         factory.setUri(CommonConfigs.AMQP_URL);
         factory.setPort(CommonConfigs.RABBIT_PORT);
 
