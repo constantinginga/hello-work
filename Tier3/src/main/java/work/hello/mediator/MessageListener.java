@@ -9,7 +9,10 @@ import work.hello.model.Model;
 import work.hello.Tier3Application;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 public class MessageListener {
@@ -23,13 +26,18 @@ public class MessageListener {
         gson = new Gson();
         factory = new ConnectionFactory();
         try {
-            connection = factory.newConnection(CommonConfigs.AMQP_URL);
+            factory.setPassword(CommonConfigs.RABBIT_PASSWORD);
+            factory.setUsername(CommonConfigs.RABBIT_USERNAME);
+            factory.useSslProtocol();
+            System.out.println(CommonConfigs.AMQP_URL);
+            factory.setUri(CommonConfigs.AMQP_URL);
+            factory.setPort(CommonConfigs.RABBIT_PORT);
+            connection = factory.newConnection();
             createRPCListener();
             createListener();
-        } catch (IOException | TimeoutException e) {
+        } catch (IOException | TimeoutException | KeyManagementException | NoSuchAlgorithmException | URISyntaxException e) {
             e.printStackTrace();
         }
-
 
     }
 

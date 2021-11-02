@@ -5,11 +5,15 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import lombok.SneakyThrows;
 import work.hello.CommonConfigs;
 import work.hello.model.data.CustomMessage;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -22,11 +26,19 @@ public class RPCClient implements AutoCloseable {
     private String requestQueueName = "rpc_queue";
     private Gson gson;
 
-    public RPCClient() throws IOException, TimeoutException {
+    @SneakyThrows public RPCClient()
+        throws IOException, TimeoutException, KeyManagementException,
+        NoSuchAlgorithmException, URISyntaxException
+    {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        factory.setPassword(CommonConfigs.RABBIT_PASSWORD);
+        factory.setUsername(CommonConfigs.RABBIT_USERNAME);
+        factory.useSslProtocol();
+        System.out.println(CommonConfigs.AMQP_URL);
+        factory.setUri(CommonConfigs.AMQP_URL);
+        factory.setPort(CommonConfigs.RABBIT_PORT);
 
-        connection = factory.newConnection(CommonConfigs.AMQP_URL);
+        connection = factory.newConnection();
         channel = connection.createChannel();
         gson = new Gson();
     }
