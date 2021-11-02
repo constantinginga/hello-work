@@ -1,20 +1,23 @@
 package work.hello.model.data;
 
-public class JobListing {
-    private int JobID;
-    private String Details;
+import com.google.gson.Gson;
 
-    public JobListing(int jobID, String details) {
-        JobID = jobID;
+public class JobListing {
+    private int JobId;
+    private String Details;
+    private static final Gson gson = new Gson();
+
+    public JobListing(int jobId, String details) {
+        JobId = jobId;
         Details = details;
     }
 
-    public int getJobID() {
-        return JobID;
+    public int getJobId() {
+        return JobId;
     }
 
-    public void setJobID(int jobID) {
-        JobID = jobID;
+    public void setJobId(int jobId) {
+        JobId = jobId;
     }
 
     public String getDetails() {
@@ -25,9 +28,17 @@ public class JobListing {
         Details = details;
     }
 
-    public boolean validate(JobListing jobListing)
-    {
-       return false;
+    public boolean validate(JobListing jobListing) {
+        return false;
+    }
+
+    public String toJson() {
+        return gson.toJson(this);
+    }
+
+
+    public static JobListing fromJson(String json) {
+        return gson.fromJson(json, JobListing.class);
     }
 
 }

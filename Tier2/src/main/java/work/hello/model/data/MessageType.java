@@ -4,5 +4,5 @@ public enum MessageType
 {
   getAllJobListings,
   applyForJob,
-  callback
+  createJobListing
 }

@@ -9,7 +9,7 @@ namespace WebApplication.Models
     public class JobListing
     {
         [Required]
-        public int Id { get; set; }
+        public int JobId { get; set; }
         [Required]
         public string Details { get; set; }
 

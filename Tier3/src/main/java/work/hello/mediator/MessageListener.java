@@ -7,6 +7,7 @@ import work.hello.model.data.Application;
 import work.hello.model.data.CustomMessage;
 import work.hello.model.Model;
 import work.hello.Tier3Application;
+import work.hello.model.data.JobListing;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -90,7 +91,12 @@ public class MessageListener {
             switch (customMessage.getType()) {
                 case applyForJob:
                     model.applyJobListing(gson.fromJson(customMessage.getContent(), Application.class));
-            }
+                    break;
+                case createJobListing:
+                    model.createJobListing(gson.fromJson(customMessage.getContent(), JobListing.class));
+                    break;
+                    }
+
         };
 
         CancelCallback cancelCallback = s -> {

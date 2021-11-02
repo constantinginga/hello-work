@@ -33,10 +33,10 @@ else
         @foreach (var item in jobListingToShow)
         {
             <tr>
-                <td>@item.Id</td>
+                <td>@item.JobId</td>
                 <td>@item.Details</td>
                 <td>
-                    <button @onclick="@(() => Apply(item.Id))">
+                    <button @onclick="@(() => Apply(item.JobId))">
                         <i class="oi oi-pencil" style="color: green"/>
                     </button>
                 </td>

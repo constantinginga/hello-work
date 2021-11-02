@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AuTgZFTtYH9E2pyPOnYzS5NDEMuViMNFcKumBJTTTBu0OtGPy+W8IrT21+fviVaEBjPTxpKd1M4Lehik1mlyHg==",
+  "dgSpecHash": "7kQS0XfuObpwX16TzVzglZG+7ce7qb1fLnAhxPZY93IlN8ht+CKMkRmwpLDPRs0AhW7V0TC074Y8ljjvvMvjVA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\coste\\Desktop\\School\\3rd Semester\\SEP3\\hello-work\\Tier1\\WebApplication\\WebApplication\\WebApplication.csproj",
+  "projectFilePath": "C:\\Users\\klavs\\OneDrive - ViaUC\\Semester3\\SEP\\code\\Tier1\\WebApplication\\WebApplication\\WebApplication.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\coste\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\klavs\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

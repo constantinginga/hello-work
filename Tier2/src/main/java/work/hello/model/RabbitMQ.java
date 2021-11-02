@@ -16,13 +16,13 @@ import java.util.UUID;
 
 public class RabbitMQ implements MessagingHandler {
     private Gson gson;
-    private RPCClient rpcClient;
+    private RabbitClient rabbitClient;
     private static MessagingHandler instance;
 
     private RabbitMQ() {
         gson = new Gson();
         try {
-            rpcClient = new RPCClient();
+            rabbitClient = new RabbitClient();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class RabbitMQ implements MessagingHandler {
         message.setType(MessageType.getAllJobListings);
         String response = "";
         try {
-            response = rpcClient.sendMessageRPC(message);
+            response = rabbitClient.sendMessageRPC(message);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -52,7 +52,15 @@ public class RabbitMQ implements MessagingHandler {
         message.setMessageId(UUID.randomUUID().toString());
         message.setType(MessageType.applyForJob);
         message.setContent(application.toJson());
-        rpcClient.sendMessage(message);
+        rabbitClient.sendMessage(message);
+    }
+
+    @Override
+    public void createJobListing(JobListing jobListing) {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.createJobListing);
+        message.setContent(jobListing.toJson());
+        rabbitClient.sendMessage(message);
     }
 
     public static  MessagingHandler getInstance() {

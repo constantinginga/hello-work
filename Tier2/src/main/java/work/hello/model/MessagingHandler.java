@@ -8,5 +8,6 @@ import java.util.ArrayList;
 public interface MessagingHandler {
      ArrayList<JobListing> getJobListings();
      void applyForJob(Application application);
+     void createJobListing(JobListing jobListing);
 
 }

@@ -8,7 +8,7 @@ namespace WebApplication.Data.Applications
 {
     interface IApplicationData
     {
-        Task Create(Application application);
+        Task<Application> AddApplication(Application application);
 
         Task<IList<Application>> GetApplications();
     }

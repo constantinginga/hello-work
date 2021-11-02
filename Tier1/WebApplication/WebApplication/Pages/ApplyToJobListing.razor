@@ -39,13 +39,13 @@ else
         {
             application = new();
             jobListing = JobListingData.Get(Id);
-            application.JobId = jobListing.Id;
+            application.JobId = jobListing.JobId;
         });
     }
 
     private void Save()
     {
-        ApplicationData.Create(application);
+        ApplicationData.AddApplication(application);
         NavigationManager.NavigateTo("/job-listings");
     }
 }

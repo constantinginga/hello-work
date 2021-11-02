@@ -24,4 +24,9 @@ public class ModelManager implements Model {
     public void applyJobListing(Application application) {
         mongoDB.applyJobListing(application);
     }
+
+    @Override
+    public void createJobListing(JobListing jobListing) {
+        mongoDB.createJobListing(jobListing);
+    }
 }

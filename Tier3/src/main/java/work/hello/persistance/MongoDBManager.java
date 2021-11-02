@@ -76,4 +76,10 @@ public class MongoDBManager implements MongoDB {
         applicationCollection.insertOne(document);
     }
 
+    @Override
+    public void createJobListing(JobListing jobListing) {
+        Document document = Document.parse(jobListing.toJson());
+        jobCollection.insertOne(document);
+    }
+
 }

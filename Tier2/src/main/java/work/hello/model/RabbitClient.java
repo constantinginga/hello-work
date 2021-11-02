@@ -19,14 +19,14 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeoutException;
 
-public class RPCClient implements AutoCloseable {
+public class RabbitClient implements AutoCloseable {
 
     private Connection connection;
     private Channel channel;
     private String requestQueueName = "rpc_queue";
     private Gson gson;
 
-    @SneakyThrows public RPCClient()
+    @SneakyThrows public RabbitClient()
         throws IOException, TimeoutException, KeyManagementException,
         NoSuchAlgorithmException, URISyntaxException
     {
