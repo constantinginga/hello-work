@@ -16,7 +16,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
-public abstract class MessageListener {
+public abstract class MessageListenerRPC {
     private Model model;
     private final Gson gson;
     private Connection connection;
@@ -25,7 +25,7 @@ public abstract class MessageListener {
     private String topic;
 
 
-    public MessageListener(String queueName, String topic) {
+    public MessageListenerRPC(String queueName, String topic) {
         this.model = Tier3Application.getModel();
         gson = new Gson();
         factory = new ConnectionFactory();
@@ -44,24 +44,38 @@ public abstract class MessageListener {
         }
     }
 
-    public abstract void handleResponse(CustomMessage message);
+    public abstract String handleResponse(CustomMessage message);
 
     private void createListener() throws IOException, TimeoutException {
 
         Channel channel = connection.createChannel();
         channel.exchangeDeclare(CommonConfigs.EXCHANGE_NAME, "direct");
-        channel.queueDeclare(queueName, true, false, false, null);
+        channel.queueDeclare(queueName, false, false, false, null);
         channel.queueBind(queueName, CommonConfigs.EXCHANGE_NAME, topic);
-        DeliverCallback deliverCallback = (s, delivery) -> {
-            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            CustomMessage customMessage = gson.fromJson(message, CustomMessage.class);
-            handleResponse(customMessage);
+        channel.basicQos(1);
+        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+            AMQP.BasicProperties replyProps = new AMQP.BasicProperties
+                    .Builder()
+                    .correlationId(delivery.getProperties().getCorrelationId())
+                    .build();
+
+            String response = "";
+
+            try {
+                String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
+                CustomMessage customMessage = gson.fromJson(message, CustomMessage.class);
+                response = handleResponse(customMessage);
+
+            } catch (RuntimeException e) {
+                System.out.println(" [.] " + e);
+            } finally {
+                channel.basicPublish("", delivery.getProperties().getReplyTo(), replyProps, response.getBytes(StandardCharsets.UTF_8));
+                channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+            }
         };
 
-        CancelCallback cancelCallback = s -> {
-
-        };
-        channel.basicConsume(queueName, true, deliverCallback, cancelCallback);
+        channel.basicConsume(queueName, false, deliverCallback, (consumerTag -> {
+        }));
     }
 
     public Model getModel() {

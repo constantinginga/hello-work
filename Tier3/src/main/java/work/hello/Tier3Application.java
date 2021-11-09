@@ -4,9 +4,11 @@ package work.hello;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import work.hello.mediator.listeners.ApplyForJobListener;
+import work.hello.mediator.listeners.CreateJobListingListener;
+import work.hello.mediator.listeners.GetAllJobListingsListener;
 import work.hello.model.Model;
 import work.hello.model.ModelManager;
-import work.hello.mediator.MessageListener;
 
 @SpringBootApplication
 public class Tier3Application {
@@ -16,9 +18,14 @@ public class Tier3Application {
     public static void main(String[] args) {
         SpringApplication.run(Tier3Application.class, args);
         model = new ModelManager();
-        MessageListener messageListener = new MessageListener();
+        registerListeners();
     }
 
+    private static void registerListeners() {
+        new ApplyForJobListener();
+        new CreateJobListingListener();
+        new GetAllJobListingsListener();
+    }
 
 
     public static Model getModel() {

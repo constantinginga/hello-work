@@ -25,6 +25,7 @@ public class JobController {
         JobListing newJobListing = JobListing.fromJson(json);
         if (true)
         {
+
             RabbitMQ.getInstance().createJobListing(newJobListing);
             return newJobListing.toJson();
         }

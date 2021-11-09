@@ -7,5 +7,6 @@ public class CommonConfigs {
     public static final String RABBIT_PASSWORD = "bestadminislatvish";
     public static final String RABBIT_USERNAME = "Latvish";
     public static final int RABBIT_PORT = 5671;
+    public static final String EXCHANGE_NAME = "HelloWork";
 
 }

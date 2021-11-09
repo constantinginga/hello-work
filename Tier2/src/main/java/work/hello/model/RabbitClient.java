@@ -23,13 +23,12 @@ public class RabbitClient implements AutoCloseable {
 
     private Connection connection;
     private Channel channel;
-    private String requestQueueName = "rpc_queue";
-    private Gson gson;
+    private final Gson gson;
 
-    @SneakyThrows public RabbitClient()
-        throws IOException, TimeoutException, KeyManagementException,
-        NoSuchAlgorithmException, URISyntaxException
-    {
+    @SneakyThrows
+    public RabbitClient()
+            throws IOException, TimeoutException, KeyManagementException,
+            NoSuchAlgorithmException, URISyntaxException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setPassword(CommonConfigs.RABBIT_PASSWORD);
         factory.setUsername(CommonConfigs.RABBIT_USERNAME);
@@ -40,10 +39,11 @@ public class RabbitClient implements AutoCloseable {
 
         connection = factory.newConnection();
         channel = connection.createChannel();
+        channel.exchangeDeclare(CommonConfigs.EXCHANGE_NAME, "direct");
         gson = new Gson();
     }
 
-    public String sendMessageRPC(CustomMessage customMessage) throws IOException, InterruptedException {
+    public String sendMessageRPC(CustomMessage customMessage, String topic) throws IOException, InterruptedException {
         String message = gson.toJson(customMessage);
         final String corrId = UUID.randomUUID().toString();
 
@@ -54,7 +54,7 @@ public class RabbitClient implements AutoCloseable {
                 .replyTo(replyQueueName)
                 .build();
 
-        channel.basicPublish("", requestQueueName, props, message.getBytes(StandardCharsets.UTF_8));
+        channel.basicPublish(CommonConfigs.EXCHANGE_NAME, topic, props, message.getBytes(StandardCharsets.UTF_8));
 
         final BlockingQueue<String> response = new ArrayBlockingQueue<>(1);
 
@@ -70,12 +70,10 @@ public class RabbitClient implements AutoCloseable {
         return result;
     }
 
-    public void sendMessage(CustomMessage customMessage) {
+    public void sendMessage(CustomMessage customMessage, String topic) {
         try {
             String message = gson.toJson(customMessage);
-            channel.queueDeclare(CommonConfigs.DEFAULT_QUEUE, true, false, false, null);
-            //publish - (exchange, routingKey, properties, message)
-            channel.basicPublish("", CommonConfigs.DEFAULT_QUEUE, null, message.getBytes());
+            channel.basicPublish(CommonConfigs.EXCHANGE_NAME, topic, null, message.getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
   public static void main(String[] args)
   {
+    int i = 2;
     SpringApplication.run(Tier2Application.class, args);
   }
 

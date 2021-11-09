@@ -35,7 +35,7 @@ public class RabbitMQ implements MessagingHandler {
         message.setType(MessageType.getAllJobListings);
         String response = "";
         try {
-            response = rabbitClient.sendMessageRPC(message);
+            response = rabbitClient.sendMessageRPC(message, "getAllJobListings");
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -52,7 +52,7 @@ public class RabbitMQ implements MessagingHandler {
         message.setMessageId(UUID.randomUUID().toString());
         message.setType(MessageType.applyForJob);
         message.setContent(application.toJson());
-        rabbitClient.sendMessage(message);
+        rabbitClient.sendMessage(message,"applyForJob");
     }
 
     @Override
@@ -60,7 +60,8 @@ public class RabbitMQ implements MessagingHandler {
         CustomMessage message = new CustomMessage();
         message.setType(MessageType.createJobListing);
         message.setContent(jobListing.toJson());
-        rabbitClient.sendMessage(message);
+        rabbitClient.sendMessage(message,"createJobListing");
+
     }
 
     public static  MessagingHandler getInstance() {
