@@ -82,6 +82,13 @@ using WebApplication.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Shared\MainLayout.razor"
+using WebApplication.Auth;
+
+#line default
+#line hidden
+#nullable disable
     public partial class MainLayout : LayoutComponentBase
     {
         #pragma warning disable 1998
@@ -89,6 +96,25 @@ using WebApplication.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 37 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Shared\MainLayout.razor"
+ 
+
+    protected override async Task OnInitializedAsync()
+    {
+    }
+
+    private void Logout()
+    {
+        ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
     }
 }
 #pragma warning restore 1591

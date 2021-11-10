@@ -1,8 +1,15 @@
-﻿namespace WebApplication.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebApplication.Models
 {
     public class Employer : User
     {
-        public string CompanyName{ get; set; }
-        public string Address{ get; set; }
+        [Required] public string CompanyName { get; set; }
+        [Required] public string Address { get; set; }
+
+        public Employer()
+        {
+            Role = "Employer";
+        }
     }
 }

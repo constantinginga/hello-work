@@ -1,4 +1,7 @@
+@using WebApplication.Auth
 @inherits LayoutComponentBase
+@inject NavigationManager NavManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <div class="page">
     <div class="sidebar">
@@ -7,7 +10,21 @@
 
     <div class="main bg-white">
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <AuthorizeView>
+                <NotAuthorized>
+                    <div >
+                        <button @onclick="@(() => NavManager.NavigateTo("/login"))" class="btn btn-outline-dark w-full btn-outline-primary login" type="button"> Log In</button>
+                    </div>
+                    <div >
+                        <button @onclick="@(() => NavManager.NavigateTo("/register"))" class="btn btn-outline-dark w-full btn-outline-primary login" type="button"> Register</button>
+                    </div>
+                </NotAuthorized>
+                <Authorized >
+                    <div >
+                        <a class="dropdown-item dropDownLogOut" @onclick="Logout" href="#">Logout</a>
+                    </div>
+                </Authorized>
+            </AuthorizeView>
         </div>
 
         <div class="content px-4 ">
@@ -15,3 +32,17 @@
         </div>
     </div>
 </div>
+
+@code
+{
+
+    protected override async Task OnInitializedAsync()
+    {
+    }
+
+    private void Logout()
+    {
+        ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+    }
+
+}

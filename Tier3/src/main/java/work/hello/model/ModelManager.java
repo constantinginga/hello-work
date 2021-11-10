@@ -1,7 +1,6 @@
 package work.hello.model;
 
-import work.hello.model.data.Application;
-import work.hello.model.data.JobListing;
+import work.hello.model.data.*;
 import work.hello.persistance.MongoDB;
 import work.hello.persistance.MongoDBManager;
 
@@ -28,5 +27,20 @@ public class ModelManager implements Model {
     @Override
     public void createJobListing(JobListing jobListing) {
         mongoDB.createJobListing(jobListing);
+    }
+
+    @Override
+    public User getUser(User user) {
+        return mongoDB.getUser(user.getEmail(), user.getPassword());
+    }
+
+    @Override
+    public JobSeeker createJobSeeker(JobSeeker jobSeeker) {
+        return mongoDB.createJobSeeker(jobSeeker);
+    }
+
+    @Override
+    public Employer createEmployer(Employer employer) {
+        return mongoDB.createEmployer(employer);
     }
 }

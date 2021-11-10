@@ -53,7 +53,7 @@ namespace WebApplication.Auth
             ClaimsIdentity identity = new ClaimsIdentity();
             try
             {
-                User user =  await userService.ValidateUser(email, password);
+                User user = await userService.ValidateUser(email, password);
                 identity = SetupClaimsForUser(user);
                 string serialisedData = JsonSerializer.Serialize(user);
                 jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", serialisedData);
@@ -66,6 +66,19 @@ namespace WebApplication.Auth
 
             NotifyAuthenticationStateChanged(
                 Task.FromResult(new AuthenticationState(new ClaimsPrincipal(identity))));
+        }
+
+        public async Task CreateEmployer(Employer employer)
+        {
+            try
+            {
+                await userService.CreateEmployer(employer);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public void Logout()

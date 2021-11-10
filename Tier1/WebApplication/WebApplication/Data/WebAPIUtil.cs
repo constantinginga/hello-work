@@ -13,7 +13,7 @@ namespace WebApplication.Data
         public WebApiUtil(string url)
         {
             _client = new HttpClient();
-           _url = url;
+            _url = url;
         }
 
         public async Task<string> Get(string args)
@@ -41,8 +41,39 @@ namespace WebApplication.Data
 
         public async Task Delete(string args)
         {
-            Console.WriteLine(_url + args);
             HttpResponseMessage responseMessage = await _client.DeleteAsync(_url + args);
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
+            }
+        }
+
+        public async Task<string> Get(string url, string args)
+        {
+            HttpResponseMessage responseMessage = await _client.GetAsync(url + args);
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
+            }
+
+            return await responseMessage.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> Post(string url, string args, string body)
+        {
+            StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
+            HttpResponseMessage responseMessage = await _client.PostAsync(url + args, content);
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
+            }
+
+            return await responseMessage.Content.ReadAsStringAsync();
+        }
+
+        public async Task Delete(string url, string args)
+        {
+            HttpResponseMessage responseMessage = await _client.DeleteAsync(url + args);
             if (!responseMessage.IsSuccessStatusCode)
             {
                 throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");

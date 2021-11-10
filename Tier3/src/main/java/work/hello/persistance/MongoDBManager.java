@@ -2,11 +2,11 @@ package work.hello.persistance;
 
 import com.google.gson.Gson;
 import com.mongodb.client.*;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Indexes;
 import org.bson.Document;
 import org.bson.json.JsonWriterSettings;
-import work.hello.model.data.Application;
-import work.hello.model.data.JobListing;
+import work.hello.model.data.*;
 
 import java.util.ArrayList;
 
@@ -16,6 +16,8 @@ public class MongoDBManager implements MongoDB {
     private MongoDatabase mongoDatabase;
     private MongoCollection<Document> jobCollection;
     private MongoCollection<Document> applicationCollection;
+    private MongoCollection<Document> jobSeekerCollection;
+    private MongoCollection<Document> employerCollection;
     private JsonWriterSettings settings;
     private Gson gson;
 
@@ -27,6 +29,8 @@ public class MongoDBManager implements MongoDB {
             jobCollection = mongoDatabase.getCollection("Jobs");
             jobCollection.createIndex(Indexes.ascending("JobID"));
             applicationCollection = mongoDatabase.getCollection("Applications");
+            jobSeekerCollection = mongoDatabase.getCollection("JobSeekers");
+            employerCollection = mongoDatabase.getCollection("Employers");
             settings = JsonWriterSettings.builder()
                     .int64Converter((value, writer) -> writer.writeNumber(value.toString()))
                     .build();
@@ -62,8 +66,6 @@ public class MongoDBManager implements MongoDB {
         ArrayList<JobListing> jobListings = new ArrayList<>();
         FindIterable<Document> iterDoc = jobCollection.find();
         for (Document document : iterDoc) {
-
-            document.toJson();
             String json = document.toJson(settings);
             jobListings.add(gson.fromJson(json, JobListing.class));
         }
@@ -80,6 +82,47 @@ public class MongoDBManager implements MongoDB {
     public void createJobListing(JobListing jobListing) {
         Document document = Document.parse(jobListing.toJson());
         jobCollection.insertOne(document);
+    }
+
+
+    @Override
+    public User getUser(String email, String password) {
+        Document doc = jobSeekerCollection.find(Filters.eq("email", email)).first();
+        User user;
+        if (doc != null) {
+            String json = doc.toJson(settings);
+            user = (User) gson.fromJson(json, JobSeeker.class);
+
+        } else {
+            doc = employerCollection.find(Filters.eq("email", email)).first();
+            if (doc != null) {
+                String json = doc.toJson(settings);
+                user = (User) gson.fromJson(json, Employer.class);
+            } else {
+                return null;
+            }
+        }
+        if (password.equals("")) {
+            return user;
+        }
+        if (user.getPassword().equals(password)) {
+            return user;
+        }
+        return null;
+    }
+
+    @Override
+    public JobSeeker createJobSeeker(JobSeeker seeker) {
+        Document document = Document.parse(seeker.toJson());
+        jobSeekerCollection.insertOne(document);
+        return seeker;
+    }
+
+    @Override
+    public Employer createEmployer(Employer employer) {
+        Document document = Document.parse(employer.toJson());
+        employerCollection.insertOne(document);
+        return employer;
     }
 
 }
