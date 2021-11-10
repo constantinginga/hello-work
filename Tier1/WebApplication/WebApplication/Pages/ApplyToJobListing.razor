@@ -7,25 +7,34 @@
 @inject IApplicationData ApplicationData 
 @inject NavigationManager NavigationManager
 
-<h3>Applying to job listing with id: @Id</h3>
+<div class="w-full">
+    <div style="background-color: #fafafa" class="rounded-lg flex flex-col justify-center p-3">
+        @if (jobListing != null)
+        {
+            <div class="rounded-lg font-bold text-xl">Applying for position: @jobListing.Details</div>
+        }
 
-@if (jobListing == null)
-{
-    <p>Job listing not found!</p>
-}
-else
-{
-<EditForm Model="application" OnValidSubmit="@Save">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div class="form-group">
-        <p>Application details:</p>
-        <InputTextArea class="form-control" placeholder="Enter application" @bind-Value="application.Details" />
+        @if (jobListing == null)
+        {
+            <p>Job listing not found!</p>
+        }
+        else
+        {
+            <EditForm Model="application" OnValidSubmit="@Save">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
+                <div class="form-group">
+                    <p class="font-bold mt-4">Application details:</p>
+                    <InputTextArea class="w-1/3" placeholder="Your text for application" @bind-Value="application.Details"/>
+                </div>
+                <button class="rounded-lg btn" style="background-color: #3f6cdf" type="submit" value="Save">Apply</button>
+                <button class="rounded-lg btn bg-red-600" @onclick="Back">Back</button>
+
+            </EditForm>
+        }
+
     </div>
-    <button class="btn btn-success" type="submit" value="Save">Save</button>
-</EditForm>
-}
-
+</div>
 @code {
     [Parameter]
     public int Id { get; set; }
@@ -35,16 +44,20 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        await Task.Run(() =>
-        {
-            application = new();
-            jobListing = JobListingData.Get(Id);
-            application.JobId = jobListing.JobId;
-        });
+        jobListing = await JobListingData.Get(Id);
+        application = new();
+        application.JobId = jobListing.JobId;
+        
+    }
+
+    private void Back()
+    {
+        NavigationManager.NavigateTo("/job-listings");
     }
 
     private void Save()
     {
+        
         ApplicationData.AddApplication(application);
         NavigationManager.NavigateTo("/job-listings");
     }

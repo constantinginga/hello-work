@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using WebApplication.Models;
-using WebApplication.Pages;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace WebApplication.Data
@@ -66,8 +61,12 @@ namespace WebApplication.Data
             response.EnsureSuccessStatusCode();*/
         }
 
-        public JobListing Get(int id)
+        public async Task<JobListing> Get(int id)
         {
+            string responese = await _client.Get("");
+            JobListings = JsonSerializer.Deserialize<List<JobListing>>(responese, new JsonSerializerOptions()
+            {
+            });
             return JobListings.FirstOrDefault(j => j.JobId == id);
         }
         

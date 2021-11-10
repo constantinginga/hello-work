@@ -1,24 +1,3 @@
-/* _content/WebApplication/Pages/Login.razor.rz.scp.css */
-.element[b-t8mfqvmzkk] {
-    background-color: #FAFBFE;
-}.loginForm[b-t8mfqvmzkk]{
-     width: 330px;
-     font-size: 14px;
-     text-align: center;
-
- }
-button.loginForm[b-t8mfqvmzkk]{
-    font-size:13px;
-}
-.link[b-t8mfqvmzkk]{
-    color: #0969da;
-
-}
-.failedLogin[b-t8mfqvmzkk]{
-    background: #ffebe9;
-    font-size:13px;
-    border: 1px solid #ffa59d;
-}
 /* _content/WebApplication/Shared/MainLayout.razor.rz.scp.css */
 .page[b-xwlbgainx3] {
     position: relative;

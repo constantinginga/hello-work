@@ -11,7 +11,7 @@ namespace WebApplication.Data
         Task<JobListing>  Create(JobListing jobListing);
         Task<IList<JobListing>> GetJobListings();
 
-        JobListing Get(int id);
+        Task<JobListing> Get(int id);
 
         Task Update(JobListing jobListing);
     }
