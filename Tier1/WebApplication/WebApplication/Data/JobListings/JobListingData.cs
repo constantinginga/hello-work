@@ -14,14 +14,14 @@ namespace WebApplication.Data
 {
     public class JobListingData : IJobListingData
     {
-        private HttpClient _client;
+        private WebApiUtil _client;
         public IList<JobListing> JobListings { get; private set; }
         private const string _url = "http://localhost:8082/job";
 
         public JobListingData()
         {
-            _client = new();
             JobListings = new List<JobListing>();
+            _client = new WebApiUtil(_url);
         }
 
         public async Task<JobListing> Create(JobListing jobListing)
@@ -31,7 +31,7 @@ namespace WebApplication.Data
             jobListing.JobId = ++max;
             JobListings.Add(jobListing);
             string serializedJob = JsonSerializer.Serialize(jobListing);
-            string response = await Post("", serializedJob);
+            string response = await _client.Post("", serializedJob);
             JobListing job = JsonSerializer.Deserialize<JobListing>(response, new JsonSerializerOptions()
             {
             });
@@ -43,7 +43,7 @@ namespace WebApplication.Data
             // load once and store in variable
             if (!JobListings.Any())
             {
-                string responese = await Get("");
+                string responese = await _client.Get("");
                 JobListings = JsonSerializer.Deserialize<List<JobListing>>(responese, new JsonSerializerOptions()
                 {
                 });
@@ -70,38 +70,6 @@ namespace WebApplication.Data
         {
             return JobListings.FirstOrDefault(j => j.JobId == id);
         }
-
-        private async Task<string> Get(string args)
-        {
-            HttpResponseMessage responseMessage = await _client.GetAsync(_url + args);
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
-            }
-
-            return await responseMessage.Content.ReadAsStringAsync();
-        }
-
-        private async Task<string> Post(string args, string body)
-        {
-            StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage = await _client.PostAsync(_url + args, content);
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
-            }
-
-            return await responseMessage.Content.ReadAsStringAsync();
-        }
-
-        private async Task Delete(string args)
-        {
-            Console.WriteLine(_url + args);
-            HttpResponseMessage responseMessage = await _client.DeleteAsync(_url + args);
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
-            }
-        }
+        
     }
 }
