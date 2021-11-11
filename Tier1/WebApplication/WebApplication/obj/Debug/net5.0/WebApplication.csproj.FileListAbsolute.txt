@@ -184,3 +184,11 @@ C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebAppli
 C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\ref\WebApplication.dll
 C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\WebApplication.pdb
 C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\WebApplication.genruntimeconfig.cache
+C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\Login.razor.g.cs
+C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\Comp\RegisterEmployer.razor.g.cs
+C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\Register.razor.g.cs
+C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\Login.razor.g.cs
+C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\Comp\RegisterEmployer.razor.g.cs
+C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\Register.razor.g.cs
+C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\scopedcss\Pages\Comp\RegisterEmployer.razor.rz.scp.css
+C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\scopedcss\Pages\Register.razor.rz.scp.css

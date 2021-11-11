@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="81795e3d-8322-4efc-9f3b-adef43f3338a" name="Default Changelist" comment="Updated tier1, can now createJobListings , fixed some erros where id and content doesnt load">
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/.idea/.idea.WebApplication/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/.idea/.idea.WebApplication/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/Tier2Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/Tier2Application.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="20HQ1qq1ubLZDK9G8XlCH2ElzPH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../OutsideSchoolProjects/mc/MyPluginProjects/1.17" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="show.run.dashboard.notification" value="false" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier2\src\main\java\work\hello" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="work.hello.Tier3" />
+      <recent name="work.hello.Tier3.Model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Tier2Application">
+    <configuration name="RPCServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="work.hello.Tier3.RPCServer" />
+      <module name="Tier3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="work.hello.Tier3.mediator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Tier2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/Tier2/pom.xml" goal="compile" />
+      </method>
+    </configuration>
+    <configuration name="Tier3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Tier3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier3Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/Tier3/pom.xml" goal="compile" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.RPCServer" />
+      <item itemvalue="Spring Boot.Tier2Application" />
+      <item itemvalue="Spring Boot.Tier3Application" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RPCServer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81795e3d-8322-4efc-9f3b-adef43f3338a" name="Default Changelist" comment="" />
+      <created>1635698820393</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635698820393</updated>
+      <workItem from="1635698821733" duration="627000" />
+      <workItem from="1635699470360" duration="5837000" />
+      <workItem from="1635750983001" duration="280000" />
+      <workItem from="1635751282769" duration="371000" />
+      <workItem from="1635753883855" duration="640000" />
+      <workItem from="1635755436493" duration="10121000" />
+      <workItem from="1635777189298" duration="226000" />
+      <workItem from="1635777514441" duration="12946000" />
+      <workItem from="1635792330221" duration="1367000" />
+      <workItem from="1635849667867" duration="3929000" />
+      <workItem from="1635877289475" duration="5417000" />
+      <workItem from="1635884455712" duration="19000" />
+      <workItem from="1635930695596" duration="629000" />
+      <workItem from="1636107288804" duration="597000" />
+      <workItem from="1636360071042" duration="243000" />
+      <workItem from="1636454560721" duration="52000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Singleton">
+      <created>1635699555149</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1635699555149</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactored a little">
+      <created>1635707675496</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635707675496</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Mongo working(very happy)">
+      <created>1635758028143</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1635758028143</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Que recieves every secound">
+      <created>1635763576654</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1635763576654</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Redid everything with Rabbit, works :0, Also changed mongo db classes a little so it works better">
+      <created>1635790093527</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1635790093527</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Renamed because of weird spring error">
+      <created>1635790508418</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1635790508418</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added rabbitmq aws server so you dont need to install it on your computer">
+      <created>1635851431337</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1635851431337</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Forgor to remove the sout">
+      <created>1635851914775</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1635851914775</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated tier1, can now createJobListings , fixed some erros where id and content doesnt load">
+      <created>1635883954319</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1635883954319</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Singleton" />
+    <MESSAGE value="Refactored a little" />
+    <MESSAGE value="Mongo working(very happy)" />
+    <MESSAGE value="Que recieves every secound" />
+    <MESSAGE value="Redid everything with Rabbit, works :0, Also changed mongo db classes a little so it works better" />
+    <MESSAGE value="Renamed because of weird spring error" />
+    <MESSAGE value="Added rabbitmq aws server so you dont need to install it on your computer" />
+    <MESSAGE value="Forgor to remove the sout" />
+    <MESSAGE value="Updated tier1, can now createJobListings , fixed some erros where id and content doesnt load" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated tier1, can now createJobListings , fixed some erros where id and content doesnt load" />
+  </component>
+</project>

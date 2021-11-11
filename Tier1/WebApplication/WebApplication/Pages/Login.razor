@@ -1,4 +1,5 @@
 ﻿@page "/Login"
+@using WebApplication.Auth
 
 
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -42,6 +43,19 @@
 
     public async Task PerformLogin()
     {
+        try
+        {
+            ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(_username, _password);
+            _username = "";
+            _errorMessage = "";
+            _password = "";
+            NavManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            _errorMessage = e.Message;
+        }
     }
 
 }
