@@ -13,15 +13,12 @@
             <AuthorizeView>
                 <NotAuthorized>
                     <div >
-                        <button @onclick="@(() => NavManager.NavigateTo("/login"))" class="btn btn-outline-dark w-full btn-outline-primary login" type="button"> Log In</button>
-                    </div>
-                    <div >
-                        <button @onclick="@(() => NavManager.NavigateTo("/register"))" class="btn btn-outline-dark w-full btn-outline-primary login" type="button"> Register</button>
+                        <button @onclick="@(() => NavManager.NavigateTo("/login"))" class="btn btn-outline-dark hover:bg-blue-700 w-full btn-outline-primary login" type="button"> Log In</button>
                     </div>
                 </NotAuthorized>
                 <Authorized >
                     <div >
-                        <a class="dropdown-item dropDownLogOut" @onclick="Logout" href="#">Logout</a>
+                        <a class="" @onclick="Logout" href="#">Logout</a>
                     </div>
                 </Authorized>
             </AuthorizeView>

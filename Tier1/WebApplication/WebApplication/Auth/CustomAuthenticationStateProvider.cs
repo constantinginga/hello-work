@@ -46,7 +46,6 @@ namespace WebApplication.Auth
 
         public async Task ValidateLogin(string email, string password)
         {
-            Console.WriteLine("Validating log in");
             if (string.IsNullOrEmpty(email)) throw new Exception("Enter email");
             if (string.IsNullOrEmpty(password)) throw new Exception("Enter password");
 
@@ -73,6 +72,19 @@ namespace WebApplication.Auth
             try
             {
                 await userService.CreateEmployer(employer);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task CreateJobSeeker(JobSeeker jobSeeker)
+        {
+            try
+            {
+                await userService.CreateJobSeeker(jobSeeker);
             }
             catch (Exception e)
             {

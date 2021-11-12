@@ -46,18 +46,45 @@ namespace WebApplication.Data.Authentication
         {
             try
             {
-                string employerJson = JsonSerializer.Serialize(employer,new JsonSerializerOptions()
+                string employerJson = JsonSerializer.Serialize(employer, new JsonSerializerOptions()
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 });
                 string response =
-                    await _client.Post(_urlEmployer,"", employerJson);
+                    await _client.Post(_urlEmployer, "", employerJson);
                 if (response.Equals("Email already in use") || response.Equals("Not Valid Email"))
                 {
                     throw new Exception(response);
                 }
 
                 return JsonSerializer.Deserialize<Employer>(response, new JsonSerializerOptions()
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task<JobSeeker> CreateJobSeeker(JobSeeker jobSeeker)
+        {
+            try
+            {
+                string seekerJson = JsonSerializer.Serialize(jobSeeker, new JsonSerializerOptions()
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                });
+                string response =
+                    await _client.Post(_urlJobSeeker, "", seekerJson);
+                if (response.Equals("Email already in use") || response.Equals("Not Valid Email"))
+                {
+                    throw new Exception(response);
+                }
+
+                return JsonSerializer.Deserialize<JobSeeker>(response, new JsonSerializerOptions()
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 });

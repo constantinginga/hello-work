@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace WebApplication.Pages
+namespace WebApplication.Pages.Comp
 {
     #line hidden
     using System;
@@ -83,21 +83,20 @@ using WebApplication.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\JobListings.razor"
+#line 1 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\Comp\RegisterJobSeeker.razor"
 using WebApplication.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\JobListings.razor"
-using WebApplication.Data;
+#line 2 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\Comp\RegisterJobSeeker.razor"
+using WebApplication.Auth;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/job-listings")]
-    public partial class JobListings : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class RegisterJobSeeker : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,28 +104,35 @@ using WebApplication.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 54 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\JobListings.razor"
+#line 45 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\Comp\RegisterJobSeeker.razor"
        
-    private IList<JobListing> jobListings;
-    private IList<JobListing> jobListingToShow;
+    private JobSeeker _newJobSeeker = new JobSeeker();
+    private string _errorMessage;
 
-    protected override async Task OnInitializedAsync()
+    private async void AddNewJobSeeker()
     {
-        jobListings = await JobListingData.GetJobListings();
-        jobListingToShow = jobListings;
-    }
+        try
+        {
+            await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).CreateJobSeeker(_newJobSeeker);
+        }
+        catch (Exception e)
+        {
+            _errorMessage = e.Message;
+            StateHasChanged();
+            return;
+        }
+        Console.WriteLine("added");
+        await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(_newJobSeeker.Email, _newJobSeeker.Password);
 
-    private void Apply(int id)
-    {
-        NavigationManager.NavigateTo($"apply/{id}");
+        navigationManager.NavigateTo("/");
     }
 
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJobListingData JobListingData { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
     }
 }
 #pragma warning restore 1591

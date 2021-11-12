@@ -7,6 +7,7 @@ namespace WebApplication.Data.Authentication
     {
         Task<User> ValidateUser(string email, string password);
         Task<Employer> CreateEmployer(Employer employer);
+        Task<JobSeeker> CreateJobSeeker(JobSeeker jobSeeker);
 
     }
 }

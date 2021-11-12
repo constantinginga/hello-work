@@ -100,7 +100,7 @@ using WebApplication.Auth;
 #nullable restore
 #line 39 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\Login.razor"
        
-    private string _username;
+    private string _email;
     private string _password;
     private string _errorMessage;
 
@@ -108,8 +108,8 @@ using WebApplication.Auth;
     {
         try
         {
-            ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(_username, _password);
-            _username = "";
+            await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(_email, _password);
+            _email = "";
             _errorMessage = "";
             _password = "";
             NavManager.NavigateTo("/");
