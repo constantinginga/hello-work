@@ -1,0 +1,34 @@
+﻿@page "/register"
+@using WebApplication.Pages.Comp
+
+<div class="flex justify-center  w-full pt-10 ">
+    <div class="loginForm ">
+        @if (Employer == null)
+        {
+            <div class="element mb-2 p-3 rounded-lg ">
+                <div class="p-2">
+                    <p>
+                        Choose what type of account you wisht to make
+                    </p>
+                </div>
+                <div class="p-2 flex justify-evenly">
+                    <button class="btn hover:bg-blue-700 btn-outline-dark w-full m-1" @onclick="() => Employer = true" type="submit">Employer</button>
+                    <button class="btn hover:bg-blue-700 btn-outline-dark w-full m-1" @onclick="() => Employer = false" type="submit">Job Seeker</button>
+                </div>
+            </div>
+        }
+        @if (Employer == true)
+        {
+            <RegisterEmployer></RegisterEmployer>
+        }
+        @if (Employer == false)
+        {
+            <RegisterJobSeeker></RegisterJobSeeker>
+        }
+    </div>
+</div>
+
+@code {
+    bool? Employer;
+
+}

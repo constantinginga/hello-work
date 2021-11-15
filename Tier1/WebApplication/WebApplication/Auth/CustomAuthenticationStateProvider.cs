@@ -46,14 +46,13 @@ namespace WebApplication.Auth
 
         public async Task ValidateLogin(string email, string password)
         {
-            Console.WriteLine("Validating log in");
             if (string.IsNullOrEmpty(email)) throw new Exception("Enter email");
             if (string.IsNullOrEmpty(password)) throw new Exception("Enter password");
 
             ClaimsIdentity identity = new ClaimsIdentity();
             try
             {
-                User user =  await userService.ValidateUser(email, password);
+                User user = await userService.ValidateUser(email, password);
                 identity = SetupClaimsForUser(user);
                 string serialisedData = JsonSerializer.Serialize(user);
                 jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", serialisedData);
@@ -66,6 +65,32 @@ namespace WebApplication.Auth
 
             NotifyAuthenticationStateChanged(
                 Task.FromResult(new AuthenticationState(new ClaimsPrincipal(identity))));
+        }
+
+        public async Task CreateEmployer(Employer employer)
+        {
+            try
+            {
+                await userService.CreateEmployer(employer);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task CreateJobSeeker(JobSeeker jobSeeker)
+        {
+            try
+            {
+                await userService.CreateJobSeeker(jobSeeker);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public void Logout()

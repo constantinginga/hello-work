@@ -1,4 +1,5 @@
 ﻿@page "/Login"
+@using WebApplication.Auth
 
 
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -15,7 +16,7 @@
         <div class="mb-2 p-3 bg-gray-100 rounded-lg">
             <div class="p-2">
                 <p>
-                    <input class="bg-gray-100 w-full p-2 rounded-lg border-0 " type="text" placeholder="Username" @bind-value="_username"/>
+                    <input class="bg-gray-100 w-full p-2 rounded-lg border-0 " type="text" placeholder="Email" @bind-value="_email"/>
                 </p>
             </div>
             <div class="p-2">
@@ -24,24 +25,37 @@
                 </p>
             </div>
             <div class="p-2 flex justify-evenly">
-                <button class="btn btn-outline-dark w-full" @onclick="PerformLogin" type="submit">Login</button>
+                <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="PerformLogin" type="submit">Login</button>
             </div>
         </div>
         <div class="p-3 bg-white rounded-lg">
             <p>
-                New to the website? <button class="link"> Create an Account.</button>
+                New to the website? <button class="link" @onclick="@(() => NavManager.NavigateTo("/register"))"> Create an Account.</button>
             </p>
         </div>
     </div>
 </div>
 
 @code {
-    private string _username;
+    private string _email;
     private string _password;
     private string _errorMessage;
 
     public async Task PerformLogin()
     {
+        try
+        {
+            await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(_email, _password);
+            _email = "";
+            _errorMessage = "";
+            _password = "";
+            NavManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            _errorMessage = e.Message;
+        }
     }
 
 }

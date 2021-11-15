@@ -4,16 +4,14 @@ package work.hello;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import work.hello.mediator.listeners.ApplyForJobListener;
-import work.hello.mediator.listeners.CreateJobListingListener;
-import work.hello.mediator.listeners.GetAllJobListingsListener;
+import work.hello.mediator.listeners.*;
 import work.hello.model.Model;
 import work.hello.model.ModelManager;
+import work.hello.model.data.MessageType;
 
 @SpringBootApplication
 public class Tier3Application {
     private static Model model;
-    private static final String RPC_QUEUE_NAME = "rpc_queue";
 
     public static void main(String[] args) {
         SpringApplication.run(Tier3Application.class, args);
@@ -25,6 +23,10 @@ public class Tier3Application {
         new ApplyForJobListener();
         new CreateJobListingListener();
         new GetAllJobListingsListener();
+        new GetUserListener();
+        new CreateJobListingListener();
+        new CreateEmployerListener();
+        new CreateJobSeekerListener();
     }
 
 

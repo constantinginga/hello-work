@@ -1,0 +1,67 @@
+﻿@using WebApplication.Models
+@using WebApplication.Auth
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager navigationManager
+
+<EditForm Model="@_newJobSeeker" OnValidSubmit="@AddNewJobSeeker">
+    <div class="">
+
+
+        <div class="flex justify-center element">
+            <div class="lg:w-10/12  rounded-lg">
+                <div class="d-flex flex-row w-full pb-2">
+
+                    <DataAnnotationsValidator></DataAnnotationsValidator>
+                    <ValidationSummary> </ValidationSummary>
+                    <p> @_errorMessage</p>
+
+                </div>
+                <div class="d-flex flex-row w-full pb-2">
+                    <div class="col-6 p-0 pr-1">
+                        <InputText DisplayName="Company name" placeholder="First name" class="bg-white w-full rounded-lg border-0" type="text"@bind-Value="_newJobSeeker.FirstName"/>
+                    </div>
+                    <div class="col-6 p-0 pl-1">
+                        <InputText DisplayName="Phone Number" placeholder="Last name" class="bg-white w-full  rounded-lg border-0" type="text" @bind-Value="_newJobSeeker.LastName"/>
+                    </div>
+                </div>
+                <div class="form-group m-0 pb-2">
+                    <InputText DisplayName="Address" placeholder="Phone number" class="bg-white w-full  rounded-lg border-0" type="text" @bind-Value="_newJobSeeker.PhoneNumber"/>
+                </div>
+                <div class="form-group m-0 pb-2">
+                    <InputText DisplayName="Email" placeholder="Email" class="bg-white w-full rounded-lg border-0" type="text"@bind-Value="_newJobSeeker.Email"/>
+                </div>
+                <div class="form-group m-0 pb-2">
+                    <InputText DisplayName="Password" placeholder="Password" class="bg-white w-full rounded-lg border-0" type="Password"@bind-Value="_newJobSeeker.Password"/>
+                </div>
+                <div class="pb-2 flex justify-center w-full">
+                    <button class="btn hover:bg-blue-600 btn-outline-dark w-full" data-dismiss="model" type="submit">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</EditForm>
+
+@code {
+    private JobSeeker _newJobSeeker = new JobSeeker();
+    private string _errorMessage;
+
+    private async void AddNewJobSeeker()
+    {
+        try
+        {
+            await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).CreateJobSeeker(_newJobSeeker);
+        }
+        catch (Exception e)
+        {
+            _errorMessage = e.Message;
+            StateHasChanged();
+            return;
+        }
+        Console.WriteLine("added");
+        await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(_newJobSeeker.Email, _newJobSeeker.Password);
+
+        navigationManager.NavigateTo("/");
+    }
+
+}

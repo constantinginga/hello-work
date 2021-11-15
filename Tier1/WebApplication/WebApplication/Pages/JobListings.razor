@@ -10,13 +10,13 @@
 @if (jobListingToShow == null)
 {
     <p>
-    <em>Loading...</em>
+        <em>Loading...</em>
     </p>
 }
 else if (!jobListingToShow.Any())
 {
     <p>
-    <em> Please add Job Listings </em>
+        <em> Please add Job Listings </em>
     </p>
 }
 else
@@ -26,7 +26,9 @@ else
         <tr>
             <th>Id</th>
             <th>Details</th>
-            <th>Apply</th>
+            <AuthorizeView Policy="JobSeeker">
+                <th>Apply</th>
+            </AuthorizeView>
         </tr>
         </thead>
         <tbody>
@@ -35,17 +37,20 @@ else
             <tr>
                 <td>@item.JobId</td>
                 <td>@item.Details</td>
-                <td>
-                    <button @onclick="@(() => Apply(item.JobId))">
-                        <i class="oi oi-pencil" style="color: green"/>
-                    </button>
-                </td>
+                <AuthorizeView Policy="JobSeeker">
+
+                    <td>
+                        <button @onclick="@(() => Apply(item.JobId))">
+                            <i class="oi oi-pencil" style="color: green"/>
+                        </button>
+                    </td>
+                </AuthorizeView>
             </tr>
         }
         </tbody>
     </table>
 }
- 
+
 @code {
     private IList<JobListing> jobListings;
     private IList<JobListing> jobListingToShow;
@@ -60,4 +65,5 @@ else
     {
         NavigationManager.NavigateTo($"apply/{id}");
     }
+
 }

@@ -4,13 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApplication.Auth;
 using WebApplication.Data;
 using WebApplication.Data.Applications;
+using WebApplication.Data.Authentication;
 using WebApplication.Models;
 
 namespace WebApplication
@@ -32,6 +35,16 @@ namespace WebApplication
             services.AddServerSideBlazor();
             services.AddScoped<IJobListingData, JobListingData>();
             services.AddScoped<IApplicationData, ApplicationData>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            services.AddSingleton<AppState>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Employer",
+                    builder => { builder.RequireAuthenticatedUser().RequireClaim("Role","Employer"); });
+                options.AddPolicy("JobSeeker",
+                    builder => { builder.RequireAuthenticatedUser().RequireClaim("Role","JobSeeker"); });
+            });
             services.AddHttpClient();
         }
 
@@ -53,7 +66,6 @@ namespace WebApplication
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
