@@ -1,0 +1,116 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+$border-color: #cecece;
+$main-blue: #3f6cdf;
+$purple: #9997ef;
+$main-white: #fafafa;
+$main-black: #171716;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#topbar {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid $border-color;
+    padding: 1rem 2rem;
+    align-items: center;
+
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        flex: 4;
+
+        .nav-item {
+
+            #home {
+                font-weight: 700;
+                font-size: 1.2rem;
+                margin-right: 5rem;
+            }
+
+            .nav-link {
+                transition: color .2s ease-out;
+            }
+
+            .nav-link:hover {
+                color: $main-blue;
+                transition: color .2s ease-in;
+            }
+        }
+    }
+
+    .topbar-btn {
+        transition: color .2s ease-out;
+    }
+
+    .topbar-btn:hover {
+        color: $main-blue;
+        transition: color .2s ease-in;
+    }
+}
+
+.hw-main-page {
+    background: $main-white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+
+    &__icons {
+        display: flex;
+        gap: 0 1rem;
+
+        div {
+            font-size: 3rem;
+        }
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+
+        span {
+            color: $purple;
+        }
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .searchbar-container {
+        display: flex;
+        gap: 0 1rem;
+        margin-top: 2rem;
+
+        #searchbar,
+        #searchbar-btn {
+            border-radius: .5rem;
+        }
+
+        #searchbar {
+            border-color: $border-color;
+            width: 30rem;
+        }
+
+        #searchbar-btn {
+            background: $main-blue;
+            color: #fff;
+            padding: .5rem 1rem;
+            transition: background .2s ease-out;
+        }
+
+        #searchbar-btn:hover {
+            background: darken($main-blue, 10%);
+            transition: background .2s ease-in;
+        }
+    }
+}

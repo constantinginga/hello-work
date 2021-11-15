@@ -1,0 +1,70 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif; }
+
+#topbar {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #cecece;
+  padding: 1rem 2rem;
+  align-items: center; }
+  #topbar .nav-menu {
+    display: flex;
+    align-items: center;
+    flex: 4; }
+    #topbar .nav-menu .nav-item #home {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-right: 5rem; }
+    #topbar .nav-menu .nav-item .nav-link {
+      transition: color .2s ease-out; }
+    #topbar .nav-menu .nav-item .nav-link:hover {
+      color: #3f6cdf;
+      transition: color .2s ease-in; }
+  #topbar .topbar-btn {
+    transition: color .2s ease-out; }
+  #topbar .topbar-btn:hover {
+    color: #3f6cdf;
+    transition: color .2s ease-in; }
+
+.hw-main-page {
+  background: #fafafa;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem; }
+  .hw-main-page__icons {
+    display: flex;
+    gap: 0 1rem; }
+    .hw-main-page__icons div {
+      font-size: 3rem; }
+  .hw-main-page h1 {
+    font-size: 2rem;
+    font-weight: 700; }
+    .hw-main-page h1 span {
+      color: #9997ef; }
+  .hw-main-page p {
+    font-size: 1.2rem; }
+  .hw-main-page .searchbar-container {
+    display: flex;
+    gap: 0 1rem;
+    margin-top: 2rem; }
+    .hw-main-page .searchbar-container #searchbar,
+    .hw-main-page .searchbar-container #searchbar-btn {
+      border-radius: .5rem; }
+    .hw-main-page .searchbar-container #searchbar {
+      border-color: #cecece;
+      width: 30rem; }
+    .hw-main-page .searchbar-container #searchbar-btn {
+      background: #3f6cdf;
+      color: #fff;
+      padding: .5rem 1rem;
+      transition: background .2s ease-out; }
+    .hw-main-page .searchbar-container #searchbar-btn:hover {
+      background: #2251c9;
+      transition: background .2s ease-in; }
