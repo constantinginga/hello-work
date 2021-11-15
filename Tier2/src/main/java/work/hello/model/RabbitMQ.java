@@ -1,7 +1,7 @@
 package work.hello.model;
 
 import com.google.gson.Gson;
-import work.hello.model.data.*;
+import work.hello.data.*;
 
 import java.io.IOException;
 import java.util.ArrayList;

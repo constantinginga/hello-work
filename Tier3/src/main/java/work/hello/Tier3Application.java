@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import work.hello.mediator.listeners.*;
 import work.hello.model.Model;
 import work.hello.model.ModelManager;
-import work.hello.model.data.MessageType;
 
 @SpringBootApplication
 public class Tier3Application {

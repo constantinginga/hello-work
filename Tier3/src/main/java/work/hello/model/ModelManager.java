@@ -1,6 +1,6 @@
 package work.hello.model;
 
-import work.hello.model.data.*;
+import work.hello.data.*;
 import work.hello.persistance.MongoDB;
 import work.hello.persistance.MongoDBManager;
 

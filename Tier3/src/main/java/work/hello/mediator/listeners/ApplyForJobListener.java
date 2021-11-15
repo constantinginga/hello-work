@@ -1,8 +1,8 @@
 package work.hello.mediator.listeners;
 
 import work.hello.mediator.MessageListener;
-import work.hello.model.data.Application;
-import work.hello.model.data.CustomMessage;
+import work.hello.data.Application;
+import work.hello.data.CustomMessage;
 
 public class ApplyForJobListener extends MessageListener {
     public ApplyForJobListener() {

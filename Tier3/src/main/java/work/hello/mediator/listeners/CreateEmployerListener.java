@@ -1,10 +1,9 @@
 package work.hello.mediator.listeners;
 
 import work.hello.mediator.MessageListenerRPC;
-import work.hello.model.data.CustomMessage;
-import work.hello.model.data.Employer;
-import work.hello.model.data.JobSeeker;
-import work.hello.model.data.MessageType;
+import work.hello.data.CustomMessage;
+import work.hello.data.Employer;
+import work.hello.data.MessageType;
 
 public class CreateEmployerListener extends MessageListenerRPC {
     public CreateEmployerListener() {

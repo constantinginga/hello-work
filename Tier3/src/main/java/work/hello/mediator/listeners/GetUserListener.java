@@ -1,8 +1,8 @@
 package work.hello.mediator.listeners;
 
 import work.hello.mediator.MessageListenerRPC;
-import work.hello.model.data.CustomMessage;
-import work.hello.model.data.User;
+import work.hello.data.CustomMessage;
+import work.hello.data.User;
 
 public class GetUserListener extends MessageListenerRPC
 {

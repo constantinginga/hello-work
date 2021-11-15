@@ -5,9 +5,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import work.hello.model.RabbitMQ;
-import work.hello.model.data.Employer;
-import work.hello.model.data.JobSeeker;
-import work.hello.model.data.User;
+import work.hello.data.Employer;
+import work.hello.data.User;
 
 @RestController
 

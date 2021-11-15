@@ -6,7 +6,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Indexes;
 import org.bson.Document;
 import org.bson.json.JsonWriterSettings;
-import work.hello.model.data.*;
+import work.hello.data.*;
 
 import java.util.ArrayList;
 

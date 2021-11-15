@@ -5,9 +5,7 @@ import com.rabbitmq.client.*;
 import work.hello.CommonConfigs;
 import work.hello.Tier3Application;
 import work.hello.model.Model;
-import work.hello.model.data.Application;
-import work.hello.model.data.CustomMessage;
-import work.hello.model.data.JobListing;
+import work.hello.data.CustomMessage;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

@@ -1,7 +1,7 @@
 package work.hello.mediator.listeners;
 
 import work.hello.mediator.MessageListenerRPC;
-import work.hello.model.data.CustomMessage;
+import work.hello.data.CustomMessage;
 
 public class GetAllJobListingsListener extends MessageListenerRPC {
     public GetAllJobListingsListener() {

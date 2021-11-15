@@ -7,7 +7,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import lombok.SneakyThrows;
 import work.hello.CommonConfigs;
-import work.hello.model.data.CustomMessage;
+import work.hello.data.CustomMessage;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

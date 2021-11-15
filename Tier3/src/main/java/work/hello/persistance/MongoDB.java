@@ -1,6 +1,6 @@
 package work.hello.persistance;
 
-import work.hello.model.data.*;
+import work.hello.data.*;
 
 import java.util.ArrayList;
 
