@@ -15,4 +15,5 @@ public class CustomMessage {
     private String content;
     private MessageType type;
 
+
 }
