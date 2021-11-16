@@ -1,8 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WebApplication.Models;
+using WebApplication.Pages;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace WebApplication.Data
@@ -54,19 +60,24 @@ namespace WebApplication.Data
         public async Task Update(JobListing jobListing)
         {
             JobListing toUpdate = JobListings.First(j => j.JobId == jobListing.JobId);
-            toUpdate.Details = jobListing.Details;
+            toUpdate.JobTitle = jobListing.JobTitle;
+            toUpdate.JobType = jobListing.JobType;
+            toUpdate.Location = jobListing.Location;
+            toUpdate.ExperienceLevel = jobListing.ExperienceLevel;
+            toUpdate.JobRequirments = jobListing.JobRequirments;
+            toUpdate.JobPrivilleges = jobListing.JobPrivilleges;
+            toUpdate.PhoneNumber = jobListing.PhoneNumber;
+            toUpdate.Email = jobListing.Email;
+            toUpdate.ApplicationDeadline = jobListing.ApplicationDeadline;
+
 
             /*StringContent queryString = new(JsonConvert.SerializeObject(adult), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PatchAsync(_url + $"/{adult.Id}", queryString);
             response.EnsureSuccessStatusCode();*/
         }
 
-        public async Task<JobListing> Get(int id)
+        public JobListing Get(int id)
         {
-            string responese = await _client.Get("");
-            JobListings = JsonSerializer.Deserialize<List<JobListing>>(responese, new JsonSerializerOptions()
-            {
-            });
             return JobListings.FirstOrDefault(j => j.JobId == id);
         }
         
