@@ -43,4 +43,9 @@ public class ModelManager implements Model {
     public Employer createEmployer(Employer employer) {
         return mongoDB.createEmployer(employer);
     }
+
+    @Override public void removeJobListing(String id)
+    {
+         mongoDB.removeJobListing(id);
+    }
 }

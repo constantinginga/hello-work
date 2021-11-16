@@ -125,4 +125,9 @@ public class MongoDBManager implements MongoDB {
         return employer;
     }
 
+    @Override public void removeJobListing(String id)
+    {
+        jobCollection.deleteOne(Filters.eq("id", id));
+    }
+
 }

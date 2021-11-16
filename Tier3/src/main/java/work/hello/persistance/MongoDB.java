@@ -16,4 +16,5 @@ public interface MongoDB {
     JobSeeker createJobSeeker(JobSeeker seeker);
 
     Employer createEmployer(Employer employer);
+    void removeJobListing(String id);
 }
