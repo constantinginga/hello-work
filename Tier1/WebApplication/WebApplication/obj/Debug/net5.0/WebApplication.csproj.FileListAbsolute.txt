@@ -184,3 +184,9 @@ C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebAppli
 C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\ref\WebApplication.dll
 C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\WebApplication.pdb
 C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\WebApplication.genruntimeconfig.cache
+C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\Applications.razor.g.cs
+C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\RazorDeclaration\Pages\Login.razor.g.cs
+C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\Applications.razor.g.cs
+C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\Razor\Pages\Login.razor.g.cs
+C:\Users\Tudor\RiderProjects\hello-work\Tier1\WebApplication\WebApplication\obj\Debug\net5.0\scopedcss\Pages\CreateJobListing.razor.rz.scp.css

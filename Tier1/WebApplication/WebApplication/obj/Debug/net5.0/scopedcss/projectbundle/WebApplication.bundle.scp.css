@@ -1,26 +1,38 @@
 @import '';
 
-/* _content/WebApplication/Pages/Login.razor.rz.scp.css */
-.element[b-t8mfqvmzkk] {
-    background-color: #FAFBFE;
-}.loginForm[b-t8mfqvmzkk]{
-     width: 330px;
-     font-size: 14px;
-     text-align: center;
+/* _content/WebApplication/Pages/CreateJobListing.razor.rz.scp.css */
+body[b-ppjh64qbg9]{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: #B1AEB9
+}
 
- }
-button.loginForm[b-t8mfqvmzkk]{
-    font-size:13px;
+.form-group[b-ppjh64qbg9]{
+    max-width: 700px;
+    width: 100%;
+    background: #A79C63;
+    padding: 25px 30px;
+    border-radius: 5px;
 }
-.link[b-t8mfqvmzkk]{
-    color: #0969da;
 
+.title[b-ppjh64qbg9]{
+    font-size: 25px;
+    font-weight:500;
+    position: relative;
 }
-.failedLogin[b-t8mfqvmzkk]{
-    background: #ffebe9;
-    font-size:13px;
-    border: 1px solid #ffa59d;
+
+.title[b-ppjh64qbg9]::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: #E95B53;
 }
+
 /* _content/WebApplication/Shared/MainLayout.razor.rz.scp.css */
 .page[b-xwlbgainx3] {
     position: relative;
