@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RunManager" selected="Spring Boot.Tier3Application">
+    <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Tier2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tier3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Tier3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier3Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+</project>
