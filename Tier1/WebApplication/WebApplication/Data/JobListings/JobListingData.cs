@@ -76,9 +76,9 @@ namespace WebApplication.Data
             response.EnsureSuccessStatusCode();*/
         }
 
-        public JobListing Get(int id)
+        public Task<JobListing> Get(int id)
         {
-            return JobListings.FirstOrDefault(j => j.JobId == id);
+            return null;
         }
         
     }
