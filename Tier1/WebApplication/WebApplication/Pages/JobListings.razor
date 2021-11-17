@@ -72,12 +72,32 @@
         <div class="jobs-section">
             @if (jobListingToShow != null && jobListingToShow.Any())
             {
-                @*foreach (var jl in jobListingToShow)
+                foreach (var jl in jobListingToShow)
                 {
+                    var date = DateTime.Parse(jl.ApplicationDeadline);
+                    var formattedDate = $"{date.Day} {date.ToString("MMMM")}";
 
-                    <div>@jl.JobTitle</div>
-                }*@
+            <div class="job-card">
+                <div class="job-card__title">
+                    <p>@jl.JobTitle</p>
+                    <p>@formattedDate</p>
+                </div>
+                <div class="job-card__tags">
+                    <div class="schedule-tag">@jl.JobType</div>
+                    <div class="experience-tag">@(jl.ExperienceLevel) years</div>
+                </div>
+                <div class="job-card__description">
+                    <p>@jl.Location</p>
+                    <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
+                </div>
+                <div class="job-card__btns">
+                    <button class="apply-btn">Apply</button>
+                    <button class="details-btn">Details</button>
+                </div>
+            </div>
+                }
 
+                // this is just an example (how it's supposed to look)
                 for (var i = 0; i < 20; i++)
                 {
                     <div class="job-card">
