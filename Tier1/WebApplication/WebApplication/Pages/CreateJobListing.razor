@@ -1,90 +1,90 @@
-﻿@page "/joblisting/create"
-@using WebApplication.Models
+@page "/joblisting/create"
+@using WebApplication.Models 
 @using WebApplication.Data
 @inject NavigationManager NavigationManager
 @inject IJobListingData JobListingData
 
 <body>
-    <EditForm Model="@jobListing" OnValidSubmit="@CreateNewJobListing">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <div class="title">Create job listing</div>
-        <div class="form-group">
-            <form action="#">
-                <div class="details">
-                    <div class="input-box">
-                        <span class="details">Job Title</span>
-                        <InputText class="form-control" placeholder="Job title" @bind-Value="jobListing.JobTitle" />
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Job Type</span>
-                        <InputText class="form-control" placeholder="Job Type" @bind-Value="jobListing.JobType" />
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Location</span>
-                        <InputText class="form-control" placeholder="Location" @bind-Value="jobListing.Location" />
-                    </div>
-                    <div class="experience-level">
-                        <span class="details">Experince level</span>
-                        <InputNumber class="form-control" placeholder="Experience level" @bind-Value="jobListing.ExperienceLevel" />
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Email</span>
-                        <InputText class="form-control" placeholder="Enter details" @bind-Value="jobListing.Email" />
-                    </div>
+<EditForm Model="@jobListing" OnValidSubmit="@CreateNewJobListing">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="title">Create job listing</div>
+    <div class="form-group">
+        <form action="#">
+            <div class="details">
+            <div class="input-box">
+                <span class="details">Job Title</span>
+                <InputText class="form-control" placeholder="Job title" @bind-Value="jobListing.JobTitle"/>
+            </div>
+            <div class="input-box">
+                <span class="details">Job Type</span>
+                <InputText class="form-control" placeholder="Job Type" @bind-Value="jobListing.JobType"/>
+            </div>
+            <div class="input-box">
+                <span class="details">Location</span>
+                <InputText class="form-control" placeholder="Location" @bind-Value="jobListing.Location"/>
+            </div>
+                <div class="experience-level">
+                    <span class="details">Experince level</span>
+                    <InputNumber class="form-control" placeholder="Experience level" @bind-Value="jobListing.ExperienceLevel"/>
                 </div>
-                <div class="input-box">
-                    <span class="details">Phone number</span>
-                    <InputText class="form-control" placeholder="Enter details" @bind-Value="jobListing.PhoneNumber" />
-                </div>
-                <div>
-                    <span class="details">Job requirments</span>
-                    @foreach (var element in jobRequirements.Select((e, i) => new { Effect = e, Index = i }))
-                    {
-                        <p>
-                            <label for="@($"effect{element.Index}")">Job Requirement @(element.Index + 1)</label>
-                            <input id="@($"effect{element.Index}")" value="@element.Effect"
-                                   @onchange="@(e => jobRequirements[element.Index] = e.Value.ToString())" />
-                        </p>
-                    }
-                </div>
-                <div class="input-box">
-                    <span class="details">Job privilleges</span>
-                    @foreach (var element in jobPrivilleges.Select((e, i) => new { Effect = e, Index = i }))
-                    {
-                        <p>
-                            <label for="@($"effect{element.Index}")">Job Privilleges @(element.Index + 1)</label>
-                            <input id="@($"effect{element.Index}")" value="@element.Effect"
-                                   @onchange="@(e => jobPrivilleges[element.Index] = e.Value.ToString())" />
-                        </p>
-                    }
-
-                    <div class="calendar">
-                        <span class="details">Deadline</span>
-                        <InputDate @bind-Value="ApplicationDate" />
-                    </div>
-                </div>
-            </form>
-        </div>
-        <button class="btn btn-dark" type="submit">Create</button>
-
-    </EditForm>
+            <div class="input-box">
+                <span class="details">Email</span>
+                <InputText class="form-control" placeholder="Enter details" @bind-Value="jobListing.Email"/>
+            </div>
+            </div>
+            <div class="input-box">
+                <span class="details">Phone number</span>
+                <InputText class="form-control" placeholder="Enter details" @bind-Value="jobListing.PhoneNumber"/>
+            </div>
+            <div>
+                <span class="details">Job requirments</span>
+                @foreach (var element in jobRequirements.Select((e, i) => new {Effect = e, Index = i}))
+                {
+                    <p>
+                        <label for="@($"effect{element.Index}")">Job Requirement @(element.Index + 1)</label>
+                        <input id="@($"effect{element.Index}")" value="@element.Effect"
+                               @onchange="@(e => jobRequirements[element.Index] = e.Value.ToString())"/>
+                    </p>
+                }
+            </div>
+            <div class="input-box">
+                <span class="details">Job privilleges</span>
+                @foreach (var element in jobPrivilleges.Select((e, i) => new {Effect = e, Index = i}))
+                {
+                    <p>
+                        <label for="@($"effect{element.Index}")">Job Privilleges @(element.Index + 1)</label>
+                        <input id="@($"effect{element.Index}")" value="@element.Effect"
+                               @onchange="@(e => jobPrivilleges[element.Index] = e.Value.ToString())"/>
+                    </p>
+                }
+            
+            <div class="calendar">
+                <span class="details">Deadline</span>
+                <InputDate @bind-Value="ApplicationDate"/>
+            </div>
+            </div>
+        </form>
+    </div>
+    <button class="btn btn-dark" type="submit">Create</button>
+    
+</EditForm>
 </body>
 
-@code {
-    private JobListing jobListing = new JobListing();
-    private List<string> jobRequirements = new List<string>(new string[3]);
-    private List<string> jobPrivilleges = new List<string>(new string[3]);
-    private DateTime ApplicationDate = new DateTime();
+    @code {
+        private JobListing jobListing = new JobListing();
+        private List<string> jobRequirements = new List<string>(new string[3]);
+        private List<string> jobPrivilleges = new List<string>(new string[3]);
+        private DateTime ApplicationDate = new DateTime();
 
-    private async void CreateNewJobListing()
-    {
-        jobListing.ApplicationDeadline = ApplicationDate.ToString("dd/MM/yyyy");
-        jobListing.JobRequirments = jobRequirements;
-        jobListing.JobPrivilleges = jobPrivilleges;
-        await JobListingData.Create(jobListing);
-        IList<JobListing> jbs = await JobListingData.GetJobListings();
-        Console.WriteLine(jbs.Count);
-        NavigationManager.NavigateTo("/");
+        private async void CreateNewJobListing()
+        {
+            jobListing.ApplicationDeadline = ApplicationDate.ToString("dd/MM/yyyy");
+            jobListing.JobRequirments = jobRequirements;
+            jobListing.JobPrivilleges = jobPrivilleges;
+            await JobListingData.Create(jobListing);
+            IList<JobListing> jbs = await JobListingData.GetJobListings();
+            Console.WriteLine(jbs.Count);
+            NavigationManager.NavigateTo("/");
+        }
     }
-}
