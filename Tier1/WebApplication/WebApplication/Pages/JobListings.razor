@@ -5,47 +5,124 @@
 @inject NavigationManager NavigationManager
 @inject IJobListingData JobListingData
 
-<h3>Job Listings</h3>
+<div class="hw-joblistings">
+    <div class="hw-joblistings__header">
+        <p class="hw-joblistings__header-details">Details</p>
+        <div class="hw-joblistings__header-container">
+            <div class="available-jobs">
+                <span>Available jobs</span>
+                <span>640</span>
+            </div>
+            <div class="sort-container">
+                <p>Sort by</p>
+                <select class="sort-container__sort">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                </select>
+            </div>
+        </div>
+    </div>
 
-@if (jobListingToShow == null)
-{
-    <p>
-    <em>Loading...</em>
-    </p>
-}
-else if (!jobListingToShow.Any())
-{
-    <p>
-    <em> Please add Job Listings </em>
-    </p>
-}
-else
-{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Details</th>
-            <th>Apply</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in jobListingToShow)
-        {
-            <tr>
-                <td>@item.JobId</td>
-                <td></td>
-                <td>
-                    <button @onclick="@(() => Apply(item.JobId))">
-                        <i class="oi oi-pencil" style="color: green"/>
-                    </button>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
-}
- 
+    <div class="hw-joblistings__main">
+        <div class="filter-section">
+            <div class="filter-section__schedule">
+                <p>Schedule</p>
+                <div class="cb-groups">
+                    <div class="cb-groups__group">
+                        <input type="checkbox" name="schedule" value="full-time" id="full-time" />
+                        <label for="full-time">Full time</label>
+                    </div>
+                    <div class="cb-groups__group">
+                        <input type="checkbox" name="schedule" value="part-time" id="part-time" />
+                        <label for="part-time">Part time</label>
+                    </div>
+                    <div class="cb-groups__group">
+                        <input type="checkbox" name="schedule" value="internship" id="internship" />
+                        <label for="internship">Internship</label>
+                    </div>
+                    <div class="cb-groups__group">
+                        <input type="checkbox" name="schedule" value="volunteering" id="volunteering" />
+                        <label for="volunteering">Volunteering</label>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-section__experience">
+                <p>Experience level</p>
+                <div class="cb-groups">
+                    <div class="cb-groups__group">
+                        <input type="checkbox" name="experience" value="entry" id="entry" />
+                        <label for="entry">0-3 years</label>
+                    </div>
+                    <div class="cb-groups__group">
+                        <input type="checkbox" name="experience" value="junior" id="junior" />
+                        <label for="junior">3-5 years</label>
+                    </div>
+                    <div class="cb-groups__group">
+                        <input type="checkbox" name="experience" value="middle" id="middle" />
+                        <label for="middle">5-10 years</label>
+                    </div>
+                    <div class="cb-groups__group">
+                        <input type="checkbox" name="experience" value="senior" id="senior" />
+                        <label for="senior">10+ years</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jobs-section">
+            @if (jobListingToShow != null && jobListingToShow.Any())
+            {
+                foreach (var jl in jobListingToShow)
+                {
+                    var date = DateTime.Parse(jl.ApplicationDeadline);
+                    var formattedDate = $"{date.Day} {date.ToString("MMMM")}";
+
+            <div class="job-card">
+                <div class="job-card__title">
+                    <p>@jl.JobTitle</p>
+                    <p>@formattedDate</p>
+                </div>
+                <div class="job-card__tags">
+                    <div class="schedule-tag">@jl.JobType</div>
+                    <div class="experience-tag">@(jl.ExperienceLevel) years</div>
+                </div>
+                <div class="job-card__description">
+                    <p>@jl.Location</p>
+                    <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
+                </div>
+                <div class="job-card__btns">
+                    <button class="apply-btn">Apply</button>
+                    <button class="details-btn">Details</button>
+                </div>
+            </div>
+                }
+
+                // this is just an example (how it's supposed to look)
+                for (var i = 0; i < 20; i++)
+                {
+                    <div class="job-card">
+                        <div class="job-card__title">
+                            <p>UX designer</p>
+                            <p>7 July</p>
+                        </div>
+                        <div class="job-card__tags">
+                            <div class="schedule-tag">Full time</div>
+                            <div class="experience-tag">5 years</div>
+                        </div>
+                        <div class="job-card__description">
+                            <p>Cupertino, California</p>
+                            <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
+                        </div>
+                        <div class="job-card__btns">
+                            <button class="apply-btn">Apply</button>
+                            <button class="details-btn">Details</button>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
 @code {
     private IList<JobListing> jobListings;
     private IList<JobListing> jobListingToShow;

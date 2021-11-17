@@ -1,3 +1,5 @@
 /Tier1/WebApplication/.idea/
+/Tier1/WebApplication/.vs/
 /Tier1/WebApplication/WebApplication/bin/
-/Tier1/WebApplication/WebApplication/obj/
+/Tier1/WebAppication/WebApplication/obj/
+.idea/
