@@ -11,7 +11,7 @@
         <div class="hw-joblistings__header-container">
             <div class="available-jobs">
                 <span>Available jobs</span>
-                <span>640</span>
+                <span>@((jobListingToShow != null) ? jobListingToShow.Count() : "")</span>
             </div>
             <div class="sort-container">
                 <p>Sort by</p>
@@ -29,20 +29,20 @@
                 <p>Schedule</p>
                 <div class="cb-groups">
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="schedule" value="full-time" id="full-time" />
-                        <label for="full-time">Full time</label>
+                        <input type="checkbox" name="schedule" value="full-time" id="full-time" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)))" />
+                        <label for="full-time">@JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="schedule" value="part-time" id="part-time" />
-                        <label for="part-time">Part time</label>
+                        <input type="checkbox" name="schedule" value="part-time" id="part-time" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.PartTime)))" />
+                        <label for="part-time">@JobSchedule.ToDescription(@JobSchedule.Schedule.PartTime)</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="schedule" value="internship" id="internship" />
-                        <label for="internship">Internship</label>
+                        <input type="checkbox" name="schedule" value="internship" id="internship" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.Internship)))" />
+                        <label for="internship">@JobSchedule.ToDescription(@JobSchedule.Schedule.Internship)</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="schedule" value="volunteering" id="volunteering" />
-                        <label for="volunteering">Volunteering</label>
+                        <input type="checkbox" name="schedule" value="volunteering" id="volunteering" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.Volunteering)))" />
+                        <label for="volunteering">@JobSchedule.ToDescription(@JobSchedule.Schedule.Volunteering)</label>
                     </div>
                 </div>
             </div>
@@ -50,19 +50,19 @@
                 <p>Experience level</p>
                 <div class="cb-groups">
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="experience" value="entry" id="entry" />
+                        <input type="checkbox" name="experience" value="entry" id="entry" @onchange="@(arg => FilterByExperience(arg, new int[] { 0, 3 }))" />
                         <label for="entry">0-3 years</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="experience" value="junior" id="junior" />
+                        <input type="checkbox" name="experience" value="junior" id="junior" @onchange="@(arg => FilterByExperience(arg, new int[] {3, 5}))" />
                         <label for="junior">3-5 years</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="experience" value="middle" id="middle" />
+                        <input type="checkbox" name="experience" value="middle" id="middle" @onchange="@(arg => FilterByExperience(arg, new int[] { 5, 10}))" />
                         <label for="middle">5-10 years</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="experience" value="senior" id="senior" />
+                        <input type="checkbox" name="experience" value="senior" id="senior" @onchange="@(arg => FilterByExperience(arg, new int[] {10, int.MaxValue}))" />
                         <label for="senior">10+ years</label>
                     </div>
                 </div>
@@ -76,40 +76,17 @@
                     var date = DateTime.Parse(jl.ApplicationDeadline);
                     var formattedDate = $"{date.Day} {date.ToString("MMMM")}";
 
-            <div class="job-card">
-                <div class="job-card__title">
-                    <p>@jl.JobTitle</p>
-                    <p>@formattedDate</p>
-                </div>
-                <div class="job-card__tags">
-                    <div class="schedule-tag">@jl.JobType</div>
-                    <div class="experience-tag">@(jl.ExperienceLevel) years</div>
-                </div>
-                <div class="job-card__description">
-                    <p>@jl.Location</p>
-                    <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
-                </div>
-                <div class="job-card__btns">
-                    <button class="apply-btn">Apply</button>
-                    <button class="details-btn">Details</button>
-                </div>
-            </div>
-                }
-
-                // this is just an example (how it's supposed to look)
-                for (var i = 0; i < 20; i++)
-                {
                     <div class="job-card">
                         <div class="job-card__title">
-                            <p>UX designer</p>
-                            <p>7 July</p>
+                            <p>@jl.JobTitle</p>
+                            <p>@formattedDate</p>
                         </div>
                         <div class="job-card__tags">
-                            <div class="schedule-tag">Full time</div>
-                            <div class="experience-tag">5 years</div>
+                            <div class="schedule-tag">@jl.JobType</div>
+                            <div class="experience-tag">@(jl.ExperienceLevel) years</div>
                         </div>
                         <div class="job-card__description">
-                            <p>Cupertino, California</p>
+                            <p>@jl.Location</p>
                             <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
                         </div>
                         <div class="job-card__btns">
@@ -118,6 +95,29 @@
                         </div>
                     </div>
                 }
+
+                // this is just an example (how it's supposed to look)
+                @*for (var i = 0; i < 20; i++)
+                    {
+                        <div class="job-card">
+                            <div class="job-card__title">
+                                <p>UX designer</p>
+                                <p>7 July</p>
+                            </div>
+                            <div class="job-card__tags">
+                                <div class="schedule-tag">Full time</div>
+                                <div class="experience-tag">5 years</div>
+                            </div>
+                            <div class="job-card__description">
+                                <p>Cupertino, California</p>
+                                <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
+                            </div>
+                            <div class="job-card__btns">
+                                <button class="apply-btn">Apply</button>
+                                <button class="details-btn">Details</button>
+                            </div>
+                        </div>
+                    }*@
             }
         </div>
     </div>
@@ -126,11 +126,102 @@
 @code {
     private IList<JobListing> jobListings;
     private IList<JobListing> jobListingToShow;
+    private IList<JobListing> filteredJobs;
+    private IList<JobListing> filteredByExperience;
 
     protected override async Task OnInitializedAsync()
     {
         jobListings = await JobListingData.GetJobListings();
         jobListingToShow = jobListings;
+        filteredJobs = new List<JobListing>();
+        filteredByExperience = new List<JobListing>();
+        StateHasChanged();
+    }
+
+    private void FilterBySchedule(ChangeEventArgs arg, string schedule)
+    {
+
+        if ((bool)arg.Value)
+        {
+            foreach (var jl in jobListings)
+            {
+                if (jl.JobType.Equals(schedule)) filteredJobs.Add(jl);
+            }
+
+            jobListingToShow = (filteredByExperience.Any()) ? filteredJobs.Intersect(filteredByExperience).ToList() : filteredJobs;
+            StateHasChanged();
+        }
+        else
+        {
+            if (filteredJobs.Count != 0)
+            {
+                foreach (var jl in filteredJobs.ToList())
+                {
+                    if (jl.JobType.Equals(schedule)) filteredJobs.Remove(jl);
+                }
+            }
+
+            if (!filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = jobListings;
+            }
+            else if (filteredJobs.Any() && !filteredByExperience.Any())
+            {
+                jobListingToShow = filteredJobs;
+            }
+            else if (filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = filteredByExperience;
+            }
+            else
+            {
+                jobListingToShow = filteredJobs.Intersect(filteredByExperience).ToList();
+            }
+            StateHasChanged();
+        }
+    }
+
+    private void FilterByExperience(ChangeEventArgs arg, int[] exp)
+    {
+        if ((bool)arg.Value)
+        {
+            foreach (var jl in jobListings)
+            {
+                if (jl.ExperienceLevel <= exp[1] && jl.ExperienceLevel > exp[0]) filteredByExperience.Add(jl);
+            }
+
+            jobListingToShow = (filteredJobs.Any()) ? filteredByExperience.Intersect(filteredJobs).ToList() : filteredByExperience;
+            StateHasChanged();
+
+        }
+        else
+        {
+            if (filteredByExperience.Count() != 0)
+            {
+                foreach (var jl in filteredByExperience.ToList())
+                {
+                    if (jl.ExperienceLevel <= exp[1] && jl.ExperienceLevel > exp[0]) filteredByExperience.Remove(jl);
+                }
+            }
+
+            if (!filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = jobListings;
+            }
+            else if (filteredJobs.Any() && !filteredByExperience.Any())
+            {
+                jobListingToShow = filteredJobs;
+            }
+            else if (filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = filteredByExperience;
+            }
+            else
+            {
+                jobListingToShow = filteredJobs.Intersect(filteredByExperience).ToList();
+            }
+            StateHasChanged();
+        }
     }
 
     private void Apply(int id)
