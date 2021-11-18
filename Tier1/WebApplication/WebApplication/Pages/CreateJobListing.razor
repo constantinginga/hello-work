@@ -6,39 +6,54 @@
 
 <body>
 <EditForm Model="@jobListing" OnValidSubmit="@CreateNewJobListing">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+   
     <div class="title">Create job listing</div>
     <div class="form-group">
-        <form action="#">
-            <div class="details">
-            <div class="input-box">
-                <span class="details">Job Title</span>
-                <InputText class="form-control" placeholder="Job title" @bind-Value="jobListing.JobTitle"/>
-            </div>
-            <div class="input-box">
-                <span class="details">Job Type</span>
-                <InputText class="form-control" placeholder="Job Type" @bind-Value="jobListing.JobType"/>
-            </div>
-            <div class="input-box">
-                <span class="details">Location</span>
-                <InputText class="form-control" placeholder="Location" @bind-Value="jobListing.Location"/>
-            </div>
-                <div class="experience-level">
-                    <span class="details">Experince level</span>
-                    <InputNumber class="form-control" placeholder="Experience level" @bind-Value="jobListing.ExperienceLevel"/>
+        <div class="details">
+            <div class="form-row">
+                <div class="input-box">
+                    <label>Job title</label>
+                    <InputText class="form-control" placeholder="Job title" @bind-Value="jobListing.JobTitle"/>
                 </div>
+                <div class="input-box">
+                    <label>Job type</label>
+                    @* <InputText class="form-control" placeholder="Job Type" @bind-Value="jobListing.JobType"/> *@
+                     <select class="custom-select filter-property" @onchange="@((arg) => SetJobType(arg))">
+                            <option selected disabled>Select property</option>
+                                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)</option>
+                                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.PartTime)</option>
+                                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Internship)</option>
+                                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Volunteering)</option>
+                        </select> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-box">
+                    <label>Location</label>
+                    <InputText class="form-control" placeholder="Location" @bind-Value="jobListing.Location"/>
+                </div>
+                <div class="input-box calendar">
+                    <label>Deadline</label>
+                    <InputDate  @bind-Value="ApplicationDate"/>
+                </div>
+                <div class="experience-level">
+                    <label>Experience level</label>
+                    <InputNumber Min="0" class="form-control" placeholder="Experience level" @bind-Value="jobListing.ExperienceLevel"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-box">
+                    <label>Email</label>
+                    <InputText class="form-control" placeholder="Email" @bind-Value="jobListing.Email"/>
+                </div>
+            
+                <div class="input-box">
+                    <label>Phone number</label>
+                    <InputText class="form-control" placeholder="Phone Number" @bind-Value="jobListing.PhoneNumber"/>
+                </div>
+            </div>
             <div class="input-box">
-                <span class="details">Email</span>
-                <InputText class="form-control" placeholder="Enter details" @bind-Value="jobListing.Email"/>
-            </div>
-            </div>
-            <div class="input-box">
-                <span class="details">Phone number</span>
-                <InputText class="form-control" placeholder="Enter details" @bind-Value="jobListing.PhoneNumber"/>
-            </div>
-            <div>
-                <span class="details">Job requirments</span>
+                <label>Job requirments</label>
                 @foreach (var element in jobRequirements.Select((e, i) => new {Effect = e, Index = i}))
                 {
                     <p>
@@ -49,7 +64,7 @@
                 }
             </div>
             <div class="input-box">
-                <span class="details">Job privilleges</span>
+                <label>Job privilleges</label>
                 @foreach (var element in jobPrivilleges.Select((e, i) => new {Effect = e, Index = i}))
                 {
                     <p>
@@ -58,16 +73,12 @@
                                @onchange="@(e => jobPrivilleges[element.Index] = e.Value.ToString())"/>
                     </p>
                 }
-            
-            <div class="calendar">
-                <span class="details">Deadline</span>
-                <InputDate @bind-Value="ApplicationDate"/>
             </div>
-            </div>
-        </form>
+            <button class="btn btn-dark" type="submit">Create</button>
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+        </div>
     </div>
-    <button class="btn btn-dark" type="submit">Create</button>
-    
 </EditForm>
 </body>
 
@@ -75,7 +86,7 @@
         private JobListing jobListing = new JobListing();
         private List<string> jobRequirements = new List<string>(new string[3]);
         private List<string> jobPrivilleges = new List<string>(new string[3]);
-        private DateTime ApplicationDate = new DateTime();
+        private DateTime ApplicationDate = DateTime.Now;
 
         private async void CreateNewJobListing()
         {
@@ -86,5 +97,10 @@
             IList<JobListing> jbs = await JobListingData.GetJobListings();
             Console.WriteLine(jbs.Count);
             NavigationManager.NavigateTo("/");
+        }
+
+        private void SetJobType(ChangeEventArgs args)
+        {
+            jobListing.JobType = args.Value.ToString();
         }
     }
