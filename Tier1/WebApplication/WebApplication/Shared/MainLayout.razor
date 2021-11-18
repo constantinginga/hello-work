@@ -4,27 +4,25 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
 
-    <div class="main bg-white">
-        <div class="top-row px-4">
+    <div class="page-content">
+        <div id="topbar">
+            <NavMenu />
             <AuthorizeView>
                 <NotAuthorized>
-                    <div >
-                        <button @onclick="@(() => NavManager.NavigateTo("/login"))" class="btn btn-outline-dark hover:bg-blue-700 w-full btn-outline-primary login" type="button"> Log In</button>
+                    <div>
+                        <button @onclick="@(() => NavManager.NavigateTo("/login"))" class="topbar-btn"> Log In</button>
                     </div>
                 </NotAuthorized>
-                <Authorized >
-                    <div >
-                        <a class="" @onclick="Logout" href="#">Logout</a>
+                <Authorized>
+                    <div>
+                        <a class="topbar-btn" @onclick="Logout" href="#">Logout</a>
                     </div>
                 </Authorized>
             </AuthorizeView>
         </div>
 
-        <div class="content px-4 ">
+        <div class="hw-main-page-container">
             @Body
         </div>
     </div>

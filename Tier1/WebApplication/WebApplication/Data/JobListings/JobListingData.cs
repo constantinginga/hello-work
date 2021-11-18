@@ -80,6 +80,6 @@ namespace WebApplication.Data
         {
             return JobListings.FirstOrDefault(j => j.JobId == id);
         }
-        
+
     }
 }
