@@ -19,5 +19,6 @@ public interface Model
   Employer createEmployer(Employer employer);
 
   void removeJobListing(String id);
+  JobListing getJobListing(String id);
 
 }

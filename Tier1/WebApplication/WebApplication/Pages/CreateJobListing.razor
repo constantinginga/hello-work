@@ -82,7 +82,7 @@
             jobListing.ApplicationDeadline = ApplicationDate.ToString("dd/MM/yyyy");
             jobListing.JobRequirments = jobRequirements;
             jobListing.JobPrivilleges = jobPrivilleges;
-            await JobListingData.Create(jobListing);
+            await JobListingData.CreateJobListing(jobListing);
             IList<JobListing> jbs = await JobListingData.GetJobListings();
             Console.WriteLine(jbs.Count);
             NavigationManager.NavigateTo("/");

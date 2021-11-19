@@ -8,11 +8,13 @@ namespace WebApplication.Data
 {
     interface IJobListingData
     {
-        Task<JobListing>  Create(JobListing jobListing);
+        Task<JobListing> CreateJobListing(JobListing jobListing);
+        Task RemoveJobListing(string id);
+
         Task<IList<JobListing>> GetJobListings();
 
-        Task<JobListing> Get(int id);
+        Task<JobListing> GetJobListing(int id);
 
-        Task Update(JobListing jobListing);
+        Task UpdateJobListing(JobListing jobListing);
     }
 }
