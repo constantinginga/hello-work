@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public interface MongoDB {
     ArrayList<JobListing> getJobListings();
+    JobListing getJobListing(String id);
 
     void applyJobListing(Application application);
 
@@ -16,4 +17,5 @@ public interface MongoDB {
     JobSeeker createJobSeeker(JobSeeker seeker);
 
     Employer createEmployer(Employer employer);
+    void removeJobListing(String id);
 }

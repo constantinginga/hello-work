@@ -4,18 +4,21 @@ import work.hello.data.*;
 
 import java.util.ArrayList;
 
+public interface Model
+{
+  ArrayList<JobListing> getJobListings();
 
-public interface Model {
-    ArrayList<JobListing> getJobListings();
+  void applyJobListing(Application application);
 
-    void applyJobListing(Application application);
+  void createJobListing(JobListing jobListing);
 
-    void createJobListing(JobListing jobListing);
+  User getUser(User user);
 
-    User getUser(User user);
+  JobSeeker createJobSeeker(JobSeeker jobSeeker);
 
-    JobSeeker createJobSeeker(JobSeeker jobSeeker);
+  Employer createEmployer(Employer employer);
 
-    Employer createEmployer(Employer employer);
+  void removeJobListing(String id);
+  JobListing getJobListing(String id);
 
 }

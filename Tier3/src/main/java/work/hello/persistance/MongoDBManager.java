@@ -31,9 +31,8 @@ public class MongoDBManager implements MongoDB {
             applicationCollection = mongoDatabase.getCollection("Applications");
             jobSeekerCollection = mongoDatabase.getCollection("JobSeekers");
             employerCollection = mongoDatabase.getCollection("Employers");
-            settings = JsonWriterSettings.builder()
-                    .int64Converter((value, writer) -> writer.writeNumber(value.toString()))
-                    .build();
+            settings = JsonWriterSettings.builder().int64Converter(
+                    (value, writer) -> writer.writeNumber(value.toString())).build();
             gson = new Gson();
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,6 +72,18 @@ public class MongoDBManager implements MongoDB {
     }
 
     @Override
+    public JobListing getJobListing(String id) {
+        Document doc = jobCollection.find(Filters.eq("id", id)).first();
+        JobListing jobListing;
+        if (doc != null) {
+            String json = doc.toJson(settings);
+            jobListing = gson.fromJson(json, JobListing.class);
+            return jobListing;
+        }
+        return null;
+    }
+
+    @Override
     public void applyJobListing(Application application) {
         Document document = Document.parse(application.toJson());
         applicationCollection.insertOne(document);
@@ -83,7 +94,6 @@ public class MongoDBManager implements MongoDB {
         Document document = Document.parse(jobListing.toJson());
         jobCollection.insertOne(document);
     }
-
 
     @Override
     public User getUser(String email, String password) {
@@ -123,6 +133,11 @@ public class MongoDBManager implements MongoDB {
         Document document = Document.parse(employer.toJson());
         employerCollection.insertOne(document);
         return employer;
+    }
+
+    @Override
+    public void removeJobListing(String id) {
+        jobCollection.deleteOne(Filters.eq("JobId", Integer.parseInt(id)));
     }
 
 }
