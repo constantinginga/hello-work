@@ -27,6 +27,7 @@ public class Tier3Application {
         new CreateEmployerListener();
         new CreateJobSeekerListener();
         new RemoveJobListingListener();
+        new GetJobListingListener();
     }
 
 
