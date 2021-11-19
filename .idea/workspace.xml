@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="commit before merge">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__work_hello_Shared_1_0_SNAPSHOT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-    </list>
+    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="commit before merge" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,36 +33,35 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Tier2" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager" selected="Spring Boot.Tier2Application">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Tier2" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <method v="2">
-        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="true" file="C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier2/pom.xml" goal="compile" />
       </method>
     </configuration>
     <configuration name="Tier3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Tier3" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier3Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <method v="2">
-        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="compile" />
       </method>
     </configuration>
     <list>
@@ -89,6 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1637082585044</updated>
       <workItem from="1637082588137" duration="443000" />
+      <workItem from="1637333274385" duration="85000" />
     </task>
     <task id="LOCAL-00001" summary="commit before merge">
       <created>1637082659854</created>
