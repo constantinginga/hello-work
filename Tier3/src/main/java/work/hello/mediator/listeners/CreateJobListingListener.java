@@ -11,6 +11,6 @@ public class CreateJobListingListener extends MessageListener {
 
     @Override
     public void handleResponse(CustomMessage message) {
-        super.getModel().createJobListing(getGson().fromJson(message.getContent(), JobListing.class));
+        super.getData().createJobListing(getGson().fromJson(message.getContent(), JobListing.class));
     }
 }

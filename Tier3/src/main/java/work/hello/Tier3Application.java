@@ -5,16 +5,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import work.hello.mediator.listeners.*;
-import work.hello.model.Model;
-import work.hello.model.ModelManager;
+import work.hello.persistance.MongoDB;
+import work.hello.persistance.MongoDBManager;
 
 @SpringBootApplication
 public class Tier3Application {
-    private static Model model;
+    private static MongoDB data;
 
     public static void main(String[] args) {
         SpringApplication.run(Tier3Application.class, args);
-        model = new ModelManager();
+        data = new MongoDBManager();
         registerListeners();
     }
 
@@ -31,7 +31,7 @@ public class Tier3Application {
     }
 
 
-    public static Model getModel() {
-        return model;
+    public static MongoDB getData() {
+        return data;
     }
 }

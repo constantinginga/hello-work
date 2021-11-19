@@ -3,7 +3,6 @@ package work.hello.mediator.listeners;
 import work.hello.data.CustomMessage;
 import work.hello.data.MessageType;
 import work.hello.mediator.MessageListener;
-import work.hello.mediator.MessageListenerRPC;
 
 public class RemoveJobListingListener extends MessageListener
 {
@@ -15,6 +14,6 @@ public class RemoveJobListingListener extends MessageListener
   @Override public void handleResponse(CustomMessage message)
   {
     System.out.println("1");
-    super.getModel().removeJobListing(message.getContent());
+    super.getData().removeJobListing(message.getContent());
   }
 }

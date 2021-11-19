@@ -12,6 +12,6 @@ public class CreateEmployerListener extends MessageListenerRPC {
 
     @Override
     public String handleResponse(CustomMessage message) {
-        return super.getModel().createEmployer(getGson().fromJson(message.getContent(), Employer.class)).toJson();
+        return super.getData().createEmployer(getGson().fromJson(message.getContent(), Employer.class)).toJson();
     }
 }

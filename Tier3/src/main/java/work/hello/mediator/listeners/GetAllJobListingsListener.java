@@ -10,6 +10,6 @@ public class GetAllJobListingsListener extends MessageListenerRPC {
 
     @Override
     public String handleResponse(CustomMessage message) {
-        return super.getGson().toJson(super.getModel().getJobListings());
+        return super.getGson().toJson(super.getData().getJobListings());
     }
 }
