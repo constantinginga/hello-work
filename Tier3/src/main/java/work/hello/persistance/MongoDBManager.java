@@ -8,6 +8,7 @@ import org.bson.Document;
 import org.bson.json.JsonWriterSettings;
 import work.hello.data.*;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 
 public class MongoDBManager implements MongoDB {
@@ -96,6 +97,12 @@ public class MongoDBManager implements MongoDB {
     }
 
     @Override
+    public JobListing updateJobListing(JobListing jobListing) {
+        jobCollection.updateOne(Filters.eq("JobId", jobListing.getJobId()), Document.parse(jobListing.toJson()));
+        return getJobListing(String.valueOf(jobListing.getJobId()));
+    }
+
+    @Override
     public User getUser(String email, String password) {
         Document doc = jobSeekerCollection.find(Filters.eq("email", email)).first();
         User user;
@@ -122,6 +129,18 @@ public class MongoDBManager implements MongoDB {
     }
 
     @Override
+    public JobSeeker getJobSeeker(String email) {
+        Document document = jobSeekerCollection.find(Filters.eq("email", email)).first();
+        return gson.fromJson(document.toJson(), JobSeeker.class);
+    }
+
+    @Override
+    public Employer getEmployer(String email) {
+        Document document = employerCollection.find(Filters.eq("email", email)).first();
+        return gson.fromJson(document.toJson(), Employer.class);
+    }
+
+    @Override
     public JobSeeker createJobSeeker(JobSeeker seeker) {
         Document document = Document.parse(seeker.toJson());
         jobSeekerCollection.insertOne(document);
@@ -129,10 +148,33 @@ public class MongoDBManager implements MongoDB {
     }
 
     @Override
+    public JobSeeker updateJobSeeker(JobSeeker seeker) {
+        jobSeekerCollection.updateOne(Filters.eq("email", seeker.getEmail()), Document.parse(seeker.toJson()));
+        return getJobSeeker(seeker.getEmail());
+    }
+
+    @Override
+    public void deleteJobSeeker(String email) {
+        jobSeekerCollection.deleteOne(Filters.eq("email", email));
+
+    }
+
+    @Override
     public Employer createEmployer(Employer employer) {
         Document document = Document.parse(employer.toJson());
         employerCollection.insertOne(document);
         return employer;
+    }
+
+    @Override
+    public Employer updateEmployer(Employer employer) {
+        employerCollection.updateOne(Filters.eq("email", employer.getEmail()), Document.parse(employer.toJson()));
+        return getEmployer(employer.getEmail());
+    }
+
+    @Override
+    public void deleteEmployer(String email) {
+        employerCollection.deleteOne(Filters.eq("email", email));
     }
 
     @Override
