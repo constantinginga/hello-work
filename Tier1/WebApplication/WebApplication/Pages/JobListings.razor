@@ -90,7 +90,7 @@
                             <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
                         </div>
                         <div class="job-card__btns">
-                            <button class="apply-btn">Apply</button>
+                            <button class="apply-btn" @onclick="() => Display(jl.JobId)">Apply</button>
                             <button class="details-btn">Details</button>
                         </div>
                     </div>
@@ -227,5 +227,9 @@
     private void Apply(int id)
     {
         NavigationManager.NavigateTo($"apply/{id}");
+    }
+    private void Display(int id)
+    {
+        NavigationManager.NavigateTo($"job-listings/{id}");
     }
 }

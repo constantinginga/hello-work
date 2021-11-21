@@ -28,8 +28,8 @@ namespace WebApplication.Data
         public async Task<JobListing> CreateJobListing(JobListing jobListing)
         {
             // store locally
-            int max = JobListings.Count != 0 ? JobListings.Max(j => j.JobId) : 0;
-            jobListing.JobId = ++max;
+            Random rand = new Random();
+            jobListing.JobId = rand.Next();
             JobListings.Add(jobListing);
             string serializedJob = JsonSerializer.Serialize(jobListing);
             string response = await _client.Post("", serializedJob);
@@ -86,9 +86,10 @@ namespace WebApplication.Data
             response.EnsureSuccessStatusCode();*/
         }
 
-        public Task<JobListing> GetJobListing(int id)
+        public async Task<JobListing> GetJobListing(int id)
         {
-            return null;
+            return JobListings.FirstOrDefault(j => j.JobId == id);
         }
+
     }
 }

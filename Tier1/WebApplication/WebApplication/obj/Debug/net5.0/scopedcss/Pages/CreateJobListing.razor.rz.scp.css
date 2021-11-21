@@ -1,0 +1,31 @@
+body[b-ppjh64qbg9]{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group[b-ppjh64qbg9]{
+    max-width: 700px;
+    width: 100%;
+    background: #A79C63;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.title[b-ppjh64qbg9]{
+    font-size: 25px;
+    font-weight:500;
+    position: relative;
+}
+
+.title[b-ppjh64qbg9]::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: #E95B53;
+}
+
