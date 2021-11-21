@@ -97,7 +97,7 @@ using WebApplication.Auth;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Shared\MainLayout.razor"
+#line 32 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Shared\MainLayout.razor"
  
 
     protected override async Task OnInitializedAsync()

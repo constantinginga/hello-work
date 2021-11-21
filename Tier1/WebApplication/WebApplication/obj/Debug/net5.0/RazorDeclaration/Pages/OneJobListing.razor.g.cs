@@ -114,7 +114,7 @@ using WebApplication.Models;
 
     protected override async Task OnInitializedAsync()
     {
-        jobListing = await JobListingData.Get(Id);
+        jobListing = await JobListingData.GetJobListing(Id);
         
     }
 

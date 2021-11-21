@@ -105,15 +105,106 @@ using WebApplication.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 49 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\JobListings.razor"
+#line 126 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\JobListings.razor"
        
     private IList<JobListing> jobListings;
     private IList<JobListing> jobListingToShow;
+    private IList<JobListing> filteredJobs;
+    private IList<JobListing> filteredByExperience;
 
     protected override async Task OnInitializedAsync()
     {
         jobListings = await JobListingData.GetJobListings();
         jobListingToShow = jobListings;
+        filteredJobs = new List<JobListing>();
+        filteredByExperience = new List<JobListing>();
+        StateHasChanged();
+    }
+
+    private void FilterBySchedule(ChangeEventArgs arg, string schedule)
+    {
+
+        if ((bool)arg.Value)
+        {
+            foreach (var jl in jobListings)
+            {
+                if (jl.JobType.Equals(schedule)) filteredJobs.Add(jl);
+            }
+
+            jobListingToShow = (filteredByExperience.Any()) ? filteredJobs.Intersect(filteredByExperience).ToList() : filteredJobs;
+            StateHasChanged();
+        }
+        else
+        {
+            if (filteredJobs.Count != 0)
+            {
+                foreach (var jl in filteredJobs.ToList())
+                {
+                    if (jl.JobType.Equals(schedule)) filteredJobs.Remove(jl);
+                }
+            }
+
+            if (!filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = jobListings;
+            }
+            else if (filteredJobs.Any() && !filteredByExperience.Any())
+            {
+                jobListingToShow = filteredJobs;
+            }
+            else if (filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = filteredByExperience;
+            }
+            else
+            {
+                jobListingToShow = filteredJobs.Intersect(filteredByExperience).ToList();
+            }
+            StateHasChanged();
+        }
+    }
+
+    private void FilterByExperience(ChangeEventArgs arg, int[] exp)
+    {
+        if ((bool)arg.Value)
+        {
+            foreach (var jl in jobListings)
+            {
+                if (jl.ExperienceLevel <= exp[1] && jl.ExperienceLevel > exp[0]) filteredByExperience.Add(jl);
+            }
+
+            jobListingToShow = (filteredJobs.Any()) ? filteredByExperience.Intersect(filteredJobs).ToList() : filteredByExperience;
+            StateHasChanged();
+
+        }
+        else
+        {
+            if (filteredByExperience.Count() != 0)
+            {
+                foreach (var jl in filteredByExperience.ToList())
+                {
+                    if (jl.ExperienceLevel <= exp[1] && jl.ExperienceLevel > exp[0]) filteredByExperience.Remove(jl);
+                }
+            }
+
+            if (!filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = jobListings;
+            }
+            else if (filteredJobs.Any() && !filteredByExperience.Any())
+            {
+                jobListingToShow = filteredJobs;
+            }
+            else if (filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = filteredByExperience;
+            }
+            else
+            {
+                jobListingToShow = filteredJobs.Intersect(filteredByExperience).ToList();
+            }
+            StateHasChanged();
+        }
     }
 
     private void Apply(int id)

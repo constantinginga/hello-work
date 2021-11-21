@@ -122,7 +122,7 @@ using WebApplication.Data.Applications;
 
     protected override async Task OnInitializedAsync()
     {
-        jobListing = await JobListingData.Get(Id);
+        jobListing = await JobListingData.GetJobListing(Id);
         application = new();
         application.JobId = jobListing.JobId;
         

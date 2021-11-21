@@ -105,22 +105,57 @@ using WebApplication.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 74 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
+#line 91 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
            
         private JobListing jobListing = new JobListing();
-        private List<string> jobRequirements = new List<string>(new string[3]);
-        private List<string> jobPrivilleges = new List<string>(new string[3]);
-        private DateTime ApplicationDate = new DateTime();
+        private List<string> jobRequirements = new List<string>();
+        private List<string> jobPrivilleges = new List<string>();
+        private DateTime ApplicationDate = DateTime.Now;
+
+
+        protected override async Task OnInitializedAsync()
+        {
+            jobRequirements.Add(null);
+            jobPrivilleges.Add(null);
+        }
 
         private async void CreateNewJobListing()
         {
+
+            foreach (var jr in jobRequirements)
+            {
+                if (jr == null) jobRequirements.Remove(jr);
+            }
+
+            foreach (var jr in jobPrivilleges)
+            {
+                if (jr == null) jobPrivilleges.Remove(jr);
+            }
+
             jobListing.ApplicationDeadline = ApplicationDate.ToString("dd/MM/yyyy");
             jobListing.JobRequirments = jobRequirements;
             jobListing.JobPrivilleges = jobPrivilleges;
-            await JobListingData.Create(jobListing);
+            await JobListingData.CreateJobListing(jobListing);
             IList<JobListing> jbs = await JobListingData.GetJobListings();
             Console.WriteLine(jbs.Count);
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/job-listings");
+        }
+
+        private void SetJobType(ChangeEventArgs args)
+        {
+            jobListing.JobType = args.Value.ToString();
+        }
+
+        private void AddJobReq()
+        {
+            if (jobRequirements.Count < 5)
+            jobRequirements.Add(null);
+        }
+
+        private void AddJobPrivilege()
+        {
+            if (jobPrivilleges.Count < 5)
+                jobPrivilleges.Add(null);
         }
     
 
