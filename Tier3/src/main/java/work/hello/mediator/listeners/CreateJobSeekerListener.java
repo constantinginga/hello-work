@@ -12,6 +12,6 @@ public class CreateJobSeekerListener extends MessageListenerRPC {
 
     @Override
     public String handleResponse(CustomMessage message) {
-        return super.getModel().createJobSeeker(getGson().fromJson(message.getContent(), JobSeeker.class)).toJson();
+        return super.getData().createJobSeeker(getGson().fromJson(message.getContent(), JobSeeker.class)).toJson();
     }
 }

@@ -9,7 +9,6 @@ import java.util.Collections;
 
 import java.util.UUID;
 
-
 public class RabbitMQ implements MessagingHandler {
     private Gson gson;
     private RabbitClient rabbitClient;
@@ -36,9 +35,26 @@ public class RabbitMQ implements MessagingHandler {
             e.printStackTrace();
         }
         ArrayList<JobListing> jobListings = new ArrayList<>();
-        Collections.addAll(jobListings,
-                gson.fromJson(response, JobListing[].class));
+        Collections
+                .addAll(jobListings, gson.fromJson(response, JobListing[].class));
         return jobListings;
+
+    }
+
+    @Override
+    public JobListing getJobListing(String id) {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.getJobListing);
+        String response = "";
+        try {
+            response = rabbitClient
+                    .sendMessageRPC(message, MessageType.getJobListing.toString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        JobListing jobListing = gson.fromJson(response, JobListing.class);
+        return jobListing;
 
     }
 
@@ -61,12 +77,25 @@ public class RabbitMQ implements MessagingHandler {
     }
 
     @Override
+    public boolean deleteJobListing(String id) {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.removeJobListing);
+        message.setContent(id);
+        if (getJobListing(id) != null) {
+            rabbitClient.sendMessage(message, MessageType.removeJobListing.name());
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public User getUser(String email, String password) throws Exception {
         CustomMessage message = new CustomMessage();
         message.setType(MessageType.getUser);
         message.setContent(new User(email, password).toJson());
         try {
-            String response = rabbitClient.sendMessageRPC(message, MessageType.getUser.toString());
+            String response = rabbitClient
+                    .sendMessageRPC(message, MessageType.getUser.toString());
             if (response == null) {
 
                 throw new Exception("User not Found");
@@ -84,19 +113,24 @@ public class RabbitMQ implements MessagingHandler {
     }
 
     @Override
-    public JobSeeker createJobSeeker(JobSeeker jobSeeker) throws IOException, InterruptedException {
+    public JobSeeker createJobSeeker(JobSeeker jobSeeker)
+            throws IOException, InterruptedException {
         CustomMessage message = new CustomMessage();
         message.setType(MessageType.createJobSeeker);
         message.setContent(jobSeeker.toJson());
-        return gson.fromJson(rabbitClient.sendMessageRPC(message, "createJobSeeker"), JobSeeker.class);
+        return gson
+                .fromJson(rabbitClient.sendMessageRPC(message, "createJobSeeker"),
+                        JobSeeker.class);
     }
 
     @Override
-    public Employer createEmployer(Employer employer) throws IOException, InterruptedException {
+    public Employer createEmployer(Employer employer)
+            throws IOException, InterruptedException {
         CustomMessage message = new CustomMessage();
         message.setType(MessageType.createEmployer);
         message.setContent(employer.toJson());
-        return gson.fromJson(rabbitClient.sendMessageRPC(message, "createEmployer"), Employer.class);
+        return gson.fromJson(rabbitClient.sendMessageRPC(message, "createEmployer"),
+                Employer.class);
     }
 
     public static MessagingHandler getInstance() {

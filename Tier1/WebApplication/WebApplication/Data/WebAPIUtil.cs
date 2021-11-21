@@ -39,13 +39,15 @@ namespace WebApplication.Data
             return await responseMessage.Content.ReadAsStringAsync();
         }
 
-        public async Task Delete(string args)
+        public async Task<string> Delete(string args)
         {
             HttpResponseMessage responseMessage = await _client.DeleteAsync(_url + args);
             if (!responseMessage.IsSuccessStatusCode)
             {
                 throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
             }
+
+            return await responseMessage.Content.ReadAsStringAsync();
         }
 
         public async Task<string> Get(string url, string args)

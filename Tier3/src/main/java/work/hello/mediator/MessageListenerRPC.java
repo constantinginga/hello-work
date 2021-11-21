@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.rabbitmq.client.*;
 import work.hello.CommonConfigs;
 import work.hello.Tier3Application;
-import work.hello.model.Model;
 import work.hello.data.CustomMessage;
+import work.hello.persistance.MongoDB;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 public abstract class MessageListenerRPC {
-    private Model model;
+    private MongoDB data;
     private final Gson gson;
     private Connection connection;
     private ConnectionFactory factory;
@@ -24,7 +24,7 @@ public abstract class MessageListenerRPC {
 
 
     public MessageListenerRPC(String queueName, String topic) {
-        this.model = Tier3Application.getModel();
+        this.data = Tier3Application.getData();
         gson = new Gson();
         factory = new ConnectionFactory();
         try {
@@ -76,8 +76,8 @@ public abstract class MessageListenerRPC {
         }));
     }
 
-    public Model getModel() {
-        return model;
+    public MongoDB getData() {
+        return data;
     }
 
     public Gson getGson() {

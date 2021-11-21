@@ -25,7 +25,7 @@ namespace WebApplication.Data
             _client = new WebApiUtil(_url);
         }
 
-        public async Task<JobListing> Create(JobListing jobListing)
+        public async Task<JobListing> CreateJobListing(JobListing jobListing)
         {
             // store locally
             Random rand = new Random();
@@ -37,6 +37,16 @@ namespace WebApplication.Data
             {
             });
             return job;
+        }
+
+        public async Task RemoveJobListing(string id)
+        {
+            JobListings.Remove(JobListings.First(listing => listing.JobId == Int32.Parse(id)));
+            string response = await _client.Delete("?id=" + id);
+            if (response.Equals("Not Found"))
+            {
+                throw new Exception("Not Found");
+            }
         }
 
         public async Task<IList<JobListing>> GetJobListings()
@@ -57,7 +67,7 @@ namespace WebApplication.Data
             return JobListings;
         }
 
-        public async Task Update(JobListing jobListing)
+        public async Task UpdateJobListing(JobListing jobListing)
         {
             JobListing toUpdate = JobListings.First(j => j.JobId == jobListing.JobId);
             toUpdate.JobTitle = jobListing.JobTitle;
@@ -76,7 +86,7 @@ namespace WebApplication.Data
             response.EnsureSuccessStatusCode();*/
         }
 
-        public async Task<JobListing> Get(int id)
+        public Task<JobListing> GetJobListing(int id)
         {
             return JobListings.FirstOrDefault(j => j.JobId == id);
         }
