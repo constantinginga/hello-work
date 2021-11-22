@@ -106,6 +106,12 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication" />
+      <recent name="C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -114,17 +120,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.Tier2Application">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Tier2" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
