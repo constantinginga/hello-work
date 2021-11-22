@@ -1,0 +1,109 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581\" name=\"Default Changelist\" comment=\"commit before merge\">\r\n      <change beforePath=\"$PROJECT_DIR$/.gitignore\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/compiler.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__work_hello_Shared_1_0_SNAPSHOT.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/modules.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Shared/target/maven-archiver/pom.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Shared/target/maven-archiver/pom.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"HW-18_Tudor\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"210elPoEqBbf7r6zqGCwzMYPbHt\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RequestMappingsPanelOrder0\" value=\"0\" />\r\n    <property name=\"RequestMappingsPanelOrder1\" value=\"1\" />\r\n    <property name=\"RequestMappingsPanelWidth0\" value=\"75\" />\r\n    <property name=\"RequestMappingsPanelWidth1\" value=\"75\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Project\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.0\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.0\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.Tier2Application\">\r\n    <configuration default=\"true\" type=\"ArquillianTestNG\" factoryName=\"\" nameIsGenerated=\"true\">\r\n      <option name=\"arquillianRunConfiguration\">\r\n        <value>\r\n          <option name=\"containerStateName\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"TEST_OBJECT\" value=\"CLASS\" />\r\n      <properties />\r\n      <listeners />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tier2Application\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"Tier2\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"work.hello.Tier2Application\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tier3Application\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"Tier3\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"work.hello.Tier3Application\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Spring Boot.Tier2Application\" />\r\n      <item itemvalue=\"Spring Boot.Tier3Application\" />\r\n    </list>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1637082585044</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1637082585044</updated>\r\n      <workItem from=\"1637082588137\" duration=\"443000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit before merge\">\r\n      <created>1637082659854</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637082659854</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"commit before merge\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commit before merge\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ec0c8b2f282a3b393ab8bc5e907a679e492b7e8b)
++++ b/.idea/workspace.xml	(date 1637333360073)
+@@ -4,17 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="commit before merge">
+-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__work_hello_Shared_1_0_SNAPSHOT.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-archiver/pom.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+-    </list>
++    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="commit before merge" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -43,36 +33,35 @@
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/Tier2" />
+     <property name="project.structure.last.edited" value="Project" />
+     <property name="project.structure.proportion" value="0.0" />
+     <property name="project.structure.side.proportion" value="0.0" />
+   </component>
+-  <component name="RunManager" selected="Spring Boot.Tier2Application">
+-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+-      <option name="arquillianRunConfiguration">
+-        <value>
+-          <option name="containerStateName" value="" />
+-        </value>
+-      </option>
+-      <option name="TEST_OBJECT" value="CLASS" />
+-      <properties />
+-      <listeners />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
++  <component name="RunDashboard">
++    <option name="configurationTypes">
++      <set>
++        <option value="SpringBootApplicationConfigurationType" />
++      </set>
++    </option>
++  </component>
++  <component name="RunManager" selected="Spring Boot.Tier2Application">
+     <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+       <module name="Tier2" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
++      <option name="ALTERNATIVE_JRE_PATH" />
++      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+       <method v="2">
+-        <option name="Make" enabled="true" />
++        <option name="Maven.BeforeRunTask" enabled="true" file="C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier2/pom.xml" goal="compile" />
+       </method>
+     </configuration>
+     <configuration name="Tier3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+       <module name="Tier3" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier3Application" />
++      <option name="ALTERNATIVE_JRE_PATH" />
++      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+       <method v="2">
+-        <option name="Make" enabled="true" />
++        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="compile" />
+       </method>
+     </configuration>
+     <list>
+@@ -89,6 +78,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1637082585044</updated>
+       <workItem from="1637082588137" duration="443000" />
++      <workItem from="1637333274385" duration="85000" />
+     </task>
+     <task id="LOCAL-00001" summary="commit before merge">
+       <created>1637082659854</created>
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile default=\"true\" name=\"Default\" enabled=\"true\" />\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"Tier2\" />\r\n        <module name=\"Shared\" />\r\n        <module name=\"Tier3\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n    <bytecodeTargetLevel>\r\n      <module name=\"HelloWork\" target=\"11\" />\r\n      <module name=\"Shared\" target=\"11\" />\r\n      <module name=\"Tier2\" target=\"11\" />\r\n      <module name=\"Tier3\" target=\"11\" />\r\n    </bytecodeTargetLevel>\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"Tier2\" options=\"-parameters\" />\r\n      <module name=\"Tier3\" options=\"-parameters\" />\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision ec0c8b2f282a3b393ab8bc5e907a679e492b7e8b)
++++ b/.idea/compiler.xml	(date 1637333360077)
+@@ -7,8 +7,8 @@
+         <sourceOutputDir name="target/generated-sources/annotations" />
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
+-        <module name="Tier2" />
+         <module name="Shared" />
++        <module name="Tier2" />
+         <module name="Tier3" />
+       </profile>
+     </annotationProcessing>

@@ -4,24 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="Added some methods for mongoDB that will come in handy for later requirements">
+    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="Removed model package from tier3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/MessageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/MessageType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/Tier3Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/Tier3Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/MessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/MessageListenerRPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/MessageListenerRPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/ApplyForJobListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/ApplyForJobListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/CreateEmployerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/CreateEmployerListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/CreateJobListingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/CreateJobListingListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/CreateJobSeekerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/CreateJobSeekerListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetAllJobListingsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetAllJobListingsListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetJobListingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetJobListingListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetUserListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetUserListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/RemoveJobListingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/RemoveJobListingListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/model/Model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/model/ModelManager.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +48,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.Tier3Application">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Tier2" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
@@ -97,6 +92,9 @@
       <updated>1637082585044</updated>
       <workItem from="1637082588137" duration="443000" />
       <workItem from="1637333274385" duration="85000" />
+      <workItem from="1637336249129" duration="646000" />
+      <workItem from="1637523403255" duration="15000" />
+      <workItem from="1637523581013" duration="597000" />
     </task>
     <task id="LOCAL-00001" summary="commit before merge">
       <created>1637082659854</created>
@@ -119,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637335729432</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Removed model package from tier3">
+      <created>1637336295625</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637336295625</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +145,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit before merge" />
     <MESSAGE value="Added some methods for mongoDB that will come in handy for later requirements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some methods for mongoDB that will come in handy for later requirements" />
+    <MESSAGE value="Removed model package from tier3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed model package from tier3" />
   </component>
 </project>
