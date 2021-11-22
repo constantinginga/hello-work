@@ -15,7 +15,7 @@ namespace WebApplication.Auth
         private readonly IJSRuntime jsRuntime;
         private readonly IUserService userService;
 
-        private User cachedUser;
+        public User cachedUser { get; set; }
 
         public CustomAuthenticationStateProvider(IJSRuntime jsRuntime, IUserService userService)
         {

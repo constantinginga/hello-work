@@ -4,8 +4,73 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="Removed model package from tier3">
+    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="debug files, idk somebody broke git ignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/Shared.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/Shared.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/JobListing.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/JobListing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Auth/CustomAuthenticationStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Auth/CustomAuthenticationStateProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Models/JobListing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Models/JobListing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/CreateJobListing.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/CreateJobListing.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/CreateJobListing.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/CreateJobListing.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/OneJobListing.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/OneJobListing.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/App.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Applications.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Applications.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/ApplyToJobListing.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/ApplyToJobListing.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Comp/RegisterEmployer.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Comp/RegisterEmployer.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Comp/RegisterJobSeeker.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Comp/RegisterJobSeeker.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/CreateJobListing.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/CreateJobListing.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/JobListings.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/JobListings.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/OneJobListing.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/OneJobListing.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Register.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/Register.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Applications.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Applications.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/ApplyToJobListing.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/ApplyToJobListing.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Comp/RegisterEmployer.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Comp/RegisterEmployer.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Comp/RegisterJobSeeker.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Comp/RegisterJobSeeker.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/CreateJobListing.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/CreateJobListing.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/JobListings.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/JobListings.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/OneJobListing.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/OneJobListing.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Register.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Pages/Register.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/WebApplication.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/WebApplication.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/WebApplication.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/WebApplication.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/ref/WebApplication.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/ref/WebApplication.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/scopedcss/Pages/CreateJobListing.razor.rz.scp.css" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/scopedcss/Pages/CreateJobListing.razor.rz.scp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/scopedcss/bundle/WebApplication.styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/scopedcss/bundle/WebApplication.styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/scopedcss/projectbundle/WebApplication.bundle.scp.css" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/scopedcss/projectbundle/WebApplication.bundle.scp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/staticwebassets/WebApplication.StaticWebAssets.Manifest.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/staticwebassets/WebApplication.StaticWebAssets.Manifest.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/staticwebassets/WebApplication.StaticWebAssets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/Debug/net5.0/staticwebassets/WebApplication.StaticWebAssets.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier3/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +91,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -47,7 +113,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Tier3Application">
+  <component name="RunManager" selected="Spring Boot.Tier2Application">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -95,6 +161,7 @@
       <workItem from="1637336249129" duration="646000" />
       <workItem from="1637523403255" duration="15000" />
       <workItem from="1637523581013" duration="597000" />
+      <workItem from="1637565406466" duration="3833000" />
     </task>
     <task id="LOCAL-00001" summary="commit before merge">
       <created>1637082659854</created>
@@ -124,7 +191,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637336295625</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="debug files, idk somebody broke git ignore">
+      <created>1637565723166</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637565723166</updated>
+    </task>
+    <task id="LOCAL-00006" summary="debug files, idk somebody broke git ignore">
+      <created>1637566164130</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1637566164130</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +227,8 @@
     <MESSAGE value="commit before merge" />
     <MESSAGE value="Added some methods for mongoDB that will come in handy for later requirements" />
     <MESSAGE value="Removed model package from tier3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed model package from tier3" />
+    <MESSAGE value="debug files, idk somebody broke git ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug files, idk somebody broke git ignore" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>

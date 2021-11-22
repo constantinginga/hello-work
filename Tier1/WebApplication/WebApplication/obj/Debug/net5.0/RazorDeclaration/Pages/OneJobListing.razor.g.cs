@@ -13,85 +13,92 @@ namespace WebApplication.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 1 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 2 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 3 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 4 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 5 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 6 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 7 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 8 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 9 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using WebApplication;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 10 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using WebApplication.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
+#line 2 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
 using WebApplication.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
+#line 3 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
 using WebApplication.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
+using WebApplication.Auth;
 
 #line default
 #line hidden
@@ -105,8 +112,9 @@ using WebApplication.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 119 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
+#line 132 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
        
+
     [Parameter]
     public int Id { get; set; }
 
@@ -115,12 +123,19 @@ using WebApplication.Models;
     protected override async Task OnInitializedAsync()
     {
         jobListing = await JobListingData.GetJobListing(Id);
-        
     }
+
+    private void DeleteJobListing()
+    {
+        JobListingData.RemoveJobListing(jobListing.JobId.ToString());
+        NavigationManager.NavigateTo("/");
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJobListingData JobListingData { get; set; }
     }

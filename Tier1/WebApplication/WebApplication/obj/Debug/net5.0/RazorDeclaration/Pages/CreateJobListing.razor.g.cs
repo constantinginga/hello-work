@@ -13,85 +13,92 @@ namespace WebApplication.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 1 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 2 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 3 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 4 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 5 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 6 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 7 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 8 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 9 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using WebApplication;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\_Imports.razor"
+#line 10 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\_Imports.razor"
 using WebApplication.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
+#line 2 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
 using WebApplication.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
+#line 3 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
 using WebApplication.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
+using WebApplication.Auth;
 
 #line default
 #line hidden
@@ -105,63 +112,67 @@ using WebApplication.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 91 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
-           
-        private JobListing jobListing = new JobListing();
-        private List<string> jobRequirements = new List<string>();
-        private List<string> jobPrivilleges = new List<string>();
-        private DateTime ApplicationDate = DateTime.Now;
+#line 93 "C:\Users\klavs\OneDrive - ViaUC\Semester3\SEP\code\Tier1\WebApplication\WebApplication\Pages\CreateJobListing.razor"
+       
+    private JobListing jobListing = new JobListing();
+    private List<string> jobRequirements = new List<string>();
+    private List<string> jobPrivilleges = new List<string>();
+    private DateTime ApplicationDate = DateTime.Now;
 
 
-        protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
+    {
+        jobRequirements.Add(null);
+        jobPrivilleges.Add(null);
+    }
+
+    private async void CreateNewJobListing()
+    {
+        List<string> jobRequirementsCopy = new(jobRequirements);
+        foreach (var jr in jobRequirementsCopy)
         {
+            if (jr == null) jobRequirements.Remove(jr);
+        }
+        List<string> jobPrivilegesCopy = new(jobPrivilleges);
+
+        foreach (var jr in jobPrivilegesCopy)
+        {
+            if (jr == null) jobPrivilleges.Remove(jr);
+        }
+
+        jobListing.ApplicationDeadline = ApplicationDate.ToString("dd/MM/yyyy");
+        jobListing.JobRequirments = jobRequirements;
+        jobListing.JobPrivilleges = jobPrivilleges;
+        jobListing.Employer = ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email;
+        
+
+        await JobListingData.CreateJobListing(jobListing);
+        IList<JobListing> jbs = await JobListingData.GetJobListings();
+        NavigationManager.NavigateTo("/job-listings");
+    }
+
+    private void SetJobType(ChangeEventArgs args)
+    {
+        jobListing.JobType = args.Value.ToString();
+    }
+
+    private void AddJobReq()
+    {
+        if (jobRequirements.Count < 5)
             jobRequirements.Add(null);
+    }
+
+    private void AddJobPrivilege()
+    {
+        if (jobPrivilleges.Count < 5)
             jobPrivilleges.Add(null);
-        }
+    }
 
-        private async void CreateNewJobListing()
-        {
-
-            foreach (var jr in jobRequirements)
-            {
-                if (jr == null) jobRequirements.Remove(jr);
-            }
-
-            foreach (var jr in jobPrivilleges)
-            {
-                if (jr == null) jobPrivilleges.Remove(jr);
-            }
-
-            jobListing.ApplicationDeadline = ApplicationDate.ToString("dd/MM/yyyy");
-            jobListing.JobRequirments = jobRequirements;
-            jobListing.JobPrivilleges = jobPrivilleges;
-            await JobListingData.CreateJobListing(jobListing);
-            IList<JobListing> jbs = await JobListingData.GetJobListings();
-            Console.WriteLine(jbs.Count);
-            NavigationManager.NavigateTo("/job-listings");
-        }
-
-        private void SetJobType(ChangeEventArgs args)
-        {
-            jobListing.JobType = args.Value.ToString();
-        }
-
-        private void AddJobReq()
-        {
-            if (jobRequirements.Count < 5)
-            jobRequirements.Add(null);
-        }
-
-        private void AddJobPrivilege()
-        {
-            if (jobPrivilleges.Count < 5)
-                jobPrivilleges.Add(null);
-        }
-    
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJobListingData JobListingData { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }

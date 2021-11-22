@@ -4,134 +4,162 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class JobListing {
-    private int JobId;
-    private static final Gson gson = new Gson();
-    private String JobTitle;
-    private String JobType;
-    private String Location;
-    private float ExperienceLevel;
-    private ArrayList<String> JobRequirments;
-    private ArrayList<String> JobPrivilleges;
-    private String PhoneNumber;
-    private String Email;
-    private String ApplicationDeadline;
+public class JobListing
+{
+  private int JobId;
+  private static final Gson gson = new Gson();
+  private String JobTitle;
+  private String JobType;
+  private String Location;
+  private float ExperienceLevel;
+  private ArrayList<String> JobRequirments;
+  private ArrayList<String> JobPrivilleges;
+  private String PhoneNumber;
+  private String Email;
+  private String ApplicationDeadline;
+  private String Employer;
 
+  public JobListing(int jobId, String jobTitle, String jobType, String location,
+      float experienceLevel, ArrayList<String> jobRequirments,
+      ArrayList<String> jobPrivilleges, String phoneNumber, String email,
+      String applicationDeadline, String employer)
+  {
+    JobId = jobId;
+    JobTitle = jobTitle;
+    JobType = jobType;
+    Location = location;
+    ExperienceLevel = experienceLevel;
+    JobRequirments = jobRequirments;
+    JobPrivilleges = jobPrivilleges;
+    PhoneNumber = phoneNumber;
+    Email = email;
+    ApplicationDeadline = applicationDeadline;
+    Employer = employer;
+  }
 
-    public JobListing(int jobId, String jobTitle, String jobType, String location, int experienceLevel, ArrayList<String> jobRequirments,
-        ArrayList<String> jobPrivilleges, String phoneNumber, String email, String applicationDeadline)
-    {
-        JobId = jobId;
-        JobTitle = jobTitle;
-        JobType = jobType;
-        Location = location;
-        ExperienceLevel = experienceLevel;
-        JobRequirments = jobRequirments;
-        JobPrivilleges = jobPrivilleges;
-        PhoneNumber = phoneNumber;
-        Email = email;
-        ApplicationDeadline = applicationDeadline;
-    }
+  public int getJobId()
+  {
+    return JobId;
+  }
 
-    public int getJobId() {
-        return JobId;
-    }
+  public void setJobId(int jobId)
+  {
+    JobId = jobId;
+  }
 
-    public void setJobId(int jobId) {
-        JobId = jobId;
-    }
+  public boolean validate(JobListing jobListing)
+  {
+    return false;
+  }
 
+  public String toJson()
+  {
+    return gson.toJson(this);
+  }
 
-    public boolean validate(JobListing jobListing) {
-        return false;
-    }
+  public String getJobType()
+  {
+    return JobType;
+  }
 
-    public String toJson() {
-        return gson.toJson(this);
-    }
+  public void setJobType(String jobType)
+  {
+    JobType = jobType;
+  }
 
-    public String getJobType()
-    {
-        return JobType;
-    }
+  public String getLocation()
+  {
+    return Location;
+  }
 
-    public void setJobType(String jobType)
-    {
-        JobType = jobType;
-    }
+  public void setLocation(String location)
+  {
+    Location = location;
+  }
 
-    public String getLocation()
-    {
-        return Location;
-    }
+  public float getExperienceLevel()
+  {
+    return ExperienceLevel;
+  }
 
-    public void setLocation(String location)
-    {
-        Location = location;
-    }
+  public void setExperienceLevel(float experienceLevel)
+  {
+    ExperienceLevel = experienceLevel;
+  }
 
-    public float getExperienceLevel()
-    {
-        return ExperienceLevel;
-    }
+  public ArrayList<String> getJobRequirments()
+  {
+    return JobRequirments;
+  }
 
-    public void setExperienceLevel(float experienceLevel)
-    {
-        ExperienceLevel = experienceLevel;
-    }
+  public void setJobRequirments(ArrayList<String> jobRequirments)
+  {
+    JobRequirments = jobRequirments;
+  }
 
-    public ArrayList<String> getJobRequirments()
-    {
-        return JobRequirments;
-    }
+  public ArrayList<String> getJobPrivilleges()
+  {
+    return JobPrivilleges;
+  }
 
-    public void setJobRequirments(ArrayList<String> jobRequirments)
-    {
-        JobRequirments = jobRequirments;
-    }
+  public void setJobPrivilleges(ArrayList<String> jobPrivilleges)
+  {
+    JobPrivilleges = jobPrivilleges;
+  }
 
-    public ArrayList<String> getJobPrivilleges()
-    {
-        return JobPrivilleges;
-    }
+  public String getPhoneNumber()
+  {
+    return PhoneNumber;
+  }
 
-    public void setJobPrivilleges(ArrayList<String> jobPrivilleges)
-    {
-        JobPrivilleges = jobPrivilleges;
-    }
+  public void setPhoneNumber(String phoneNumber)
+  {
+    PhoneNumber = phoneNumber;
+  }
 
-    public String getPhoneNumber()
-    {
-        return PhoneNumber;
-    }
+  public String getJobTitle()
+  {
+    return JobTitle;
+  }
 
-    public void setPhoneNumber(String phoneNumber)
-    {
-        PhoneNumber = phoneNumber;
-    }
+  public void setJobTitle(String jobTitle)
+  {
+    JobTitle = jobTitle;
+  }
 
-    public String getEmail()
-    {
-        return Email;
-    }
+  public String getEmployer()
+  {
+    return Employer;
+  }
 
-    public void setEmail(String email)
-    {
-        Email = email;
-    }
+  public void setEmployer(String employer)
+  {
+    Employer = employer;
+  }
 
-    public String getApplicationDeadline()
-    {
-        return ApplicationDeadline;
-    }
+  public String getEmail()
+  {
+    return Email;
+  }
 
-    public void setApplicationDeadline(String applicationDeadline)
-    {
-        ApplicationDeadline = applicationDeadline;
-    }
+  public void setEmail(String email)
+  {
+    Email = email;
+  }
 
-    public static JobListing fromJson(String json) {
-        return gson.fromJson(json, JobListing.class);
-    }
+  public String getApplicationDeadline()
+  {
+    return ApplicationDeadline;
+  }
+
+  public void setApplicationDeadline(String applicationDeadline)
+  {
+    ApplicationDeadline = applicationDeadline;
+  }
+
+  public static JobListing fromJson(String json)
+  {
+    return gson.fromJson(json, JobListing.class);
+  }
 
 }

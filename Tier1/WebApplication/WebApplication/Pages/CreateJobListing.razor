@@ -1,12 +1,14 @@
 @page "/joblisting/create"
-@using WebApplication.Models 
+@using WebApplication.Models
 @using WebApplication.Data
+@using WebApplication.Auth
 @inject NavigationManager NavigationManager
 @inject IJobListingData JobListingData
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <body>
 <EditForm Model="@jobListing" OnValidSubmit="@CreateNewJobListing">
-   
+
     <div class="title">Create job listing</div>
     <div class="form-group">
         <div class="details">
@@ -18,13 +20,13 @@
                 <div class="input-box">
                     <label>Job type</label>
                     @* <InputText class="form-control" placeholder="Job Type" @bind-Value="jobListing.JobType"/> *@
-                     <select class="custom-select filter-property" @onchange="@((arg) => SetJobType(arg))">
-                            <option selected disabled>Select property</option>
-                                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)</option>
-                                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.PartTime)</option>
-                                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Internship)</option>
-                                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Volunteering)</option>
-                        </select> 
+                    <select class="custom-select filter-property" @onchange="@((arg) => SetJobType(arg))">
+                        <option selected disabled>Select property</option>
+                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)</option>
+                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.PartTime)</option>
+                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Internship)</option>
+                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Volunteering)</option>
+                    </select>
                 </div>
             </div>
             <div class="form-row">
@@ -34,7 +36,7 @@
                 </div>
                 <div class="input-box calendar">
                     <label>Deadline</label>
-                    <InputDate  @bind-Value="ApplicationDate" class="form-control"/>
+                    <InputDate @bind-Value="ApplicationDate" class="form-control"/>
                 </div>
                 <div class="experience-level">
                     <label>Experience level</label>
@@ -46,7 +48,7 @@
                     <label>Email</label>
                     <InputText class="form-control" placeholder="Email" @bind-Value="jobListing.Email"/>
                 </div>
-            
+
                 <div class="input-box">
                     <label>Phone number</label>
                     <InputText class="form-control" placeholder="Phone Number" @bind-Value="jobListing.PhoneNumber"/>
@@ -58,10 +60,10 @@
                     <button class="job-req-btn" type="button" @onclick="(() => AddJobReq())">+</button>
                 </div>
                 <div class="job-req-container">
-                    @foreach (var element in jobRequirements.Select((e, i) => new { Effect = e, Index = i }))
+                    @foreach (var element in jobRequirements.Select((e, i) => new {Effect = e, Index = i}))
                     {
                         <input class="form-control" id="@($"effect{element.Index}")" value="@element.Effect"
-                               @onchange="@(e => jobRequirements[element.Index] = e.Value.ToString())" placeholder="Job Requirement" />
+                               @onchange="@(e => jobRequirements[element.Index] = e.Value.ToString())" placeholder="Job Requirement"/>
                     }
                 </div>
             </div>
@@ -71,72 +73,76 @@
                     <button class="job-prv-btn" type="button" @onclick="(() => AddJobPrivilege())">+</button>
                 </div>
                 <div class="job-prv-container">
-                    @foreach (var element in jobPrivilleges.Select((e, i) => new { Effect = e, Index = i }))
+                    @foreach (var element in jobPrivilleges.Select((e, i) => new {Effect = e, Index = i}))
                     {
                         <div>
                             <input class="form-control" id="@($"effect{element.Index}")" value="@element.Effect"
-                                   @onchange="@(e => jobPrivilleges[element.Index] = e.Value.ToString())" placeholder="Job Privilege" />
+                                   @onchange="@(e => jobPrivilleges[element.Index] = e.Value.ToString())" placeholder="Job Privilege"/>
                         </div>
                     }
                 </div>
             </div>
             <button class="btn btn-dark" type="submit">Create</button>
-            <DataAnnotationsValidator />
-            <ValidationSummary />
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
         </div>
     </div>
 </EditForm>
 </body>
 
-    @code {
-        private JobListing jobListing = new JobListing();
-        private List<string> jobRequirements = new List<string>();
-        private List<string> jobPrivilleges = new List<string>();
-        private DateTime ApplicationDate = DateTime.Now;
+@code {
+    private JobListing jobListing = new JobListing();
+    private List<string> jobRequirements = new List<string>();
+    private List<string> jobPrivilleges = new List<string>();
+    private DateTime ApplicationDate = DateTime.Now;
 
 
-        protected override async Task OnInitializedAsync()
-        {
-            jobRequirements.Add(null);
-            jobPrivilleges.Add(null);
-        }
-
-        private async void CreateNewJobListing()
-        {
-
-            foreach (var jr in jobRequirements)
-            {
-                if (jr == null) jobRequirements.Remove(jr);
-            }
-
-            foreach (var jr in jobPrivilleges)
-            {
-                if (jr == null) jobPrivilleges.Remove(jr);
-            }
-
-            jobListing.ApplicationDeadline = ApplicationDate.ToString("dd/MM/yyyy");
-            jobListing.JobRequirments = jobRequirements;
-            jobListing.JobPrivilleges = jobPrivilleges;
-            await JobListingData.CreateJobListing(jobListing);
-            IList<JobListing> jbs = await JobListingData.GetJobListings();
-            Console.WriteLine(jbs.Count);
-            NavigationManager.NavigateTo("/job-listings");
-        }
-
-        private void SetJobType(ChangeEventArgs args)
-        {
-            jobListing.JobType = args.Value.ToString();
-        }
-
-        private void AddJobReq()
-        {
-            if (jobRequirements.Count < 5)
-            jobRequirements.Add(null);
-        }
-
-        private void AddJobPrivilege()
-        {
-            if (jobPrivilleges.Count < 5)
-                jobPrivilleges.Add(null);
-        }
+    protected override async Task OnInitializedAsync()
+    {
+        jobRequirements.Add(null);
+        jobPrivilleges.Add(null);
     }
+
+    private async void CreateNewJobListing()
+    {
+        List<string> jobRequirementsCopy = new(jobRequirements);
+        foreach (var jr in jobRequirementsCopy)
+        {
+            if (jr == null) jobRequirements.Remove(jr);
+        }
+        List<string> jobPrivilegesCopy = new(jobPrivilleges);
+
+        foreach (var jr in jobPrivilegesCopy)
+        {
+            if (jr == null) jobPrivilleges.Remove(jr);
+        }
+
+        jobListing.ApplicationDeadline = ApplicationDate.ToString("dd/MM/yyyy");
+        jobListing.JobRequirments = jobRequirements;
+        jobListing.JobPrivilleges = jobPrivilleges;
+        jobListing.Employer = ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email;
+        
+
+        await JobListingData.CreateJobListing(jobListing);
+        IList<JobListing> jbs = await JobListingData.GetJobListings();
+        NavigationManager.NavigateTo("/job-listings");
+    }
+
+    private void SetJobType(ChangeEventArgs args)
+    {
+        jobListing.JobType = args.Value.ToString();
+    }
+
+    private void AddJobReq()
+    {
+        if (jobRequirements.Count < 5)
+            jobRequirements.Add(null);
+    }
+
+    private void AddJobPrivilege()
+    {
+        if (jobPrivilleges.Count < 5)
+            jobPrivilleges.Add(null);
+    }
+
+}

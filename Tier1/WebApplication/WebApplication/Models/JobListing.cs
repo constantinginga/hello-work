@@ -36,6 +36,8 @@ namespace WebApplication.Models
         
         
         public string ApplicationDeadline { get; set; }
+        public string Employer { get; set; }
+
 
     }
 }
