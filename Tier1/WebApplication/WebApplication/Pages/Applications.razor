@@ -92,7 +92,6 @@ else
         applications = await ApplicationData.GetApplications();
         foreach (var application in applications)
         {
-            Console.WriteLine(application.Files.Count);
             if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
             {
                 if (application.employerEmail == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email)
