@@ -68,6 +68,24 @@ public class RabbitMQ implements MessagingHandler {
     }
 
     @Override
+    public ArrayList<Application> getApplications() {
+        CustomMessage message = new CustomMessage();
+        message.setMessageId(UUID.randomUUID().toString());
+        message.setType(MessageType.getAllApplications);
+        String response = "";
+        try {
+            response = rabbitClient.sendMessageRPC(message, "getAllApplications");
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        ArrayList<Application> applications = new ArrayList<>();
+        Collections
+                .addAll(applications, gson.fromJson(response, Application[].class));
+        return applications;
+
+    }
+
+    @Override
     public void createJobListing(JobListing jobListing) {
         CustomMessage message = new CustomMessage();
         message.setType(MessageType.createJobListing);

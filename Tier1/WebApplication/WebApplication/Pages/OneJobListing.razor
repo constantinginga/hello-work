@@ -121,6 +121,8 @@
             <polygon fill="currentColor" points="0 0 10 0 10 10"></polygon>
         </svg>
     </div>
+    <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="Apply" type="submit">Apply Job Listing</button>
+
     @if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
     {
         @if (jobListing.Employer.Equals(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email))
@@ -143,6 +145,10 @@
         jobListing = await JobListingData.GetJobListing(Id);
     }
 
+    private void Apply()
+    {
+        NavigationManager.NavigateTo($"/apply/{Id}");
+    }
     private void DeleteJobListing()
     {
         JobListingData.RemoveJobListing(jobListing.JobId.ToString());

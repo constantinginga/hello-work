@@ -11,10 +11,11 @@ import work.hello.model.RabbitMQ;
 public class ApplicationsController {
     private static final Gson gson = new Gson();
 
-//        @GetMapping("/application") public synchronized String getJobListings()
-//    {
-//        return gson.toJson(RabbitMQ.getInstance().getApplications());
-//    }
+    @GetMapping("/application")
+    public synchronized String getJobListings()
+    {
+        return gson.toJson(RabbitMQ.getInstance().getApplications());
+    }
     @PostMapping("/application")
     public synchronized String applyJobListing(@RequestBody String json) {
         Application newApplication = Application.fromJson(json);

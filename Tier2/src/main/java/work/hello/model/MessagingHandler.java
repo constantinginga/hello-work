@@ -10,7 +10,7 @@ public interface MessagingHandler
   ArrayList<JobListing> getJobListings();
   JobListing getJobListing(String id);
   void applyForJob(Application application);
-
+  ArrayList<Application> getApplications();
   void createJobListing(JobListing jobListing);
   boolean deleteJobListing(String id);
   User getUser(String email, String password) throws Exception;

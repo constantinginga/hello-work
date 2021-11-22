@@ -1,11 +1,12 @@
 ﻿@page "/applications"
 @using WebApplication.Models
 @using WebApplication.Data.Applications
+@using WebApplication.Auth
 
 @inject NavigationManager NavigationManager
 @inject IApplicationData ApplicationData
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
-<h3>Applications</h3>
 
 @if (applicationsToShow == null)
 {
@@ -21,32 +22,74 @@ else if (!applicationsToShow.Any())
 }
 else
 {
-    <table class="table">
-        <thead>
+  <div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
             <tr>
-                <th>Job listing</th>
-                <th>Application details</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Job listing
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Applicant Email
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Details
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Status
+              </th>
+                <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in applicationsToShow)
-            {
-                <tr>
-                    <td>@item.JobId</td>
-                    <td>@item.Details</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+          
+          @foreach (var item in applicationsToShow)
+          {
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+              @item.JobId
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                @item.employeEmail
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                @item.Details
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  @item.Status
+                </span>
+              </td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 }
 
 @code {
     private IList<Application> applications;
-    private IList<Application> applicationsToShow;
+    private IList<Application> applicationsToShow = new List<Application>();
 
     protected override async Task OnInitializedAsync()
     {
         applications = await ApplicationData.GetApplications();
-        applicationsToShow = applications;
+        foreach (var application in applications)
+        {
+            if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null){
+                if (application.employerEmail == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email)
+                    {
+                        applicationsToShow.Add(application);
+                    }
+            }
+        }
     }
 }

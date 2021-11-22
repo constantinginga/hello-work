@@ -6,10 +6,25 @@ public class Application {
     private int JobId;
     private String Details;
     private static final Gson gson = new Gson();
+    private String employeEmail;
+    private String employerEmail;
+    private Status Status;
 
-    public Application(int jobId, String details) {
+
+    public Application(int jobId, String details,String EmployeEmail,String EmployerEmail) {
         JobId = jobId;
         Details = details;
+        employeEmail = EmployeEmail;
+        employerEmail = EmployerEmail;
+        Status = work.hello.data.Status.Waiting;
+    }
+
+    public String getEmployeeEmail() {
+        return employeEmail;
+    }
+
+    public void setEmployeeEmail(String employee) {
+        employeEmail = employee;
     }
 
     public int getJobID() {
@@ -36,7 +51,10 @@ public class Application {
 
     public static Application fromJson( String json )
     {
-        return gson.fromJson( json, Application.class );
+        Application application = gson.fromJson( json, Application.class );
+        application.Status = work.hello.data.Status.Waiting;
+        System.out.println(application.Status);
+        return application;
     }
 
     public boolean validate()
