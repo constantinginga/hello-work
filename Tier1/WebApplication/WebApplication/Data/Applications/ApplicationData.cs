@@ -43,6 +43,7 @@ namespace WebApplication.Data.Applications
         {
              
              string responese = await _client.Get("");
+             Console.WriteLine(responese);
              Applications = JsonSerializer.Deserialize<List<Application>>(responese, new JsonSerializerOptions
              {
                  PropertyNamingPolicy = JsonNamingPolicy.CamelCase
