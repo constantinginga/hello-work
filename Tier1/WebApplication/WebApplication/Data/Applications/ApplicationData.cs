@@ -46,7 +46,6 @@ namespace WebApplication.Data.Applications
              Applications = JsonSerializer.Deserialize<List<Application>>(responese, new JsonSerializerOptions
              {
                  PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-
              });
              return Applications;
         }

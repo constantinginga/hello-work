@@ -2,6 +2,7 @@
 @using WebApplication.Models
 @using WebApplication.Data.Applications
 @using WebApplication.Auth
+@using WebApplication.Pages.Comp
 
 @inject NavigationManager NavigationManager
 @inject IApplicationData ApplicationData
@@ -47,7 +48,7 @@ else
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-          
+
           @foreach (var item in applicationsToShow)
           {
             <tr>
@@ -58,10 +59,10 @@ else
                 @item.employeEmail
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                @item.Details
+                 <DetailedApplication application="item"></DetailedApplication>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                
+
                 <span class="inline-flex text-xs leading-5 font-semibold rounded-full">
                     <select @onchange="@(e => ChangeHandler(item))" class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                       <option value="@status">@Status.Waiting</option>
@@ -86,7 +87,7 @@ else
     private Application ApplicationToUpdate;
     private Status status;
     protected override async Task OnInitializedAsync()
-    { 
+    {
         applications = await ApplicationData.GetApplications();
         foreach (var application in applications)
         {
@@ -97,7 +98,7 @@ else
                 }
             }
         }
-      
+
     }
     private async Task ChangeHandler(Application item)
     {

@@ -1,0 +1,28 @@
+﻿@page "/file"
+@inject IJSRuntime jsRuntime
+
+<h3>FileTesting</h3>
+<div>
+    <InputFile accept="application/pdf" OnChange="haters"></InputFile>
+
+    <button @onclick="DownloadFileFromStream">
+        Download File From Stream
+    </button>
+</div>
+
+@code {
+    private Byte[] buffers;
+    private async void haters(InputFileChangeEventArgs obj)
+    {
+        IBrowserFile imgFile = obj.File;
+        buffers = new byte[imgFile.Size];
+        await imgFile.OpenReadStream(10000000).ReadAsync(buffers);
+    }
+
+
+    private void DownloadFileFromStream()
+    {
+        jsRuntime.InvokeVoidAsync("saveAsFile", "test1",buffers );
+    }
+
+}

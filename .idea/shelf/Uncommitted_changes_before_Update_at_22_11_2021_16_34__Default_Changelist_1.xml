@@ -1,0 +1,39 @@
+<changelist name="Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1" date="1637595477799" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 22/11/2021 16.34 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="Shared/target/Shared-1.0-SNAPSHOT.jar" />
+    <option name="AFTER_PATH" value="Shared/target/Shared-1.0-SNAPSHOT.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/Shared-1.0-SNAPSHOT.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/WebApplication.pdb" />
+    <option name="AFTER_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/RazorDeclaration/WebApplication.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.dll" />
+    <option name="AFTER_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.dll" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Shared/target/classes/work/hello/data/JobListing.class" />
+    <option name="AFTER_PATH" value="Shared/target/classes/work/hello/data/JobListing.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/JobListing.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.Views.pdb" />
+    <option name="AFTER_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.Views.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.Views.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.Views.dll" />
+    <option name="AFTER_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.Views.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.Views.dll" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.assets.cache" />
+    <option name="AFTER_PATH" value="Tier1/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.assets.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.assets.cache" />
+  </binary>
+</changelist>

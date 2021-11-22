@@ -14,8 +14,8 @@ namespace WebApplication.Models
     {
         public Application()
         {
-            Status = Status.Waiting;
-        }       
+            Status = Models.Status.Waiting;
+        }
         [Required]
         [JsonPropertyName("JobId")]
 
@@ -33,5 +33,17 @@ namespace WebApplication.Models
         [JsonPropertyName("Name")]
         public string Name { get; set; }
 
+
+        public Dictionary<string, string> Files { get; set; }
+
+        public void SetFile(string fileName, Byte[] file)
+        {
+            Files.Add(fileName, System.Text.Encoding.UTF8.GetString(file));
+        }
+
+        public Byte[] GetFile(string fileName)
+        {
+            return System.Text.Encoding.UTF8.GetBytes(Files[fileName]);
+        }
     }
 }
