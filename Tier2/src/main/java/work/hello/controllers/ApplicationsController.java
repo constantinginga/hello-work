@@ -18,8 +18,10 @@ public class ApplicationsController {
     }
     @PostMapping("/application")
     public synchronized String applyJobListing(@RequestBody String json) {
+        System.out.println(json);
         Application newApplication = Application.fromJson(json);
         if (true) {
+            System.out.println(newApplication.getFiles().size());
             RabbitMQ.getInstance().applyForJob(newApplication);
             return newApplication.toJson();
         } else {

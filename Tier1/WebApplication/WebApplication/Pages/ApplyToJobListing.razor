@@ -5,7 +5,7 @@
 @using WebApplication.Auth
 
 @inject IJobListingData JobListingData
-@inject IApplicationData ApplicationData 
+@inject IApplicationData ApplicationData
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
@@ -34,29 +34,32 @@
                 </div>
                 <button class="rounded-lg btn" style="background-color: #3f6cdf" type="submit" value="Save">Apply</button>
                 <button class="rounded-lg btn bg-red-600" @onclick="Back">Back</button>
+                <InputFile accept="application/pdf" OnChange="SelectedFile"></InputFile>
 
             </EditForm>
         }
 
     </div>
 </div>
+
 @code {
+
     [Parameter]
     public int Id { get; set; }
 
     private Application application = new();
     private JobListing jobListing;
+    private Byte[] buffers;
 
     protected override async Task OnInitializedAsync()
     {
-        
         jobListing = await JobListingData.GetJobListing(Id);
         User user = ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser;
 
         application.employeEmail = user.Email;
         application.employerEmail = jobListing.Email;
         application.JobId = jobListing.JobId;
-        
+        application.Files = new();
     }
 
     private void Back()
@@ -66,9 +69,16 @@
 
     private void Save()
     {
-        
-        
+        application.SetFile("test", buffers);
         ApplicationData.AddApplication(application);
         NavigationManager.NavigateTo("/job-listings");
     }
+
+    private async void SelectedFile(InputFileChangeEventArgs obj)
+    {
+        IBrowserFile imgFile = obj.File;
+        buffers = new byte[imgFile.Size];
+        await imgFile.OpenReadStream(10000000).ReadAsync(buffers);
+    }
+
 }
