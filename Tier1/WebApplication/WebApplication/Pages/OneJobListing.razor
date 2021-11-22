@@ -70,28 +70,7 @@
                     <p class="text-gray-500 leading-loose text-lg">@jobListing.Email</p>
                     <p class="text-gray-500 leading-loose text-lg">@jobListing.PhoneNumber</p>
                 </div>
-                <div class="mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-4">
-                    <span class="mb-4 md:mb-6 inline-block bg-green-100 p-3 text-green-500 rounded">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-award" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#009988" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <circle cx="12" cy="9" r="6"/>
-                            <polyline points="9 14.2 9 21 12 19 15 21 15 14.2" transform="rotate(-30 12 9)"/>
-                            <polyline points="9 14.2 9 21 12 19 15 21 15 14.2" transform="rotate(30 12 9)"/>
-                        </svg>
-                    </span>
-                    <h4 class="mb-4 text-2xl font-bold font-heading">Our requirements</h4>
-                    <ul class="text-gray-500 leading-loose text-lg list-disc">
-                        @foreach (var d in @jobListing.JobPrivilleges)
-                        {
-                            <li>
-                                @d
-                            </li>
-                        }
-                        <li class="text-gray-500 leading-loose text-lg">@jobListing.ExperienceLevel Years of Experience</li>
-                    </ul>
-                    <h4 class="mb-4 text-2xl font-bold font-heading">Job type</h4>
-                    <p class="text-gray-500 leading-loose text-lg">@jobListing.JobType</p>
-                </div>
+               
                 <div class="w-full md:w-1/2 lg:w-1/4 px-4">
                     <span class="mb-4 md:mb-6 inline-block bg-green-100 p-3 text-green-500 rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#009988" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -105,6 +84,29 @@
                     </span>
                     <h4 class="mb-4 text-2xl font-bold font-heading">Deadline</h4>
                     <p class="text-gray-500 leading-loose text-lg">@jobListing.ApplicationDeadline</p>
+                    <h4 class="mb-4 text-2xl font-bold font-heading">Job type</h4>
+                    <p class="text-gray-500 leading-loose text-lg">@jobListing.JobType</p>
+                </div>
+                 <div class="mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-4">
+                    <span class="mb-4 md:mb-6 inline-block bg-green-100 p-3 text-green-500 rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-award" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#009988" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="12" cy="9" r="6"/>
+                            <polyline points="9 14.2 9 21 12 19 15 21 15 14.2" transform="rotate(-30 12 9)"/>
+                            <polyline points="9 14.2 9 21 12 19 15 21 15 14.2" transform="rotate(30 12 9)"/>
+                        </svg>
+                    </span>
+                    <h4 class="mb-4 text-2xl font-bold font-heading">Our requirements</h4>
+                    <ul class="text-gray-500 leading-loose text-lg list-disc">
+                        @foreach (var d in @jobListing.JobRequirments)
+                        {
+                            <li>
+                                @d
+                            </li>
+                        }
+                        <li class="text-gray-500 leading-loose text-lg">@jobListing.ExperienceLevel Years of Experience Required</li>
+                    </ul>
+                    
                 </div>
             </div>
         </div>
