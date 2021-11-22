@@ -85,6 +85,17 @@ public class MongoDBManager implements MongoDB {
     }
 
     @Override
+    public ArrayList<Application> getApplications() {
+        ArrayList<Application> applications = new ArrayList<>();
+        FindIterable<Document> iterDoc = applicationCollection.find();
+        for (Document document : iterDoc) {
+            String json = document.toJson(settings);
+            applications.add(gson.fromJson(json, Application.class));
+        }
+        return applications;
+    }
+
+    @Override
     public void applyJobListing(Application application) {
         Document document = Document.parse(application.toJson());
         applicationCollection.insertOne(document);

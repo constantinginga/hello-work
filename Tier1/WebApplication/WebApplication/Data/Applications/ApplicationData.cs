@@ -5,14 +5,16 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using WebApplication.Models;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace WebApplication.Data.Applications
 {
     public class ApplicationData : IApplicationData
     {
         private WebApiUtil _client;
-        private const string _url = "http://localhost:8082/applications";
+        private const string _url = "http://localhost:8082/application";
 
         public IList<Application> Applications { get; private set; }
 
@@ -39,19 +41,17 @@ namespace WebApplication.Data.Applications
 
         public async Task<IList<Application>> GetApplications()
         {
-            // if (!Applications.Any())
-            // {
-            //     string responese = await Get("");
-            //     Applications = JsonSerializer.Deserialize<List<Application>>(responese, new JsonSerializerOptions()
-            //     {
-            //     });
-            //
-            //     // have to do this because of the inheritance
-            //     //     JsonSerializerSettings settings = new() {TypeNameHandling = TypeNameHandling.All};
-            //     //     JobListings = JsonConvert.DeserializeObject<List<JobListing>>(responseBody, settings);
-            // }
+             if (!Applications.Any())
+             {
+                 string responese = await _client.Get("");
 
-            return Applications;
+                 Applications = JsonSerializer.Deserialize<List<Application>>(responese, new JsonSerializerOptions()
+                 {
+                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                 });
+                 
+             }
+             return Applications;
         }
 
     }
