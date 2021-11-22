@@ -11,9 +11,9 @@
 
 @if (applicationsToShow == null)
 {
-    <p>
-        <em>Loading...</em>
-    </p>
+    <div class="flex justify-center w-full pt-60">
+        <img src="/loading.gif" alt="description of gif"/>
+    </div>
 }
 else if (!applicationsToShow.Any())
 {
@@ -83,13 +83,14 @@ else
 
 @code {
     private IList<Application> applications;
-    private IList<Application> applicationsToShow = new List<Application>();
+    private IList<Application> applicationsToShow;
     private Application ApplicationToUpdate;
     private Status status;
 
     protected override async Task OnInitializedAsync()
     {
         applications = await ApplicationData.GetApplications();
+        applicationsToShow = new List<Application>();
         foreach (var application in applications)
         {
             if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
@@ -111,3 +112,4 @@ else
     }
 
 }
+
