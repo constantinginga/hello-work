@@ -52,9 +52,8 @@ namespace WebApplication.Data.Applications
 
         public async Task UpdateApplication(Application application)
         {
-            var toUpdateS = JsonSerializer.Serialize(application);
-            var responseMessage = await _client.Patch("",toUpdateS);
-            Console.Write(responseMessage);
+            string applicationJson = JsonSerializer.Serialize(application);
+            string response = await _client.Patch("", applicationJson);
         }
 
     }

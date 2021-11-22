@@ -64,12 +64,13 @@ else
                                 <td class="px-6 py-4 whitespace-nowrap">
 
                                     <span class="inline-flex text-xs leading-5 font-semibold rounded-full">
-                                        <select @onchange="@(e => ChangeHandler(item))" class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            <option value="@status">@Status.Waiting</option>
-                                            <option value="@status">@Status.Rejected</option>
-                                            <option value="@status">@Status.Accepted</option>
+                                        <select @bind="status"  class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <option value="1">Accepted</option>
+                                            <option value="2">Waiting</option>
+                                            <option value="2">Rejected</option>
                                         </select>
                                     </span>
+                                    <button @onclick="@(e => Update(@item))"> Update</button>
                                 </td>
                             </tr>
                         }
@@ -85,8 +86,7 @@ else
     private IList<Application> applications;
     private IList<Application> applicationsToShow = new List<Application>();
     private Application ApplicationToUpdate;
-    private Status status;
-
+    private int status;
     protected override async Task OnInitializedAsync()
     {
         applications = await ApplicationData.GetApplications();
@@ -102,12 +102,13 @@ else
         }
     }
 
-    private async Task ChangeHandler(Application item)
-    {
+    private async Task Update(Application item)
+    {   Console.Write(status);
         item.Status = status;
-        Console.Write(item.Status);
-        await ApplicationData.UpdateApplication(ApplicationToUpdate);
-        Console.Write("ok");
+        await ApplicationData.UpdateApplication(item);
+
     }
+
+ 
 
 }

@@ -18,10 +18,8 @@ public class ApplicationsController {
     }
     @PostMapping("/application")
     public synchronized String applyJobListing(@RequestBody String json) {
-        System.out.println(json);
         Application newApplication = Application.fromJson(json);
         if (true) {
-            System.out.println(newApplication.getFiles().size());
             RabbitMQ.getInstance().applyForJob(newApplication);
             return newApplication.toJson();
         } else {
@@ -31,7 +29,12 @@ public class ApplicationsController {
     @PatchMapping("/application")
     public synchronized String patchApplication(@RequestBody String json)
     {
-        System.out.println(json);
-        return "ok";
+        Application updatedApplication = Application.fromJson(json);
+        if (true) {
+            RabbitMQ.getInstance().updateApplication(updatedApplication);
+            return updatedApplication.toJson();
+        } else {
+            return "Validation incorrect";
+        }
     }
 }

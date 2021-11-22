@@ -11,6 +11,10 @@ public interface MongoDB {
 
     ArrayList<Application>getApplications();
 
+    Application getApplication(String id);
+
+    Application updateApplication(Application application);
+
     void applyJobListing(Application application);
 
     void createJobListing(JobListing jobListing);

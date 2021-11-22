@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Converters;
 
 namespace WebApplication.Models
 {
@@ -12,14 +13,14 @@ namespace WebApplication.Models
     {
         public Application()
         {
-            Status = Models.Status.Waiting;
         }
+        [Required] [JsonPropertyName("Id")] public int Id { get; set; }
 
         [Required] [JsonPropertyName("JobId")] public int JobId { get; set; }
         [JsonPropertyName("Details")] public string Details { get; set; }
         [JsonPropertyName("employeEmail")] public string employeEmail { get; set; }
         [JsonPropertyName("employerEmail")] public string employerEmail { get; set; }
-        public Status Status { get; set; }
+        [JsonPropertyName("Status")] public int Status { get; set; }
         [JsonPropertyName("Name")] public string Name { get; set; }
 
         [JsonPropertyName("Files")] public Dictionary<string, string> Files { get; set; }

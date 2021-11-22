@@ -11,20 +11,26 @@ public class Application {
     private static final Gson gson = new Gson();
     private String employeEmail;
     private String employerEmail;
-    private Status Status;
+    private int Status;
     private String Name;
     private Map<String, String> Files;
+    private int Id;
 
 
-    public Application(int jobId, String details,String EmployeEmail,String EmployerEmail,String job, Map<String,String> Files) {
+    public Application(int id,int jobId, String details,String EmployeEmail,int status,String EmployerEmail,String job, Map<String,String> Files) {
         JobId = jobId;
         Details = details;
         employeEmail = EmployeEmail;
         employerEmail = EmployerEmail;
-        Status = work.hello.data.Status.Waiting;
+        Status = status;
         this.Files = Files;
         Name =  job;
+        Id = id;
 
+    }
+
+    public int getId() {
+        return Id;
     }
 
     public String getEmployeeEmail() {
@@ -58,8 +64,6 @@ public class Application {
 
     public static Application fromJson(String json) {
         Application application = gson.fromJson(json, Application.class);
-        application.Status = work.hello.data.Status.Waiting;
-        System.out.println(application.Status);
         return application;
     }
 
