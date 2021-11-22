@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace WebApplication.Pages.Comp
+namespace WebApplication.Pages
 {
     #line hidden
     using System;
@@ -83,20 +83,21 @@ using WebApplication.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\Comp\RegisterEmployer.razor"
-using WebApplication.Models;
+#line 2 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
+using WebApplication.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\Comp\RegisterEmployer.razor"
-using WebApplication.Auth;
+#line 3 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
+using WebApplication.Models;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class RegisterEmployer : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/job-listings/{Id:int}")]
+    public partial class OneJobListing : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -104,35 +105,24 @@ using WebApplication.Auth;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\Comp\RegisterEmployer.razor"
+#line 119 "C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication\Pages\OneJobListing.razor"
        
-    private Employer _newEmployer = new Employer();
-    private string _errorMessage;
+    [Parameter]
+    public int Id { get; set; }
 
-    private async void AddNewEmployer()
+    private JobListing jobListing;
+
+    protected override async Task OnInitializedAsync()
     {
-        try
-        {
-            await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).CreateEmployer(_newEmployer);
-        }
-        catch (Exception e)
-        {
-            _errorMessage = e.Message;
-            StateHasChanged();
-            return;
-        }
-        Console.WriteLine("added");
-        await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(_newEmployer.Email, _newEmployer.Password);
-
-        navigationManager.NavigateTo("/");
+        jobListing = await JobListingData.GetJobListing(Id);
+        
     }
-
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJobListingData JobListingData { get; set; }
     }
 }
 #pragma warning restore 1591
