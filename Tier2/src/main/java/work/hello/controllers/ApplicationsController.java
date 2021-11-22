@@ -26,4 +26,10 @@ public class ApplicationsController {
             return "Validation incorrect";
         }
     }
+    @PatchMapping("/application")
+    public synchronized String patchApplication(@RequestBody String json)
+    {
+        System.out.println(json);
+        return "ok";
+    }
 }

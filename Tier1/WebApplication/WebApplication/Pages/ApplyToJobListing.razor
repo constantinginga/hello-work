@@ -52,7 +52,7 @@
         
         jobListing = await JobListingData.GetJobListing(Id);
         User user = ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser;
-
+        application.Name = jobListing.JobTitle;
         application.employeEmail = user.Email;
         application.employerEmail = jobListing.Email;
         application.JobId = jobListing.JobId;

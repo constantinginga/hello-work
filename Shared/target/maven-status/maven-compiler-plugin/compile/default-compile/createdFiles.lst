@@ -1,6 +1,7 @@
 work\hello\data\JobSeeker.class
 work\hello\data\CustomMessage.class
 work\hello\data\JobListing.class
+work\hello\data\Status.class
 work\hello\data\MessageType.class
 work\hello\data\Application.class
 work\hello\data\User.class

@@ -22,7 +22,7 @@ else if (!applicationsToShow.Any())
 }
 else
 {
-  <div class="flex flex-col">
+  <div class="flex flex-col w-full">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -52,7 +52,7 @@ else
           {
             <tr>
               <td class="px-6 py-4 whitespace-nowrap">
-              @item.JobId
+                @item.Name
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 @item.employeEmail
@@ -61,8 +61,13 @@ else
                 @item.Details
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                  @item.Status
+                
+                <span class="inline-flex text-xs leading-5 font-semibold rounded-full">
+                    <select @onchange="@(e => ChangeHandler(item))" class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      <option value="@status">@Status.Waiting</option>
+                      <option value="@status">@Status.Rejected</option>
+                      <option value="@status">@Status.Accepted</option>
+                    </select>
                 </span>
               </td>
             </tr>
@@ -78,18 +83,28 @@ else
 @code {
     private IList<Application> applications;
     private IList<Application> applicationsToShow = new List<Application>();
-
+    private Application ApplicationToUpdate;
+    private Status status;
     protected override async Task OnInitializedAsync()
-    {
+    { 
         applications = await ApplicationData.GetApplications();
         foreach (var application in applications)
         {
             if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null){
-                if (application.employerEmail == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email)
-                    {
-                        applicationsToShow.Add(application);
-                    }
+              if (application.employerEmail == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email)
+                {
+                  applicationsToShow.Add(application);
+                }
             }
         }
+      
     }
+    private async Task ChangeHandler(Application item)
+    {
+      item.Status = status;
+      Console.Write(item.Status);
+      await ApplicationData.UpdateApplication(ApplicationToUpdate);
+      Console.Write("ok");
+    }
+
 }

@@ -9,14 +9,16 @@ public class Application {
     private String employeEmail;
     private String employerEmail;
     private Status Status;
+    private String Name;
 
 
-    public Application(int jobId, String details,String EmployeEmail,String EmployerEmail) {
+    public Application(int jobId, String details,String EmployeEmail,String EmployerEmail,String job) {
         JobId = jobId;
         Details = details;
         employeEmail = EmployeEmail;
         employerEmail = EmployerEmail;
         Status = work.hello.data.Status.Waiting;
+        Name =  job;
     }
 
     public String getEmployeeEmail() {
