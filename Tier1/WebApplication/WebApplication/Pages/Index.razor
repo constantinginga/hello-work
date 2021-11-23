@@ -1,14 +1,26 @@
 ﻿@page "/"
+@using WebApplication.Data
+@inject IJobListingData JobListingData
 
 <div class="hw-main-page">
     <div class="hw-main-page__icons">
         <div>👷‍♂️</div>
         <div>👷‍♀️</div>
     </div>
-    <h1><span>123234</span> jobs listed here!</h1>
+    <h1><span>@JobAmount</span> jobs listed here!</h1>
     <p>Your dream job is waiting</p>
     <div class="searchbar-container">
-        <input type="text" name="searchbar" id="searchbar" placeholder="Search for a job" />
+        <input type="text" name="searchbar" id="searchbar" placeholder="Search for a job"/>
         <button id="searchbar-btn">Search</button>
     </div>
 </div>
+
+@code
+{
+    private int JobAmount { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        JobAmount = (await JobListingData.GetJobListings()).Count;
+    }
+}

@@ -33,8 +33,8 @@ namespace WebApplication
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<IJobListingData, JobListingData>();
-            services.AddScoped<IApplicationData, ApplicationData>();
+            services.AddSingleton<IJobListingData, JobListingData>();
+            services.AddSingleton<IApplicationData, ApplicationData>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             services.AddSingleton<AppState>();
