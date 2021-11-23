@@ -30,6 +30,7 @@ public class ApplicationsController {
     public synchronized String patchApplication(@RequestBody String json)
     {
         Application updatedApplication = Application.fromJson(json);
+        System.out.println(updatedApplication);
         if (true) {
             RabbitMQ.getInstance().updateApplication(updatedApplication);
             return updatedApplication.toJson();
