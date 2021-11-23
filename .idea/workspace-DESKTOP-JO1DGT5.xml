@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="Removed sout">
+      <change afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/wwwroot/loading.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Applications.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Applications.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/_Host.cshtml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="HW-18_Tudor" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="210elPoEqBbf7r6zqGCwzMYPbHt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Tier2" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication\WebApplication" />
+      <recent name="C:\Users\micha\IdeaProjects\hello-work\Tier1\WebApplication" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Tier2Application">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Tier2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/Tier2/pom.xml" goal="compile" />
+      </method>
+    </configuration>
+    <configuration name="Tier3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Tier3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier3Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="compile" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.Tier2Application" />
+      <item itemvalue="Spring Boot.Tier3Application" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="" />
+      <created>1637082585044</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637082585044</updated>
+      <workItem from="1637082588137" duration="443000" />
+      <workItem from="1637333274385" duration="85000" />
+      <workItem from="1637336249129" duration="646000" />
+      <workItem from="1637523403255" duration="15000" />
+      <workItem from="1637523581013" duration="597000" />
+      <workItem from="1637565406466" duration="3833000" />
+    </task>
+    <task id="LOCAL-00001" summary="commit before merge">
+      <created>1637082659854</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637082659854</updated>
+    </task>
+    <task id="LOCAL-00002" summary="commit before merge">
+      <created>1637333446241</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1637333446241</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added some methods for mongoDB that will come in handy for later requirements">
+      <created>1637335729432</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1637335729432</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Removed model package from tier3">
+      <created>1637336295625</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637336295625</updated>
+    </task>
+    <task id="LOCAL-00005" summary="debug files, idk somebody broke git ignore">
+      <created>1637565723166</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637565723166</updated>
+    </task>
+    <task id="LOCAL-00006" summary="debug files, idk somebody broke git ignore">
+      <created>1637566164130</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1637566164130</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Can download files now EPICCC">
+      <created>1637613761540</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1637613761540</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Removed sout">
+      <created>1637614191941</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1637614191941</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HW-31" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit before merge" />
+    <MESSAGE value="Added some methods for mongoDB that will come in handy for later requirements" />
+    <MESSAGE value="Removed model package from tier3" />
+    <MESSAGE value="debug files, idk somebody broke git ignore" />
+    <MESSAGE value="Can download files now EPICCC" />
+    <MESSAGE value="Removed sout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed sout" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+</project>

@@ -1,0 +1,115 @@
+﻿@page "/applications"
+@using WebApplication.Models
+@using WebApplication.Data.Applications
+@using WebApplication.Auth
+@using WebApplication.Pages.Comp
+
+@inject NavigationManager NavigationManager
+@inject IApplicationData ApplicationData
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+
+@if (applicationsToShow == null)
+{
+    <div class="flex justify-center w-full pt-60">
+        <img src="/loading.gif" alt="description of gif"/>
+    </div>
+}
+else if (!applicationsToShow.Any())
+{
+    <p>
+        <em> No applications to show </em>
+    </p>
+}
+else
+{
+    <div class="flex flex-col w-full">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Job listing
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Applicant Email
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Details
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+
+                        @foreach (var item in applicationsToShow)
+                        {
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @item.Name
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @item.employeEmail
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <DetailedApplication application="item"></DetailedApplication>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+
+                                    <span class="inline-flex text-xs leading-5 font-semibold rounded-full">
+                                        <select @onchange="@(e => ChangeHandler(item))" class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <option value="@status">@Status.Waiting</option>
+                                            <option value="@status">@Status.Rejected</option>
+                                            <option value="@status">@Status.Accepted</option>
+                                        </select>
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private IList<Application> applications;
+    private IList<Application> applicationsToShow;
+    private Application ApplicationToUpdate;
+    private Status status;
+
+    protected override async Task OnInitializedAsync()
+    {
+        applications = await ApplicationData.GetApplications();
+        applicationsToShow = new List<Application>();
+        foreach (var application in applications)
+        {
+            if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
+            {
+                if (application.employerEmail == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email)
+                {
+                    applicationsToShow.Add(application);
+                }
+            }
+        }
+    }
+
+    private async Task ChangeHandler(Application item)
+    {
+        item.Status = status;
+        Console.Write(item.Status);
+        await ApplicationData.UpdateApplication(ApplicationToUpdate);
+        Console.Write("ok");
+    }
+
+}
+
