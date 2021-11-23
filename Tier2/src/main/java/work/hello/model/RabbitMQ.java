@@ -160,6 +160,24 @@ public class RabbitMQ implements MessagingHandler {
                 Employer.class);
     }
 
+    @Override
+    public void uploadFile(ApplicationFile applicationFile) {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.uploadApplicationFile);
+        message.setContent(applicationFile.toJson());
+        rabbitClient.sendMessage(message, message.getType().name());
+
+    }
+
+    @Override
+    public String getApplicationFile(String id, String name) throws IOException, InterruptedException {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.getApplicationFile);
+        message.setMessageId(id);
+        message.setContent(name);
+        return rabbitClient.sendMessageRPC(message, message.getType().name());
+    }
+
     public static MessagingHandler getInstance() {
         if (instance == null) {
             instance = new RabbitMQ();

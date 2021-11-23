@@ -1,0 +1,9 @@
+﻿.details{
+    background: #fafafa;
+    border-radius: .5rem;
+    padding: 2rem;
+    background: #fafafa;
+}
+.trashcan:hover {
+    transform: scale(1.3);
+}

@@ -10,11 +10,12 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 
-<div class="w-full">
-    <div style="background-color: #fafafa" class="rounded-lg flex flex-col justify-center p-3">
+<div class="flex justify-center w-full pt-2">
+    <div class="lg:w-6/12 details rounded-lg">
+
         @if (jobListing != null)
         {
-            <div class="rounded-lg font-bold text-xl">Applying for position: @jobListing</div>
+            <div class="rounded-lg font-bold text-xl">Applying to @jobListing.JobTitle</div>
         }
 
         @if (jobListing == null)
@@ -28,15 +29,40 @@
                 <ValidationSummary/>
                 <div class="form-group">
                     <p class="font-bold mt-4">Application details:</p>
-                    <InputTextArea class="w-1/3" placeholder="Your text for application" @bind-Value="application.Details"/>
+                    <InputTextArea class="w-full p-2" placeholder="Your text for application" @bind-Value="application.Details"/>
                     <InputTextArea class="hidden" placeholder="Your text for application" @bind-Value="application.employerEmail"/>
                     <InputTextArea class="hidden" placeholder="Your text for application" @bind-Value="application.employeEmail"/>
                     <InputNumber class="hidden" placeholder="Your text for application" @bind-Value="application.Status"/>
                 </div>
+                <div class="w-full p-2">
+                    <table>
+                        @if (files.Count != 0)
+                        {
+                            <tr>
+                                <th class="px-2">Added files</th>
+                                <th class="px-2">Remove</th>
+                            </tr>
+                        }
+                        @foreach (var file in files)
+                        {
+                            <tr>
+                                <td class="whitespace-nowrap px-2">@file.Key</td>
+                                <td>
+                                    <i @onclick="@(() => RemovePdf(file.Key))" class="trashcan oi oi-trash px-2" style="color: lightgray">
+                                    </i>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    <p class="font-bold mt-4">Add pdf file to application (CV, Resume, Motivation Letter, etc.):</p>
+
+                    <InputFile accept="application/pdf" OnChange="SelectedFile">Upload pdf</InputFile>
+
+                </div>
                 <button class="rounded-lg btn" style="background-color: #3f6cdf" type="submit" value="Save">Apply</button>
                 <button class="rounded-lg btn bg-red-600" @onclick="Back">Back</button>
-                <InputFile accept="application/pdf" OnChange="SelectedFile"></InputFile>
-
             </EditForm>
         }
 
@@ -50,7 +76,9 @@
 
     private Application application = new();
     private JobListing jobListing;
+    private string fileName;
     private Byte[] buffers;
+    private Dictionary<string, Byte[]> files;
 
     protected override async Task OnInitializedAsync()
     {
@@ -63,7 +91,8 @@
         Random random = new Random();
         application.Id = random.Next();
         application.Status = 0;
-        application.Files = new();
+        application.Files = new List<string>();
+        files = new Dictionary<string, byte[]>();
     }
 
     private void Back()
@@ -73,7 +102,10 @@
 
     private void Save()
     {
-        application.SetFile("test", buffers);
+        foreach (var file in files)
+        {
+            ApplicationData.UploadFile(application.Id, file.Key,application.AddFile(file.Key, file.Value));
+        }
         ApplicationData.AddApplication(application);
         NavigationManager.NavigateTo("/job-listings");
     }
@@ -81,8 +113,18 @@
     private async void SelectedFile(InputFileChangeEventArgs obj)
     {
         IBrowserFile imgFile = obj.File;
+        fileName = obj.File.Name;
+        fileName = fileName.Replace(".pdf", "");
         buffers = new byte[imgFile.Size];
         await imgFile.OpenReadStream(10000000).ReadAsync(buffers);
+        files[fileName] = buffers;
+        StateHasChanged();
+    }
+
+    private void RemovePdf(string fileKey)
+    {
+        files.Remove(fileKey);
+        StateHasChanged();
     }
 
 }

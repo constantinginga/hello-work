@@ -30,4 +30,8 @@ public interface MessagingHandler
 
   Employer createEmployer(Employer employer)
       throws IOException, InterruptedException;
+
+    void uploadFile(ApplicationFile applicationFile);
+
+  String getApplicationFile(String id, String name) throws IOException, InterruptedException;
 }

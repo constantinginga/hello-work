@@ -1,7 +1,9 @@
 ﻿@using WebApplication.Models
+@using WebApplication.Data.Applications
 @inject NavigationManager uriHelper;
 @inject IJSRuntime jsRuntime
 
+@inject IApplicationData ApplicationData
 
 <button class="btn btn-outline-dark w-full btn-outline-primary" data-toggle="modal" data-target="#divCollapse@(application.Id)">
     more
@@ -24,8 +26,8 @@
                     foreach (var file in application.Files)
                     {
                         <div class="pb-2 flex justify-center w-full">
-                            <a>@file.Key</a>
-                            <button class="btn btn-outline-dark w-10/12" data-dismiss="model" @onclick="@(e => DownloadFile(file.Key))">download</button>
+                            <a>@file</a>
+                            <button class="btn btn-outline-dark w-10/12" data-dismiss="model" @onclick="@(e => DownloadFile(file))">download</button>
                         </div>
                     }
                 }
@@ -43,10 +45,9 @@
     public Application application { get; set; }
 
 
-    public void DownloadFile(string file)
+    public async void DownloadFile(string file)
     {
-        Console.WriteLine(application.employeEmail);
-        jsRuntime.InvokeVoidAsync("saveAsFile", file, application.Files[file]);
+        jsRuntime.InvokeVoidAsync("saveAsFile", file, Application.GetFile(await ApplicationData.GetFile(application.Id, file)));
     }
 
 }

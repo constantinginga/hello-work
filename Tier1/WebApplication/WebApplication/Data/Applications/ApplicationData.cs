@@ -15,6 +15,10 @@ namespace WebApplication.Data.Applications
     {
         private WebApiUtil _client;
         private const string _url = "http://localhost:8082/application";
+        private const string _urlFile = "http://localhost:8082/file";
+
+        private const string _fileArgs = "?id=%id%&name=%name%";
+
 
         public IList<Application> Applications { get; private set; }
 
@@ -41,13 +45,24 @@ namespace WebApplication.Data.Applications
 
         public async Task<IList<Application>> GetApplications()
         {
-             
-             string responese = await _client.Get("");
-             Applications = JsonSerializer.Deserialize<List<Application>>(responese, new JsonSerializerOptions
-             {
-                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-             });
-             return Applications;
+            string responese = await _client.Get("");
+            Applications = JsonSerializer.Deserialize<List<Application>>(responese, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+            return Applications;
+        }
+
+        public async void UploadFile(int applicationId, string fileName, string file)
+        {
+            _client.Post(_urlFile,
+                _fileArgs.Replace("%id%", applicationId.ToString()).Replace("%name%", fileName), file);
+        }
+
+        public async Task<string>  GetFile(int applicationId, string fileName)
+        {
+            return await _client.Get(_urlFile,
+                _fileArgs.Replace("%id%", applicationId.ToString()).Replace("%name%", fileName));
         }
 
         public async Task UpdateApplication(Application application)
@@ -55,6 +70,5 @@ namespace WebApplication.Data.Applications
             string applicationJson = JsonSerializer.Serialize(application);
             string response = await _client.Patch("", applicationJson);
         }
-
     }
 }

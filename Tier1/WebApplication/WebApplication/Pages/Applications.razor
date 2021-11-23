@@ -66,12 +66,32 @@ else
                                 <td class="px-6 py-4 whitespace-nowrap">
 
                                     <span class="inline-flex text-xs leading-5 font-semibold rounded-full">
-                                        
+
                                         <select @onchange="@(e => (ChangeHandler(item, e)))" class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            <option value="" disabled selected>@_dictionary.FirstOrDefault(d => d.Key == item.Status).Value</option>
-                                            <option value="0">Waiting</option>
-                                            <option value="1">Rejected</option>
-                                            <option value="2">Accepted</option>
+                                            @if (item.Status == 0)
+                                            {
+                                                <option value="0" selected="">Waiting</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="0">Waiting</option>
+                                            }
+                                            @if (item.Status == 1)
+                                            {
+                                                <option value="1" selected="">Rejected</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="1">Rejected</option>
+                                            }
+                                            @if (item.Status == 2)
+                                            {
+                                                <option value="2" selected="">Accepted</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="2">Accepted</option>
+                                            }
                                         </select>
                                     </span>
                                 </td>
@@ -89,13 +109,8 @@ else
     private IList<Application> applications;
     private IList<Application> applicationsToShow;
     private Application ApplicationToUpdate;
-    private IDictionary<int, string> _dictionary = new Dictionary<int, string>();
     protected override async Task OnInitializedAsync()
     {
-        _dictionary.Add(0,"Waiting");
-        _dictionary.Add(1,"Rejected");
-        _dictionary.Add(2,"Accepted");
-
         applications = await ApplicationData.GetApplications();
         applicationsToShow = new List<Application>();
         foreach (var application in applications)
@@ -110,11 +125,10 @@ else
         }
     }
 
-    private async Task ChangeHandler(Application item,ChangeEventArgs status)
+    private async Task ChangeHandler(Application item, ChangeEventArgs status)
     {
         item.Status = Int32.Parse(status.Value.ToString());
         await ApplicationData.UpdateApplication(item);
     }
 
 }
-

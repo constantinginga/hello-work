@@ -2,6 +2,7 @@ package work.hello.data;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,9 +16,9 @@ public class Application {
     private String Name;
     private int Id;
 
-    private Map<String, String> Files;
+    private ArrayList<String> Files;
 
-    public Application(int Id,int jobId, String details,String EmployeEmail,int status,String EmployerEmail,String job, Map<String,String> Files) {
+    public Application(int Id,int jobId, String details,String EmployeEmail,int status,String EmployerEmail,String job, ArrayList<String>  Files) {
         JobId = jobId;
         Details = details;
         employeEmail = EmployeEmail;
@@ -71,11 +72,11 @@ public class Application {
         return application;
     }
 
-    public Map<String, String> getFiles() {
+    public ArrayList<String>  getFiles() {
         return this.Files;
     }
 
-    public void setFiles(Map<String, String> files) {
+    public void setFiles(ArrayList<String> files) {
         this.Files = files;
     }
 

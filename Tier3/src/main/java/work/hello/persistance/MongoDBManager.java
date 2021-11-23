@@ -17,6 +17,7 @@ public class MongoDBManager implements MongoDB {
     private MongoDatabase mongoDatabase;
     private MongoCollection<Document> jobCollection;
     private MongoCollection<Document> applicationCollection;
+    private MongoCollection<Document> applicationCollectionFiles;
     private MongoCollection<Document> jobSeekerCollection;
     private MongoCollection<Document> employerCollection;
     private JsonWriterSettings settings;
@@ -30,6 +31,7 @@ public class MongoDBManager implements MongoDB {
             jobCollection = mongoDatabase.getCollection("Jobs");
             jobCollection.createIndex(Indexes.ascending("JobID"));
             applicationCollection = mongoDatabase.getCollection("Applications");
+            applicationCollectionFiles = mongoDatabase.getCollection("ApplicationFiles");
             jobSeekerCollection = mongoDatabase.getCollection("JobSeekers");
             employerCollection = mongoDatabase.getCollection("Employers");
             settings = JsonWriterSettings.builder().int64Converter(
@@ -83,6 +85,7 @@ public class MongoDBManager implements MongoDB {
         }
         return null;
     }
+
     @Override
     public Application getApplication(String id) {
         Document doc = applicationCollection.find(Filters.eq("Id", id)).first();
@@ -210,6 +213,16 @@ public class MongoDBManager implements MongoDB {
     @Override
     public void removeJobListing(String id) {
         jobCollection.deleteOne(Filters.eq("JobId", Integer.parseInt(id)));
+    }
+
+    @Override
+    public void uploadApplicationFile(ApplicationFile fromJson) {
+        applicationCollectionFiles.insertOne(Document.parse(fromJson.toJson()));
+    }
+
+    @Override
+    public String getApplicationFile(String messageId, String content) {
+        return gson.fromJson(applicationCollectionFiles.find(Filters.eq("ApplicationId", messageId)).filter(Filters.eq("FileName", content)).first().toJson(settings), ApplicationFile.class).getFile();
     }
 
 }

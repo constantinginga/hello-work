@@ -41,4 +41,7 @@ public interface MongoDB {
 
     void removeJobListing(String id);
 
+    void uploadApplicationFile(ApplicationFile fromJson);
+
+    String getApplicationFile(String messageId, String content);
 }

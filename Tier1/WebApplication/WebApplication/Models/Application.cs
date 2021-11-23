@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
+using WebApplication.Data.Applications;
 
 namespace WebApplication.Models
 {
@@ -22,16 +23,17 @@ namespace WebApplication.Models
         [JsonPropertyName("employerEmail")] public string employerEmail { get; set; }
         [JsonPropertyName("Status")] public int Status { get; set; }
         [JsonPropertyName("Name")] public string Name { get; set; }
-        [JsonPropertyName("Files")] public Dictionary<string, string> Files { get; set; }
+        [JsonPropertyName("Files")] public List<string> Files { get; set; }
 
-        public void SetFile(string fileName, Byte[] file)
+        public string AddFile(string fileName, Byte[] file)
         {
-            Files.Add(fileName, Convert.ToBase64String(file));
+            Files.Add(fileName);
+            return Convert.ToBase64String(file);
         }
 
-        public Byte[] GetFile(string fileName)
+        public static Byte[] GetFile(string file)
         {
-            return Convert.FromBase64String(Files[fileName]);
+            return Convert.FromBase64String(file);
         }
     }
 }
