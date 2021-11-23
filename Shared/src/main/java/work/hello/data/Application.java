@@ -13,11 +13,11 @@ public class Application {
     private String employerEmail;
     private int Status;
     private String Name;
-    private Map<String, String> Files;
     private int Id;
 
+    private Map<String, String> Files;
 
-    public Application(int id,int jobId, String details,String EmployeEmail,int status,String EmployerEmail,String job, Map<String,String> Files) {
+    public Application(int Id,int jobId, String details,String EmployeEmail,int status,String EmployerEmail,String job, Map<String,String> Files) {
         JobId = jobId;
         Details = details;
         employeEmail = EmployeEmail;
@@ -25,12 +25,16 @@ public class Application {
         Status = status;
         this.Files = Files;
         Name =  job;
-        Id = id;
+        this.Id = Id;
 
     }
 
     public int getId() {
         return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getEmployeeEmail() {

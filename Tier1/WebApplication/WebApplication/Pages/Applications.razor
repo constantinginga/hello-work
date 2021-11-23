@@ -3,6 +3,8 @@
 @using WebApplication.Data.Applications
 @using WebApplication.Auth
 @using WebApplication.Pages.Comp
+@using System.Linq
+@using Microsoft.AspNetCore.Http.Features
 
 @inject NavigationManager NavigationManager
 @inject IApplicationData ApplicationData
@@ -64,13 +66,14 @@ else
                                 <td class="px-6 py-4 whitespace-nowrap">
 
                                     <span class="inline-flex text-xs leading-5 font-semibold rounded-full">
-                                        <select @bind="@status"  class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        
+                                        <select @onchange="@(e => (ChangeHandler(item, e)))" class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <option value="" disabled selected>@_dictionary.FirstOrDefault(d => d.Key == item.Status).Value</option>
                                             <option value="0">Waiting</option>
                                             <option value="1">Rejected</option>
                                             <option value="2">Accepted</option>
                                         </select>
                                     </span>
-                                    <button @onclick="@(e=> (ChangeHandler(item)))">Update</button>
                                 </td>
                             </tr>
                         }
@@ -86,10 +89,13 @@ else
     private IList<Application> applications;
     private IList<Application> applicationsToShow;
     private Application ApplicationToUpdate;
-    private int status;
-
+    private IDictionary<int, string> _dictionary = new Dictionary<int, string>();
     protected override async Task OnInitializedAsync()
     {
+        _dictionary.Add(0,"Waiting");
+        _dictionary.Add(1,"Rejected");
+        _dictionary.Add(2,"Accepted");
+
         applications = await ApplicationData.GetApplications();
         applicationsToShow = new List<Application>();
         foreach (var application in applications)
@@ -104,13 +110,10 @@ else
         }
     }
 
-    private async Task ChangeHandler(Application item)
+    private async Task ChangeHandler(Application item,ChangeEventArgs status)
     {
-        item.Status = status;
-        Console.WriteLine(item.Status);
+        item.Status = Int32.Parse(status.Value.ToString());
         await ApplicationData.UpdateApplication(item);
-        Console.Write("ok");
-        Console.WriteLine(status);
     }
 
 }

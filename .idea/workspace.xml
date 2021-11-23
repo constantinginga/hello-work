@@ -10,7 +10,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34__Default_Changelist_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/Shared.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/Shared.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
@@ -19,7 +19,8 @@
       <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/persistance/MongoDBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/persistance/MongoDBManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Tier2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/controllers/ApplicationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/controllers/ApplicationsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Tier3Application">
+  <component name="RunManager" selected="Spring Boot.Tier2Application">
     <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Tier2" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
