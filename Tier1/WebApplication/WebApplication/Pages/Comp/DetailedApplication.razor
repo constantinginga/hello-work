@@ -3,10 +3,10 @@
 @inject IJSRuntime jsRuntime
 
 
-<button class="btn btn-outline-dark w-full btn-outline-primary" data-toggle="modal" data-target="#myModal">
-    More
+<button class="btn btn-outline-dark w-full btn-outline-primary" data-toggle="modal" data-target="#divCollapse@(application.Id)">
+    #@application.Id
 </button>
-<div class="modal" id="myModal" role="dialog">
+<div class="modal" id="divCollapse@(application.Id)" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -42,9 +42,11 @@
     [Parameter]
     public Application application { get; set; }
 
+
     public void DownloadFile(string file)
     {
-        jsRuntime.InvokeVoidAsync("saveAsFile", "file", application.Files[file]);
+        Console.WriteLine(application.employeEmail);
+        jsRuntime.InvokeVoidAsync("saveAsFile", file, application.Files[file]);
     }
 
 }
