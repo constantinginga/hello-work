@@ -22,7 +22,6 @@ namespace WebApplication.Models
         [JsonPropertyName("employerEmail")] public string employerEmail { get; set; }
         [JsonPropertyName("Status")] public int Status { get; set; }
         [JsonPropertyName("Name")] public string Name { get; set; }
-
         [JsonPropertyName("Files")] public Dictionary<string, string> Files { get; set; }
 
         public void SetFile(string fileName, Byte[] file)
