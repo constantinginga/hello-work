@@ -108,9 +108,9 @@ public class MongoDBManager implements MongoDB {
 
     @Override
     public Application updateApplication(Application application) {
-        System.out.println("here");
-
-        applicationCollection.updateOne(Filters.eq("Id", application.getId()), Document.parse(application.toJson()));
+        applicationCollection.find(Filters.eq("Id", application.getId())).first();
+        System.out.println(Application.fromJson(applicationCollection.find(Filters.eq("Id", application.getId())).first().toJson()).toJson());
+        applicationCollection.replaceOne(Filters.eq("Id", application.getId()), Document.parse(application.toJson()));
         return getApplication(String.valueOf(application.getId()));
     }
 
