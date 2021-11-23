@@ -1,4 +1,5 @@
 ﻿@page "/job-listings"
+@using Microsoft.AspNetCore.WebUtilities
 @using WebApplication.Models
 @using WebApplication.Data
 
@@ -132,9 +133,19 @@
     protected override async Task OnInitializedAsync()
     {
         jobListings = await JobListingData.GetJobListings();
-        jobListingToShow = jobListings;
         filteredJobs = new List<JobListing>();
         filteredByExperience = new List<JobListing>();
+
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("title", out var _title))
+        {
+            jobListingToShow = new List<JobListing>();
+            foreach (var j in jobListings)
+            {
+                if (j.JobTitle.ToLower().Contains(((string)_title).ToLower())) jobListingToShow.Add(j);
+            }
+        }
+        else jobListingToShow = jobListings;
         StateHasChanged();
     }
 
