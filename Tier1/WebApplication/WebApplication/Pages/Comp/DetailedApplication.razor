@@ -1,0 +1,52 @@
+﻿@using WebApplication.Models
+@inject NavigationManager uriHelper;
+@inject IJSRuntime jsRuntime
+
+
+<button class="btn btn-outline-dark w-full btn-outline-primary" data-toggle="modal" data-target="#divCollapse@(application.Id)">
+    #@application.Id
+</button>
+<div class="modal" id="divCollapse@(application.Id)" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Details</h2>
+                <button type="button" class="btn close" data-dismiss="modal">
+                    <i class="trashcan oi oi-circle-x" style="color: lightgray">
+                    </i>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if (application.Files != null)
+                {
+                    foreach (var file in application.Files)
+                    {
+                        <div class="pb-2 flex justify-center w-full">
+                            <a>@file.Key</a>
+                            <button class="btn btn-outline-dark w-10/12" data-dismiss="model" @onclick="@(e => DownloadFile(file.Key))">download</button>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@code {
+
+    [Parameter]
+    public Application application { get; set; }
+
+
+    public void DownloadFile(string file)
+    {
+        Console.WriteLine(application.employeEmail);
+        jsRuntime.InvokeVoidAsync("saveAsFile", file, application.Files[file]);
+    }
+
+}

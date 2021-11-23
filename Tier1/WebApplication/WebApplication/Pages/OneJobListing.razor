@@ -70,7 +70,7 @@
                     <p class="text-gray-500 leading-loose text-lg">@jobListing.Email</p>
                     <p class="text-gray-500 leading-loose text-lg">@jobListing.PhoneNumber</p>
                 </div>
-               
+
                 <div class="w-full md:w-1/2 lg:w-1/4 px-4">
                     <span class="mb-4 md:mb-6 inline-block bg-green-100 p-3 text-green-500 rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#009988" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -87,7 +87,7 @@
                     <h4 class="mb-4 text-2xl font-bold font-heading">Job type</h4>
                     <p class="text-gray-500 leading-loose text-lg">@jobListing.JobType</p>
                 </div>
-                 <div class="mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-4">
+                <div class="mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-4">
                     <span class="mb-4 md:mb-6 inline-block bg-green-100 p-3 text-green-500 rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-award" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#009988" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -106,7 +106,7 @@
                         }
                         <li class="text-gray-500 leading-loose text-lg">@jobListing.ExperienceLevel Years of Experience Required</li>
                     </ul>
-                    
+
                 </div>
             </div>
         </div>
@@ -125,6 +125,7 @@
 
     @if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
     {
+
         @if (jobListing.Employer.Equals(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email))
         {
             <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="DeleteJobListing" type="submit">Remove Job Listing</button>
@@ -149,6 +150,7 @@
     {
         NavigationManager.NavigateTo($"/apply/{Id}");
     }
+
     private void DeleteJobListing()
     {
         JobListingData.RemoveJobListing(jobListing.JobId.ToString());

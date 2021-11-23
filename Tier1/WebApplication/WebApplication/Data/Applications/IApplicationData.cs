@@ -11,6 +11,7 @@ namespace WebApplication.Data.Applications
         Task<Application> AddApplication(Application application);
 
         Task<IList<Application>> GetApplications();
-        
+        public Task UpdateApplication(Application application);
+
     }
 }

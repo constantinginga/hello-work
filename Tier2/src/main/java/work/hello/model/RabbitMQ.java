@@ -68,6 +68,15 @@ public class RabbitMQ implements MessagingHandler {
     }
 
     @Override
+    public void updateApplication(Application application) {
+        CustomMessage message = new CustomMessage();
+        message.setMessageId(UUID.randomUUID().toString());
+        message.setType(MessageType.updateApplication);
+        message.setContent(application.toJson());
+        rabbitClient.sendMessage(message, "updateApplication");
+    }
+
+    @Override
     public ArrayList<Application> getApplications() {
         CustomMessage message = new CustomMessage();
         message.setMessageId(UUID.randomUUID().toString());

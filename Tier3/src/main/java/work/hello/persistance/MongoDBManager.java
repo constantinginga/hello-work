@@ -83,6 +83,17 @@ public class MongoDBManager implements MongoDB {
         }
         return null;
     }
+    @Override
+    public Application getApplication(String id) {
+        Document doc = applicationCollection.find(Filters.eq("Id", id)).first();
+        Application application;
+        if (doc != null) {
+            String json = doc.toJson(settings);
+            application = gson.fromJson(json, Application.class);
+            return application;
+        }
+        return null;
+    }
 
     @Override
     public ArrayList<Application> getApplications() {
@@ -93,6 +104,14 @@ public class MongoDBManager implements MongoDB {
             applications.add(gson.fromJson(json, Application.class));
         }
         return applications;
+    }
+
+    @Override
+    public Application updateApplication(Application application) {
+        applicationCollection.find(Filters.eq("Id", application.getId())).first();
+        System.out.println(Application.fromJson(applicationCollection.find(Filters.eq("Id", application.getId())).first().toJson()).toJson());
+        applicationCollection.replaceOne(Filters.eq("Id", application.getId()), Document.parse(application.toJson()));
+        return getApplication(String.valueOf(application.getId()));
     }
 
     @Override

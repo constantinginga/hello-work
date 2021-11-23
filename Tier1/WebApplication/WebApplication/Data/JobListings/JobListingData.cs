@@ -55,6 +55,7 @@ namespace WebApplication.Data
             if (!JobListings.Any())
             {
                 string responese = await _client.Get("");
+                Console.WriteLine(responese);
                 JobListings = JsonSerializer.Deserialize<List<JobListing>>(responese, new JsonSerializerOptions()
                 {
                 });
@@ -90,6 +91,5 @@ namespace WebApplication.Data
         {
             return JobListings.FirstOrDefault(j => j.JobId == id);
         }
-
     }
 }

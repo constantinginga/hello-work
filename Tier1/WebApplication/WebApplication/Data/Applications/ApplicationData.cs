@@ -41,17 +41,19 @@ namespace WebApplication.Data.Applications
 
         public async Task<IList<Application>> GetApplications()
         {
-             if (!Applications.Any())
+             
+             string responese = await _client.Get("");
+             Applications = JsonSerializer.Deserialize<List<Application>>(responese, new JsonSerializerOptions
              {
-                 string responese = await _client.Get("");
-
-                 Applications = JsonSerializer.Deserialize<List<Application>>(responese, new JsonSerializerOptions()
-                 {
-                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                 });
-                 
-             }
+                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+             });
              return Applications;
+        }
+
+        public async Task UpdateApplication(Application application)
+        {
+            string applicationJson = JsonSerializer.Serialize(application);
+            string response = await _client.Patch("", applicationJson);
         }
 
     }
