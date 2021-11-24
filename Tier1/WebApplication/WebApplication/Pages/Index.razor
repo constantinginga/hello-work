@@ -14,7 +14,7 @@
     <h1><span>@((jobs != null) ? jobs.Count : "")</span> jobs listed here!</h1>
     <p>Your dream job is waiting</p>
     <div class="searchbar-container">
-        <input type="text" name="searchbar" id="searchbar" placeholder="Search for a job" @bind="inputValue"/>
+        <input type="text" name="searchbar" id="searchbar" placeholder="Search for a job" @bind="inputValue" @onkeypress=KeyPress/>
         <button id="searchbar-btn" @onclick=Search>Search</button>
     </div>
 </div>
@@ -38,5 +38,10 @@
             if (!string.IsNullOrEmpty(inputValue) && !string.IsNullOrWhiteSpace(inputValue))
                 NavigationManager.NavigateTo($"job-listings?title={inputValue.Trim()}");
         }
+    }
+
+    private void KeyPress(KeyboardEventArgs args)
+    {
+        if (args.Key.Equals("Enter") || args.Key.Contains("Enter")) Search();
     }
 }

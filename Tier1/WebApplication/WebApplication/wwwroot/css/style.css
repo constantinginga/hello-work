@@ -13,7 +13,8 @@ body {
   overflow-y: auto; }
   .page-content {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    height: 100%; }
 
 #topbar {
   max-height: 77px;
