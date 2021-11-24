@@ -10,8 +10,12 @@
 @inject IApplicationData ApplicationData
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
+<AuthorizeView Policy="JobSeeker">
+    <JobSeekerApplications />
+</AuthorizeView>
 
-@if (applicationsToShow == null)
+<AuthorizeView Policy="Employer">
+    @if (applicationsToShow == null)
 {
     <div class="flex justify-center w-full pt-60">
         <img src="/loading.gif" alt="description of gif"/>
@@ -104,6 +108,7 @@ else
         </div>
     </div>
 }
+</AuthorizeView>
 
 @code {
     private IList<Application> applications;

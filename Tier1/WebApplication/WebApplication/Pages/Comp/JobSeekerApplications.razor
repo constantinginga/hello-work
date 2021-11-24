@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.WebUtilities
+@using WebApplication.Models
+@using WebApplication.Data
+@using WebApplication.Data.Applications
+
+@inject NavigationManager NavigationManager
+@inject IJobListingData JobListingData
+@inject IApplicationData ApplicationData
+
+<h3>JobSeekerApplications</h3>
+
+@code {
+    private IList<JobListing> allJobs;
+    private IList<Application> allApps;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allJobs = await JobListingData.GetJobListings();
+        allApps = await ApplicationData.GetApplications();
+    }
+}
