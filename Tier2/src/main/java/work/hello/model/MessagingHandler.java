@@ -12,6 +12,7 @@ public interface MessagingHandler
   void applyForJob(Application application);
 
   void createJobListing(JobListing jobListing);
+  void updateJobListing(JobListing jobListing);
   boolean deleteJobListing(String id);
   User getUser(String email, String password) throws Exception;
 

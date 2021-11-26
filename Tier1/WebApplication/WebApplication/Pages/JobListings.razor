@@ -73,13 +73,13 @@
             {
                 foreach (var jl in jobListingToShow)
                 {
-                    var date = DateTime.Parse(jl.ApplicationDeadline);
-                    var formattedDate = $"{date.Day} {date.ToString("MMMM")}";
+                    // var date = DateTime.Parse(jl.ApplicationDeadline);
+                    // var formattedDate = $"{date.Day} {date.ToString("MMMM")}";
 
                     <div class="job-card">
                         <div class="job-card__title">
                             <p>@jl.JobTitle</p>
-                            <p>@formattedDate</p>
+                            @* <p>@formattedDate</p> *@
                         </div>
                         <div class="job-card__tags">
                             <div class="schedule-tag">@jl.JobType</div>
