@@ -42,6 +42,34 @@ public class RabbitMQ implements MessagingHandler {
     }
 
     @Override
+    public void createSavedJobListing(SavedJobListing savedJobListing) {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.createSavedJobListing);
+        message.setContent(savedJobListing.toJson());
+        rabbitClient.sendMessage(message, "createSavedJobListing");
+    }
+
+    @Override
+    public ArrayList<SavedJobListing> getSavedJobListings() {
+
+        CustomMessage message = new CustomMessage();
+        message.setMessageId(UUID.randomUUID().toString());
+        message.setType(MessageType.getSavedJobListings);
+        String response = "";
+        try {
+            response = rabbitClient.sendMessageRPC(message, "getSavedJobListings");
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        ArrayList<SavedJobListing> savedJobListings = new ArrayList<>();
+        Collections
+                .addAll(savedJobListings, gson.fromJson(response, SavedJobListing[].class));
+        return savedJobListings;
+    }
+
+
+
+    @Override
     public JobListing getJobListing(String id) {
         CustomMessage message = new CustomMessage();
         message.setType(MessageType.getJobListing);
@@ -52,7 +80,6 @@ public class RabbitMQ implements MessagingHandler {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-
         JobListing jobListing = gson.fromJson(response, JobListing.class);
         return jobListing;
 
@@ -113,6 +140,13 @@ public class RabbitMQ implements MessagingHandler {
             return true;
         }
         return false;
+    }
+    @Override
+    public void deleteSavedJobListing(String id) {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.deletingSavedJobListing);
+        message.setContent(id);
+        rabbitClient.sendMessage(message, MessageType.deletingSavedJobListing.name());
     }
 
     @Override
