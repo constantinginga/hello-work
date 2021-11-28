@@ -183,7 +183,7 @@
 
     private async void deleteSavedJobListing(int JobId)
     {
-        await _savedJobListingsData.RemoveSavedJobListing(_savedJobListings.FirstOrDefault(t => t.JobId == JobId));
+        await _savedJobListingsData.RemoveSavedJobListing(_savedJobListings.FirstOrDefault(t => t.JobId == JobId && t.Email == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email));
     }
     private async void saveJobListing(int JobId)
     {
