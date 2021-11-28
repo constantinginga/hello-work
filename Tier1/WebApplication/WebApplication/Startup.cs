@@ -14,6 +14,7 @@ using WebApplication.Auth;
 using WebApplication.Data;
 using WebApplication.Data.Applications;
 using WebApplication.Data.Authentication;
+using WebApplication.Data.SavedJobListings;
 using WebApplication.Models;
 
 namespace WebApplication
@@ -35,6 +36,7 @@ namespace WebApplication
             services.AddServerSideBlazor();
             services.AddSingleton<IJobListingData, JobListingData>();
             services.AddSingleton<IApplicationData, ApplicationData>();
+            services.AddSingleton<ISavedJobListingsData, SavedJobListingsData>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             services.AddSingleton<AppState>();
