@@ -5,11 +5,18 @@ import work.hello.data.*;
 import java.util.ArrayList;
 
 public interface MongoDB {
+
+    void createSavedJobListing(SavedJobListing savedJobListing);
+
+    ArrayList<SavedJobListing> getSavedJobListings();
+
+    void deleteSavedJobListing(String id);
+
     ArrayList<JobListing> getJobListings();
 
     JobListing getJobListing(String id);
 
-    ArrayList<Application>getApplications();
+    ArrayList<Application> getApplications();
 
     Application getApplication(String id);
 
