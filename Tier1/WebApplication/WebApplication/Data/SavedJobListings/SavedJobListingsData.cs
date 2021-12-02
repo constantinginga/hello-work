@@ -52,7 +52,6 @@ namespace WebApplication.Data.SavedJobListings
             if (!savedJobListings.Any())
             {
                 string responese = await _client.Get("");
-                Console.WriteLine(responese);
                 savedJobListings = JsonSerializer.Deserialize<List<SavedJobListing>>(responese, new JsonSerializerOptions()
                 {
                 });
