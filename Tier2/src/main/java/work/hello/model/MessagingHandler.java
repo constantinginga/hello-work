@@ -9,6 +9,12 @@ public interface MessagingHandler
 {
   ArrayList<JobListing> getJobListings();
 
+  void createSavedJobListing(SavedJobListing savedJobListing);
+
+  ArrayList<SavedJobListing> getSavedJobListings();
+
+  void deleteSavedJobListing(String id);
+
   JobListing getJobListing(String id);
 
   void applyForJob(Application application);
