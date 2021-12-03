@@ -7,15 +7,70 @@
 @inject IJobListingData JobListingData
 @inject IApplicationData ApplicationData
 
-<h3>JobSeekerApplications</h3>
+<div class="hw-jsapplications">
+    @if (Applications != null && Applications.Any())
+    {
+        <div class="hw-jsapplications-cards">
+            @foreach (var app in Applications)
+            {
+                JobListing job = jobsToShow.Where(j => j.JobId == app.JobId).First();
+
+                var date = DateTime.Parse(job.ApplicationDeadline);
+                var formattedDate = $"{date.Day} {date.ToString("MMMM")}";
+
+                <div class="job-card">
+                    <div class="job-card__title">
+                        <p>@job.JobTitle</p>
+                        <p>@formattedDate</p>
+                    </div>
+                    <div class="job-card__tags">
+                        <div class="schedule-tag">@job.JobType</div>
+                        <div class="experience-tag">@(job.ExperienceLevel) years</div>
+                    </div>
+                    <div class="job-card__description">
+                        <p>@job.Location</p>
+                        <p>@job.Email</p>
+                    </div>
+                    <div class="job-card__app-details">
+                        <div class="app-files">
+                            @foreach (var file in app.Files)
+                            {
+                                <div>@file</div>
+                            }
+                            @{
+                                // Temporary, because I can't create application with files attached :(
+                            }
+                            <div>test.pdf</div>
+                            <div>cv1asd.pdf</div>
+                        </div>
+                        <p>@app.Details</p>
+                    </div>
+                </div>
+
+            }
+        </div>
+    }
+    else
+    {
+        <p>No applications yet.</p>
+    }
+</div>
 
 @code {
+    [Parameter]
+    public IList<Application> Applications { get; set; }
     private IList<JobListing> allJobs;
-    private IList<Application> allApps;
-
+    private IList<JobListing> jobsToShow;
     protected override async Task OnInitializedAsync()
     {
         allJobs = await JobListingData.GetJobListings();
-        allApps = await ApplicationData.GetApplications();
+        jobsToShow = new List<JobListing>();
+        foreach (var job in allJobs)
+        {
+            foreach (var app in Applications)
+            {
+                if (job.JobId == app.JobId) jobsToShow.Add(job);
+            }
+        }
     }
 }

@@ -261,6 +261,7 @@ body {
 
                 &__title {
                     justify-content: space-between;
+                    align-items: center;
 
                     p:nth-of-type(1) {
                         font-size: 1.3rem;
@@ -334,6 +335,101 @@ body {
                             color: $main-white;
                             transition: all .2s ease-in;
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.hw-jsapplications {
+    width: 100%;
+    padding: 2rem;
+
+    .hw-jsapplications-cards {
+        flex: 6;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        overflow-y: auto;
+
+        .job-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem 0;
+            background: lighten($purple, 21%);
+            flex: 0 0 calc(33.33333% - 2rem);
+            border-radius: 1rem;
+            padding: 2rem 3rem;
+
+            &__title,
+            &__tags,
+            &__description,
+            &__btns {
+                display: flex;
+            }
+
+            &__title {
+                justify-content: space-between;
+                align-items: center;
+
+                p:nth-of-type(1) {
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                }
+
+                p:nth-of-type(2) {
+                    color: gray;
+                    font-size: .9rem;
+                }
+            }
+
+            &__tags,
+            &__app-details > .app-files {
+                gap: 0 .5rem;
+                align-items: center;
+
+                div {
+                    border-radius: .7rem;
+                    font-size: .8rem;
+                    padding: .2rem .5rem;
+                }
+            }
+
+            &__tags {
+                .schedule-tag {
+                    background: lighten($purple, 15%);
+                    color: darken($purple, 5%);
+                }
+
+                .experience-tag {
+                    background: lighten($main-blue, 25%);
+                    color: $main-blue;
+                }
+            }
+
+            &__description {
+                flex-direction: column;
+
+                p:nth-of-type(2) {
+                    margin-top: .5rem;
+                    word-break: break-all;
+                    color: gray;
+                    font-size: .9rem;
+                }
+            }
+
+            &__app-details {
+                border-top: 1px solid $border-color;
+                padding-top: 1rem;
+
+                .app-files {
+                    display: flex;
+                    margin-bottom: .5rem;
+
+                    div {
+                        background: $main-black;
+                        color: $main-white;
                     }
                 }
             }
