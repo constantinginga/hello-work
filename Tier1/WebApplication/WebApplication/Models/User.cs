@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication.Models
 {
@@ -6,7 +7,8 @@ namespace WebApplication.Models
     {
         [Required] [EmailAddress] public string Email { get; set; }
         public string Role { get; set; }
-        [Required] public string Password { get; set; }
+
+        [Required] [PasswordPropertyText][MinLength(6)] public string Password { get; set; }
         [Required] [Phone] public string PhoneNumber { get; set; }
     }
 }

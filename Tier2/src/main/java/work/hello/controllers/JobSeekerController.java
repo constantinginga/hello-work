@@ -1,9 +1,7 @@
 package work.hello.controllers;
 
 import com.google.gson.Gson;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import work.hello.model.RabbitMQ;
 import work.hello.data.JobSeeker;
 import work.hello.data.User;
@@ -23,7 +21,22 @@ public class JobSeekerController {
             return "Email already in use";
         }
         return "Not Valid Email";
+    }
 
+    @PatchMapping("/jobSeeker")
+    public synchronized String patchJobSeeker(@RequestBody String json) throws Exception {
+        JobSeeker newJobSeeker = JobSeeker.fromJson(json);
+        RabbitMQ.getInstance().updateJobSeeker(newJobSeeker);
 
+        return "Ok";
+    }
+
+    @GetMapping("/jobSeeker")
+    public synchronized String getJobSeeker(@RequestParam String email) {
+        try {
+            return RabbitMQ.getInstance().getJobSeeker(email).toJson();
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 }

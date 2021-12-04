@@ -13,6 +13,7 @@ namespace WebApplication.Data.Authentication
         private string _loginArgs;
         private string _urlJobSeeker;
         private string _urlEmployer;
+        private string _getUserArgs;
 
         public UserService()
         {
@@ -22,6 +23,7 @@ namespace WebApplication.Data.Authentication
 
             _client = new WebApiUtil(_urlUser);
             _loginArgs = "?email=%email%&password=%password%";
+            _getUserArgs = "?email=%email%";
         }
 
         public async Task<User> ValidateUser(string email, string password)
@@ -84,6 +86,60 @@ namespace WebApplication.Data.Authentication
                     throw new Exception(response);
                 }
 
+                return JsonSerializer.Deserialize<JobSeeker>(response, new JsonSerializerOptions()
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async void UpdateJobSeeker(JobSeeker seeker)
+        {
+            try
+            {
+                string seekerJson = JsonSerializer.Serialize(seeker, new JsonSerializerOptions()
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                });
+                string response =
+                    await _client.Patch(_urlJobSeeker, "", seekerJson);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task<Employer> GetEmployer(string cachedUserEmail)
+        {
+            try
+            {
+                string response =
+                    await _client.Get(_urlEmployer, _getUserArgs.Replace("%email%", cachedUserEmail));
+                return JsonSerializer.Deserialize<Employer>(response, new JsonSerializerOptions()
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task<JobSeeker> GetJobSeeker(string cachedUserEmail)
+        {
+            try
+            {
+                string response =
+                    await _client.Get(_urlJobSeeker, _getUserArgs.Replace("%email%", cachedUserEmail));
                 return JsonSerializer.Deserialize<JobSeeker>(response, new JsonSerializerOptions()
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase

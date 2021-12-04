@@ -5,7 +5,7 @@ public class Employer extends User {
     private String companyName;
     private String address;
 
-    public Employer(String email,  String password, String phoneNumber, String companyName, String address) {
+    public Employer(String email, String password, String phoneNumber, String companyName, String address) {
         super(email, "Employer", password, phoneNumber);
         this.companyName = companyName;
         this.address = address;
@@ -25,6 +25,10 @@ public class Employer extends User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public static Employer fromJson(String json) {
+        return gson.fromJson(json, Employer.class);
     }
 
     @Override

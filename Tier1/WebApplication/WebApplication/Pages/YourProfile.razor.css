@@ -1,0 +1,18 @@
+﻿.details {
+    background: #fafafa;
+    border-radius: .5rem;
+    padding: 2rem;
+}
+
+.accountForm {
+    width: 800px;
+    font-size: 14px;
+    text-align: center;
+
+}
+
+.success {
+    background: #9dff9f;
+    font-size: 13px;
+    border: 1px solid #0bf560;
+}

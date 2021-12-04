@@ -131,7 +131,7 @@ public class MongoDBManager implements MongoDB {
 
     @Override
     public JobListing updateJobListing(JobListing jobListing) {
-        jobCollection.updateOne(Filters.eq("JobId", jobListing.getJobId()), Document.parse(jobListing.toJson()));
+        jobCollection.replaceOne(Filters.eq("JobId", jobListing.getJobId()), Document.parse(jobListing.toJson()));
         return getJobListing(String.valueOf(jobListing.getJobId()));
     }
 
@@ -182,7 +182,7 @@ public class MongoDBManager implements MongoDB {
 
     @Override
     public JobSeeker updateJobSeeker(JobSeeker seeker) {
-        jobSeekerCollection.updateOne(Filters.eq("email", seeker.getEmail()), Document.parse(seeker.toJson()));
+        jobSeekerCollection.replaceOne(Filters.eq("email", seeker.getEmail()), Document.parse(seeker.toJson()));
         return getJobSeeker(seeker.getEmail());
     }
 
@@ -201,7 +201,7 @@ public class MongoDBManager implements MongoDB {
 
     @Override
     public Employer updateEmployer(Employer employer) {
-        employerCollection.updateOne(Filters.eq("email", employer.getEmail()), Document.parse(employer.toJson()));
+        employerCollection.replaceOne(Filters.eq("email", employer.getEmail()), Document.parse(employer.toJson()));
         return getEmployer(employer.getEmail());
     }
 

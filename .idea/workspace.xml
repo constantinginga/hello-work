@@ -4,70 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="Fixing David Errors(just better)">
-      <change afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/ApplyToJobListing.razor.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetApplicationFileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/UploadApplicationFileListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_19_11_2021_15_49_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_19_11_2021_15_49__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_08_18_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_08_18__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/JobListing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/Shared-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/WebApplication.Views.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/WebApplication.Views.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/WebApplication.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/WebApplication.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/WebApplication.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/WebApplication1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/WebApplication1.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/WebApplication2.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/JobListing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/Shared-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.Views.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.Views.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/WebApplication.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34_[Default_Changelist]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_16_34__Default_Changelist_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_17_02_[Default_Changelist]/FileTesting.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_17_02_[Default_Changelist]/JobListing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_17_02_[Default_Changelist]/Shared-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2021_17_02_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_14_35__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_14_35__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="e39974f2-f1d3-4eb3-9cff-2e6dfc9b1581" name="Default Changelist" comment="testr">
+      <change afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Comp/EditJobSeeker.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Comp/EmployerProfile.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/YourProfile.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/YourProfile.razor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetEmployerListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/GetJobSeekerListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/mediator/listeners/UpdateJobSeekerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_14_35_[Default_Changelist]/Shared-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_14_35_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_14_35__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/ApplicationFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/ApplicationFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/Employer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/Employer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/JobSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/JobSeeker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/src/main/java/work/hello/data/MessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/Shared-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/ApplicationFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/ApplicationFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/Employer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/Employer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/JobSeeker.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/JobSeeker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/MessageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/classes/work/hello/data/MessageType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Applications/ApplicationData-DESKTOP-JO1DGT5.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Applications/ApplicationData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Applications/ApplicationData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Applications/IApplicationData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Applications/IApplicationData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Models/Application-DESKTOP-JO1DGT5.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Models/Application.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Models/Application.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Applications-DESKTOP-JO1DGT5.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Applications.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Applications.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/ApplyToJobListing.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/ApplyToJobListing.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Comp/DetailedApplication.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Comp/DetailedApplication.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Login.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Pages/Login.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/WebApplication.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/controllers/ApplicationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/controllers/ApplicationsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Auth/CustomAuthenticationStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Auth/CustomAuthenticationStateProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Authentication/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Authentication/IUserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Authentication/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/Authentication/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/WebAPIUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Data/WebAPIUtil.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Tier1/WebApplication/WebApplication/Shared/MainLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/controllers/EmployerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/controllers/EmployerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/controllers/JobSeekerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/controllers/JobSeekerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/model/MessagingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/model/MessagingHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/model/RabbitMQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier2/src/main/java/work/hello/model/RabbitMQ.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/Tier3Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/Tier3Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/persistance/MongoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/persistance/MongoDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/persistance/MongoDBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tier3/src/main/java/work/hello/persistance/MongoDBManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,17 +98,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.Tier3Application">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tier2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Tier2" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier2Application" />
@@ -151,7 +107,7 @@
         <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/Tier2/pom.xml" goal="compile" />
       </method>
     </configuration>
-    <configuration name="Tier3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="Tier3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
       <module name="Tier3" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="work.hello.Tier3Application" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -164,6 +120,11 @@
       <item itemvalue="Spring Boot.Tier2Application" />
       <item itemvalue="Spring Boot.Tier3Application" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Tier3Application" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -179,6 +140,14 @@
       <workItem from="1637523403255" duration="15000" />
       <workItem from="1637523581013" duration="597000" />
       <workItem from="1637565406466" duration="5994000" />
+      <workItem from="1637839975583" duration="18000" />
+      <workItem from="1637865170382" duration="3000" />
+      <workItem from="1637865238262" duration="1659000" />
+      <workItem from="1637942237223" duration="13000" />
+      <workItem from="1638108802562" duration="2708000" />
+      <workItem from="1638281008956" duration="595000" />
+      <workItem from="1638294194483" duration="879000" />
+      <workItem from="1638437634338" duration="7180000" />
     </task>
     <task id="LOCAL-00001" summary="commit before merge">
       <created>1637082659854</created>

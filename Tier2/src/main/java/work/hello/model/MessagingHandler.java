@@ -25,6 +25,10 @@ public interface MessagingHandler
 
   User getUser(String email) throws Exception;
 
+  JobSeeker getJobSeeker(String email) throws Exception;
+
+  Employer getEmployer(String email) throws Exception;
+
   JobSeeker createJobSeeker(JobSeeker jobSeeker)
       throws IOException, InterruptedException;
 
@@ -34,4 +38,6 @@ public interface MessagingHandler
     void uploadFile(ApplicationFile applicationFile);
 
   String getApplicationFile(String id, String name) throws IOException, InterruptedException;
+
+  void updateJobSeeker(JobSeeker newJobSeeker);
 }

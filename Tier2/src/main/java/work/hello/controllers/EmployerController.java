@@ -1,9 +1,7 @@
 package work.hello.controllers;
 
 import com.google.gson.Gson;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import work.hello.model.RabbitMQ;
 import work.hello.data.Employer;
 import work.hello.data.User;
@@ -28,5 +26,15 @@ public class EmployerController {
 
 
     }
+
+    @GetMapping("/employer")
+    public synchronized String getEmployer(@RequestParam String email) {
+        try {
+            return RabbitMQ.getInstance().getEmployer(email).toJson();
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
 }
+
 

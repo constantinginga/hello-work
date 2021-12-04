@@ -38,10 +38,23 @@ namespace WebApplication.Data
 
             return await responseMessage.Content.ReadAsStringAsync();
         }
+
         public async Task<string> Patch(string args, string body)
         {
             StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
             HttpResponseMessage responseMessage = await _client.PatchAsync(_url + args, content);
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
+            }
+
+            return await responseMessage.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> Patch(string url, string args, string body)
+        {
+            StringContent content = new StringContent(body, Encoding.UTF8, "application/json");
+            HttpResponseMessage responseMessage = await _client.PatchAsync(url + args, content);
             if (!responseMessage.IsSuccessStatusCode)
             {
                 throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");

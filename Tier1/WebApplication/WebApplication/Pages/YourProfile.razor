@@ -1,0 +1,157 @@
+﻿@page "/profile"
+@using WebApplication.Models
+@using WebApplication.Auth
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<div class="flex justify-center  w-full pt-10 ">
+
+
+    <div class="details accountForm">
+        <h1 class="font-weight-bold p-3 pb-4">Account Details</h1>
+        @if (successMsg != null)
+        {
+            <div class="mb-2 failedLogin p-3 rounded-lg success">
+                <p>
+                    @successMsg
+                </p>
+            </div>
+        }
+        @if (_jobSeeker != null)
+        {
+            <EditForm Model="@_jobSeeker" OnValidSubmit="@EditJobSeeker">
+
+
+                <div class="flex justify-center element">
+                    <div class="lg:w-10/12  rounded-lg">
+                        <div class="d-flex flex-row w-full pb-2">
+
+                            <DataAnnotationsValidator></DataAnnotationsValidator>
+                            <ValidationSummary> </ValidationSummary>
+
+                        </div>
+                        <div class="d-flex flex-row w-full pb-2">
+                            <div class="col-2 p-2">
+                                <a>First Name</a>
+                            </div>
+                            <div class="col-4">
+                                <InputText DisplayName="Name" placeholder="First name" class="bg-white w-full rounded-lg border-0" type="text"@bind-Value="_jobSeeker.FirstName"/>
+                            </div>
+                            <div class="col-2 p-2">
+                                <a>Last name</a>
+                            </div>
+                            <div class="col-4 p-0">
+                                <InputText DisplayName="Last name" placeholder="Last name" class="bg-white w-full  rounded-lg border-0" type="text" @bind-Value="_jobSeeker.LastName"/>
+                            </div>
+                        </div>
+                        <div class="form-group m-0 pb-2 d-flex flex-row w-full">
+                            <div class="col-2">
+                                <a>Phone number</a>
+                            </div>
+                            <div class="col-10 p-0 pl-1">
+                                <InputText DisplayName="Phone number" placeholder="Phone number" class="bg-white w-full  rounded-lg border-0" type="text" @bind-Value="_jobSeeker.PhoneNumber"/>
+                            </div>
+                        </div>
+                        <div class="form-group m-0 pb-2 d-flex flex-row w-full">
+                            <div class="col-2 p-2">
+                                <a>Email</a>
+                            </div>
+                            <div class="col-10 p-0 pl-1">
+                                <InputText DisplayName="Email" placeholder="Email" class="bg-white w-full rounded-lg border-0" disabled type="text"@bind-Value="_jobSeeker.Email"/>
+                            </div>
+                        </div>
+                        <div class="form-group m-0 pb-2 d-flex flex-row w-full">
+                            <div class="col-2 p-2">
+                                <a>Password</a>
+                            </div>
+                            <div class="col-10 p-0 pl-1">
+                                <InputText DisplayName="Password" placeholder="Password" class="bg-white w-full rounded-lg border-0" type="Password"@bind-Value="_jobSeeker.Password"/>
+                            </div>
+                        </div>
+                        <div class="pt-4 pb-2 flex justify-center w-full">
+                            <button class="btn hover:bg-green-600 btn-outline-dark w-full" data-dismiss="model" type="submit">Update Profile</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </EditForm>
+        }
+        @if (_employer != null)
+        {
+            <EditForm Model="@_employer" OnValidSubmit="@EditJobSeeker">
+                <div class="flex justify-center  w-full pt-10 ">
+
+
+                    <div class="flex justify-center element">
+                        <div class="lg:w-10/12  rounded-lg">
+                            <div class="d-flex flex-row w-full pb-2">
+
+                                <DataAnnotationsValidator></DataAnnotationsValidator>
+                                <ValidationSummary> </ValidationSummary>
+
+                            </div>
+                            <div class="d-flex flex-row w-full pb-2">
+                                <div class="col-3 p-2">
+                                    <a>Company Name</a>
+                                </div>
+                                <div class="col-3 pr-1">
+                                    <InputText DisplayName="Company name" disabled placeholder="Company name" class="bg-white w-full rounded-lg border-0" type="text"@bind-Value="_employer.CompanyName"/>
+                                </div>
+                                <div class="col-3 p-2">
+                                    <a>Phone Number</a>
+                                </div>
+                                <div class="col-3 p-0 pl-1">
+                                    <InputText DisplayName="Phone Number" disabled placeholder="Phone Number" class="bg-white w-full  rounded-lg border-0" type="text" @bind-Value="_employer.PhoneNumber"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group m-0 pb-2 d-flex flex-row w-full">
+                                <div class="col-2 p-2">
+                                    <a>Address</a>
+                                </div>
+                                <div class="col-10 p-0 pl-1">
+                                    <InputText DisplayName="Address" disabled placeholder="Address" class="bg-white w-full  rounded-lg border-0" type="text" @bind-Value="_employer.Address"/>
+                                </div>
+                            </div>
+                            <div class="form-group m-0 pb-2 d-flex flex-row w-full">
+                                <div class="col-2 p-2">
+                                    <a>Email</a>
+                                </div>
+                                <div class="col-10 p-0 pl-1">
+                                    <InputText DisplayName="Email" disabled placeholder="Email" class="bg-white w-full rounded-lg border-0" type="text"@bind-Value="_employer.Email"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </EditForm>
+        }
+    </div>
+</div>
+
+@code {
+
+    JobSeeker _jobSeeker;
+    Employer _employer;
+    string successMsg;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Role.Equals("JobSeeker"))
+        {
+            _jobSeeker = (await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).GetJobSeeker());
+        }
+        else if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Role.Equals("Employer"))
+        {
+            _employer = (await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).GetEmployer());
+        }
+    }
+
+    private void EditJobSeeker()
+    {
+        ((CustomAuthenticationStateProvider) AuthenticationStateProvider).UpdateJobSeeker(_jobSeeker);
+        successMsg = "Profile updated successfully";
+    }
+
+}

@@ -140,6 +140,44 @@ public class RabbitMQ implements MessagingHandler {
     }
 
     @Override
+    public JobSeeker getJobSeeker(String email) throws Exception {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.getJobSeeker);
+        message.setContent(email);
+        try {
+            String response = rabbitClient
+                    .sendMessageRPC(message, MessageType.getJobSeeker.toString());
+            if (response == null) {
+
+                throw new Exception("User not Found");
+            }
+            return JobSeeker.fromJson(response);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            throw new Exception("User not Found");
+        }
+    }
+
+    @Override
+    public Employer getEmployer(String email) throws Exception {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.getEmployer);
+        message.setContent(email);
+        try {
+            String response = rabbitClient
+                    .sendMessageRPC(message, MessageType.getEmployer.toString());
+            if (response == null) {
+
+                throw new Exception("User not Found");
+            }
+            return Employer.fromJson(response);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            throw new Exception("User not Found");
+        }
+    }
+
+    @Override
     public JobSeeker createJobSeeker(JobSeeker jobSeeker)
             throws IOException, InterruptedException {
         CustomMessage message = new CustomMessage();
@@ -176,6 +214,14 @@ public class RabbitMQ implements MessagingHandler {
         message.setMessageId(id);
         message.setContent(name);
         return rabbitClient.sendMessageRPC(message, message.getType().name());
+    }
+
+    @Override
+    public void updateJobSeeker(JobSeeker newJobSeeker) {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.updateJobSeeker);
+        message.setContent(newJobSeeker.toJson());
+        rabbitClient.sendMessage(message, MessageType.updateJobSeeker.name());
     }
 
     public static MessagingHandler getInstance() {

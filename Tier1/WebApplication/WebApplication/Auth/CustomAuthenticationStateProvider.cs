@@ -93,6 +93,50 @@ namespace WebApplication.Auth
             }
         }
 
+        public async Task UpdateJobSeeker(JobSeeker seeker)
+        {
+            try
+            {
+                userService.UpdateJobSeeker(seeker);
+                ValidateLogin(seeker.Email, seeker.Password);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task<JobSeeker> GetJobSeeker()
+        {
+            try
+            {
+                return await userService.GetJobSeeker(cachedUser.Email);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            return null;
+        }
+
+        public async Task<Employer> GetEmployer()
+        {
+            try
+            {
+                return await userService.GetEmployer(cachedUser.Email);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            return null;
+        }
+
         public void Logout()
         {
             cachedUser = null;

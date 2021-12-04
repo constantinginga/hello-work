@@ -7,7 +7,7 @@
 
     <div class="page-content">
         <div id="topbar">
-            <NavMenu />
+            <NavMenu/>
             <AuthorizeView>
                 <NotAuthorized>
                     <div>
@@ -15,8 +15,14 @@
                     </div>
                 </NotAuthorized>
                 <Authorized>
-                    <div>
-                        <a class="topbar-btn" @onclick="Logout" href="#">Logout</a>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle dropDownLogOut" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email)
+                        </a>
+                        <div class="dropdown-menu dropDownLogOut dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item dropDownLogOut" @onclick="@(() => NavManager.NavigateTo("/profile"))" href="#">Your Profile</a>
+                            <a class="dropdown-item dropDownLogOut" @onclick="Logout" href="#">Logout</a>
+                        </div>
                     </div>
                 </Authorized>
             </AuthorizeView>
