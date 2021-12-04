@@ -131,6 +131,14 @@ public class RabbitMQ implements MessagingHandler {
     }
 
     @Override
+    public void updateJobListing(JobListing jobListing) {
+        CustomMessage message = new CustomMessage();
+        message.setType(MessageType.updateJobListing);
+        message.setContent(jobListing.toJson());
+        rabbitClient.sendMessage(message, "updateJobListing");
+    }
+
+    @Override
     public boolean deleteJobListing(String id) {
         CustomMessage message = new CustomMessage();
         message.setType(MessageType.removeJobListing);

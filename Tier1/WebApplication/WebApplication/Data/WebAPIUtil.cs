@@ -74,6 +74,16 @@ namespace WebApplication.Data
             return await responseMessage.Content.ReadAsStringAsync();
         }
 
+        public async Task<string> Patch(string args, StringContent body)
+        {
+            HttpResponseMessage responseMessage = await _client.PatchAsync(args, body);
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception($@"Error:{responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
+            }
+            return await responseMessage.Content.ReadAsStringAsync();
+        }
+
         public async Task<string> Get(string url, string args)
         {
             HttpResponseMessage responseMessage = await _client.GetAsync(url + args);

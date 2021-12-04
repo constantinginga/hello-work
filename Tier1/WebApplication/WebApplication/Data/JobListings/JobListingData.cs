@@ -82,9 +82,8 @@ namespace WebApplication.Data
             toUpdate.ApplicationDeadline = jobListing.ApplicationDeadline;
 
 
-            /*StringContent queryString = new(JsonConvert.SerializeObject(adult), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PatchAsync(_url + $"/{adult.Id}", queryString);
-            response.EnsureSuccessStatusCode();*/
+            StringContent queryString = new(JsonConvert.SerializeObject(toUpdate), Encoding.UTF8, "application/json");
+            await _client.Patch(_url , queryString);
         }
 
         public async Task<JobListing> GetJobListing(int id)

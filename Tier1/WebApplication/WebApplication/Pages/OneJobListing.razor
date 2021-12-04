@@ -130,8 +130,15 @@
             <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="DeleteJobListing" type="submit">Remove Job Listing</button>
         }
     }
+    @if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
+        {
+            @if (jobListing.Employer.Equals(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email))
+            {
+                <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="UpdateJobListing" type="submit">Edit job listing</button>
+            }
+        }
 </section>
-
+<button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="UpdateJobListing" type="submit">Edit job listing</button>
 
 @code {
 
@@ -156,4 +163,9 @@
         NavigationManager.NavigateTo("/");
     }
 
+    private void UpdateJobListing()
+    {
+        JobListingData.UpdateJobListing(jobListing);
+        NavigationManager.NavigateTo($"/joblisting/edit/{jobListing.JobId}");
+    }
 }

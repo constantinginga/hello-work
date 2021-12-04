@@ -33,6 +33,21 @@ import java.util.ArrayList;
     }
   }
 
+  @PatchMapping("/job") public synchronized String updateJobListing(@RequestBody String json)
+  {
+    JobListing updateJobListing = JobListing.fromJson(json);
+    if(true)
+    {
+      RabbitMQ.getInstance().updateJobListing(updateJobListing);
+      return updateJobListing.toJson();
+    }
+    else
+    {
+      return "Validation incorrect";
+    }
+  }
+
+
   @DeleteMapping("/job") public synchronized String deleteJobListing(
       @RequestParam String id)
   {
