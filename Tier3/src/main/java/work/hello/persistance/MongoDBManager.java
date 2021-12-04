@@ -20,6 +20,7 @@ public class MongoDBManager implements MongoDB {
     private MongoCollection<Document> applicationCollectionFiles;
     private MongoCollection<Document> jobSeekerCollection;
     private MongoCollection<Document> employerCollection;
+    private MongoCollection<Document> savedJobListingCollection;
     private JsonWriterSettings settings;
     private Gson gson;
 
@@ -29,6 +30,7 @@ public class MongoDBManager implements MongoDB {
             MongoClient mongoClient = MongoClients.create(connectionString);
             mongoDatabase = mongoClient.getDatabase("hellowork");
             jobCollection = mongoDatabase.getCollection("Jobs");
+            savedJobListingCollection = mongoDatabase.getCollection("SavedJobListings");
             jobCollection.createIndex(Indexes.ascending("JobID"));
             applicationCollection = mongoDatabase.getCollection("Applications");
             applicationCollectionFiles = mongoDatabase.getCollection("ApplicationFiles");
@@ -61,6 +63,28 @@ public class MongoDBManager implements MongoDB {
 
     public MongoCollection<Document> getApplicationCollection() {
         return applicationCollection;
+    }
+
+    @Override
+    public void createSavedJobListing(SavedJobListing savedJobListing) {
+        Document document = Document.parse(savedJobListing.toJson());
+        savedJobListingCollection.insertOne(document);
+    }
+
+    @Override
+    public ArrayList<SavedJobListing> getSavedJobListings() {
+        ArrayList<SavedJobListing> savedJobListings = new ArrayList<>();
+        FindIterable<Document> iterDoc = savedJobListingCollection.find();
+        for (Document document : iterDoc) {
+            String json = document.toJson(settings);
+            savedJobListings.add(gson.fromJson(json, SavedJobListing.class));
+        }
+        return savedJobListings;
+    }
+
+    @Override
+    public void deleteSavedJobListing(String id) {
+         savedJobListingCollection.deleteOne(Filters.eq("Id",Integer.valueOf(id)));
     }
 
     @Override

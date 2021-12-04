@@ -10,99 +10,15 @@
 @inject IApplicationData ApplicationData
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
-
-@if (applicationsToShow == null)
+@if (applicationsToShow != null)
 {
-    <div class="flex justify-center w-full pt-60">
-        <img src="/loading.gif" alt="description of gif"/>
-    </div>
-}
-else if (!applicationsToShow.Any())
-{
-    <p>
-        <em> No applications to show </em>
-    </p>
-}
-else
-{
-    <div class="flex flex-col w-full">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Job listing
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Applicant Email
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Details
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Status
-                            </th>
-                            <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Edit</span>
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+ <AuthorizeView Policy="JobSeeker">
+    <JobSeekerApplications Applications=@applicationsToShow />
+</AuthorizeView>
 
-                        @foreach (var item in applicationsToShow)
-                        {
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    @item.Name
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    @item.employeEmail
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <DetailedApplication application="item"></DetailedApplication>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-
-                                    <span class="inline-flex text-xs leading-5 font-semibold rounded-full">
-
-                                        <select @onchange="@(e => (ChangeHandler(item, e)))" class="form-control px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            @if (item.Status == 0)
-                                            {
-                                                <option value="0" selected="">Waiting</option>
-                                            }
-                                            else
-                                            {
-                                                <option value="0">Waiting</option>
-                                            }
-                                            @if (item.Status == 1)
-                                            {
-                                                <option value="1" selected="">Rejected</option>
-                                            }
-                                            else
-                                            {
-                                                <option value="1">Rejected</option>
-                                            }
-                                            @if (item.Status == 2)
-                                            {
-                                                <option value="2" selected="">Accepted</option>
-                                            }
-                                            else
-                                            {
-                                                <option value="2">Accepted</option>
-                                            }
-                                        </select>
-                                    </span>
-                                </td>
-                            </tr>
-                        }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+<AuthorizeView Policy="Employer">
+    <EmployerApplications Applications=@applicationsToShow />
+</AuthorizeView>   
 }
 
 @code {
@@ -113,22 +29,22 @@ else
     {
         applications = await ApplicationData.GetApplications();
         applicationsToShow = new List<Application>();
+        User currentUser = ((CustomAuthenticationStateProvider)AuthenticationStateProvider).cachedUser;
         foreach (var application in applications)
         {
-            if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
+            if (currentUser != null)
             {
-                if (application.employerEmail == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email)
+                switch (currentUser.Role)
                 {
-                    applicationsToShow.Add(application);
+                    case "JobSeeker":
+                        if (application.employeEmail == currentUser.Email) applicationsToShow.Add(application);
+                        break;
+                    case "Employer":
+                        if (application.employerEmail == currentUser.Email) applicationsToShow.Add(application);
+                        break;
                 }
             }
         }
-    }
-
-    private async Task ChangeHandler(Application item, ChangeEventArgs status)
-    {
-        item.Status = Int32.Parse(status.Value.ToString());
-        await ApplicationData.UpdateApplication(item);
     }
 
 }

@@ -1,4 +1,5 @@
-﻿@page "/job-listings"
+@page "/job-listings"
+@using Microsoft.AspNetCore.WebUtilities
 @using WebApplication.Models
 @using WebApplication.Data
 
@@ -87,7 +88,7 @@
                         </div>
                         <div class="job-card__description">
                             <p>@jl.Location</p>
-                            <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
+                            <p>@jl.Email</p>
                         </div>
                         <div class="job-card__btns">
                             <button class="apply-btn" @onclick="() => Display(jl.JobId)">Apply</button>
@@ -95,29 +96,6 @@
                         </div>
                     </div>
                 }
-
-                // this is just an example (how it's supposed to look)
-                @*for (var i = 0; i < 20; i++)
-                    {
-                        <div class="job-card">
-                            <div class="job-card__title">
-                                <p>UX designer</p>
-                                <p>7 July</p>
-                            </div>
-                            <div class="job-card__tags">
-                                <div class="schedule-tag">Full time</div>
-                                <div class="experience-tag">5 years</div>
-                            </div>
-                            <div class="job-card__description">
-                                <p>Cupertino, California</p>
-                                <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
-                            </div>
-                            <div class="job-card__btns">
-                                <button class="apply-btn">Apply</button>
-                                <button class="details-btn">Details</button>
-                            </div>
-                        </div>
-                    }*@
             }
         </div>
     </div>
@@ -132,9 +110,19 @@
     protected override async Task OnInitializedAsync()
     {
         jobListings = await JobListingData.GetJobListings();
-        jobListingToShow = jobListings;
         filteredJobs = new List<JobListing>();
         filteredByExperience = new List<JobListing>();
+
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("title", out var _title))
+        {
+            jobListingToShow = new List<JobListing>();
+            foreach (var j in jobListings)
+            {
+                if (j.JobTitle.ToLower().Contains(((string)_title).ToLower())) jobListingToShow.Add(j);
+            }
+        }
+        else jobListingToShow = jobListings;
         StateHasChanged();
     }
 
