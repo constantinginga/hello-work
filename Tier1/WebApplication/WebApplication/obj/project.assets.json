@@ -744,24 +744,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\micha\\.nuget\\packages\\": {}
+    "C:\\Users\\klavs\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\micha\\IdeaProjects\\hello-work\\Tier1\\WebApplication\\WebApplication\\WebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\klavs\\OneDrive - ViaUC\\Semester3\\SEP\\code\\Tier1\\WebApplication\\WebApplication\\WebApplication.csproj",
       "projectName": "WebApplication",
-      "projectPath": "C:\\Users\\micha\\IdeaProjects\\hello-work\\Tier1\\WebApplication\\WebApplication\\WebApplication.csproj",
-      "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\micha\\IdeaProjects\\hello-work\\Tier1\\WebApplication\\WebApplication\\obj\\",
+      "projectPath": "C:\\Users\\klavs\\OneDrive - ViaUC\\Semester3\\SEP\\code\\Tier1\\WebApplication\\WebApplication\\WebApplication.csproj",
+      "packagesPath": "C:\\Users\\klavs\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\klavs\\OneDrive - ViaUC\\Semester3\\SEP\\code\\Tier1\\WebApplication\\WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\micha\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\klavs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

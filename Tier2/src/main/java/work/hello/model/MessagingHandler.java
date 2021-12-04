@@ -37,6 +37,7 @@ public interface MessagingHandler
 
   JobSeeker createJobSeeker(JobSeeker jobSeeker)
       throws IOException, InterruptedException;
+  void updateJobListing(JobListing jobListing);
 
   Employer createEmployer(Employer employer)
       throws IOException, InterruptedException;

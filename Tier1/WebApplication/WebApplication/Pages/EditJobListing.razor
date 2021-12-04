@@ -21,11 +21,38 @@
                     <label>Job type</label>
                     @* <InputText class="form-control" placeholder="Job Type" @bind-Value="jobListing.JobType"/> *@
                     <select class="custom-select filter-property" @onchange="@((arg) => SetJobType(arg))">
-                        <option selected disabled>Select property</option>
-                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)</option>
-                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.PartTime)</option>
-                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Internship)</option>
-                        <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Volunteering)</option>
+                        @if (jobListing.JobType.Equals(JobSchedule.Schedule.FullTime.ToString()))
+                        {
+                            <option selected="">@JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)</option>
+                        }
+                        else
+                        {
+                            <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)</option>
+                        }
+                        @if (jobListing.JobType.Equals(JobSchedule.Schedule.PartTime.ToString()))
+                        {
+                            <option selected="">@JobSchedule.ToDescription(@JobSchedule.Schedule.PartTime)</option>
+                        }
+                        else
+                        {
+                            <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.PartTime)</option>
+                        }
+                        @if (jobListing.JobType.Equals(JobSchedule.Schedule.Internship.ToString()))
+                        {
+                            <option selected="">@JobSchedule.ToDescription(@JobSchedule.Schedule.Internship)</option>
+                        }
+                        else
+                        {
+                            <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Internship)</option>
+                        }
+                        @if (jobListing.JobType.Equals(JobSchedule.Schedule.Volunteering.ToString()))
+                        {
+                            <option selected="">@JobSchedule.ToDescription(@JobSchedule.Schedule.Volunteering)</option>
+                        }
+                        else
+                        {
+                            <option>@JobSchedule.ToDescription(@JobSchedule.Schedule.Volunteering)</option>
+                        }
                     </select>
                 </div>
             </div>
@@ -82,7 +109,7 @@
                     }
                 </div>
             </div>
-            <button class="btn btn-dark" type="submit">Create</button>
+            <button class="btn btn-dark" type="submit">Edit</button>
             <DataAnnotationsValidator/>
             <ValidationSummary/>
         </div>
@@ -92,16 +119,20 @@
 
 @code {
     private JobListing jobListing;
+
     [Parameter]
     public int Id { get; set; }
-    private List<string> jobRequirements = new List<string>();
-    private List<string> jobPrivilleges = new List<string>();
+
+    private List<string> jobRequirements;
+    private List<string> jobPrivilleges;
     private DateTime ApplicationDate = DateTime.Now;
 
 
     protected override async Task OnInitializedAsync()
     {
         jobListing = await JobListingData.GetJobListing(Id);
+        jobRequirements = jobListing.JobRequirments;
+        jobPrivilleges = jobListing.JobPrivilleges;
         jobRequirements.Add(null);
         jobPrivilleges.Add(null);
     }
@@ -124,7 +155,7 @@
         jobListing.JobRequirments = jobRequirements;
         jobListing.JobPrivilleges = jobPrivilleges;
         jobListing.Employer = ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email;
-        
+
 
         await JobListingData.UpdateJobListing(jobListing);
         IList<JobListing> jbs = await JobListingData.GetJobListings();
@@ -147,4 +178,5 @@
         if (jobPrivilleges.Count < 5)
             jobPrivilleges.Add(null);
     }
+
 }

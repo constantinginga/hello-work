@@ -70,19 +70,7 @@ namespace WebApplication.Data
 
         public async Task UpdateJobListing(JobListing jobListing)
         {
-            JobListing toUpdate = JobListings.First(j => j.JobId == jobListing.JobId);
-            toUpdate.JobTitle = jobListing.JobTitle;
-            toUpdate.JobType = jobListing.JobType;
-            toUpdate.Location = jobListing.Location;
-            toUpdate.ExperienceLevel = jobListing.ExperienceLevel;
-            toUpdate.JobRequirments = jobListing.JobRequirments;
-            toUpdate.JobPrivilleges = jobListing.JobPrivilleges;
-            toUpdate.PhoneNumber = jobListing.PhoneNumber;
-            toUpdate.Email = jobListing.Email;
-            toUpdate.ApplicationDeadline = jobListing.ApplicationDeadline;
-
-
-            StringContent queryString = new(JsonConvert.SerializeObject(toUpdate), Encoding.UTF8, "application/json");
+            StringContent queryString = new(JsonConvert.SerializeObject(jobListing), Encoding.UTF8, "application/json");
             await _client.Patch(_url , queryString);
         }
 

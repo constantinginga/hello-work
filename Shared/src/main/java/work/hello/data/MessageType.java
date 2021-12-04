@@ -12,4 +12,4 @@ public enum MessageType {
     createJobSeeker,
     createEmployer,
     uploadApplicationFile,
-    getApplicationFile}
+    updateJobSeeker, getEmployer, getJobSeeker, deletingSavedJobListing, getSavedJobListings, createSavedJobListing, updateJobListing, getApplicationFile}
