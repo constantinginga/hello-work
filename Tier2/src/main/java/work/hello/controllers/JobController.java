@@ -7,20 +7,35 @@ import work.hello.data.JobListing;
 
 import java.util.ArrayList;
 
+/**
+ * The type Job  REST controller.
+ */
 @RestController public class JobController
 {
   private static final Gson gson = new Gson();
 
+  /**
+   * Gets job listings.
+   *
+   * @return the job listings
+   */
   @GetMapping("/job") public synchronized String getJobListings()
   {
     ArrayList<JobListing> jobListings = RabbitMQ.getInstance().getJobListings();
     return gson.toJson(RabbitMQ.getInstance().getJobListings());
   }
 
+  /**
+   * Post job listings .
+   *
+   * @param json the job listing as json
+   * @return the response
+   */
   @PostMapping("/job") public synchronized String postJobListings(
       @RequestBody String json)
   {
     JobListing newJobListing = JobListing.fromJson(json);
+    //todo implement validation
     if (true)
     {
 
@@ -33,9 +48,17 @@ import java.util.ArrayList;
     }
   }
 
+  /**
+   * Update job listing .
+   *
+   * @param json the job listing as json
+   * @return the response
+   */
   @PatchMapping("/job") public synchronized String updateJobListing(@RequestBody String json)
   {
     JobListing updateJobListing = JobListing.fromJson(json);
+    //todo implement validation
+
     if(true)
     {
       RabbitMQ.getInstance().updateJobListing(updateJobListing);
@@ -48,6 +71,12 @@ import java.util.ArrayList;
   }
 
 
+  /**
+   * Delete job listing .
+   *
+   * @param id the id of job
+   * @return the response
+   */
   @DeleteMapping("/job") public synchronized String deleteJobListing(
       @RequestParam String id)
   {

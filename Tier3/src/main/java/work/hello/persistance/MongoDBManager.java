@@ -11,6 +11,9 @@ import work.hello.data.*;
 import javax.print.Doc;
 import java.util.ArrayList;
 
+/**
+ * The  Mongo database manager.
+ */
 public class MongoDBManager implements MongoDB {
     private final String connectionString = "mongodb+srv://hellowork:hellowork123@hellowork.7ufqy.mongodb.net/test";
     private MongoClient mongoClient;
@@ -24,6 +27,9 @@ public class MongoDBManager implements MongoDB {
     private JsonWriterSettings settings;
     private Gson gson;
 
+    /**
+     * Instantiates a new Mongo db manager.
+     */
     public MongoDBManager() {
 
         try {
@@ -45,22 +51,47 @@ public class MongoDBManager implements MongoDB {
         getJobListings();
     }
 
+    /**
+     * Gets connection string.
+     *
+     * @return the connection string
+     */
     public String getConnectionString() {
         return connectionString;
     }
 
+    /**
+     * Gets mongo client.
+     *
+     * @return the mongo client
+     */
     public MongoClient getMongoClient() {
         return mongoClient;
     }
 
+    /**
+     * Gets mongo database.
+     *
+     * @return the mongo database
+     */
     public MongoDatabase getMongoDatabase() {
         return mongoDatabase;
     }
 
+    /**
+     * Gets job collection.
+     *
+     * @return the job collection
+     */
     public MongoCollection<Document> getJobCollection() {
         return jobCollection;
     }
 
+    /**
+     * Gets application collection.
+     *
+     * @return the application collection
+     */
     public MongoCollection<Document> getApplicationCollection() {
         return applicationCollection;
     }
@@ -240,13 +271,13 @@ public class MongoDBManager implements MongoDB {
     }
 
     @Override
-    public void uploadApplicationFile(ApplicationFile fromJson) {
-        applicationCollectionFiles.insertOne(Document.parse(fromJson.toJson()));
+    public void uploadApplicationFile(ApplicationFile applicationFile) {
+        applicationCollectionFiles.insertOne(Document.parse(applicationFile.toJson()));
     }
 
     @Override
-    public String getApplicationFile(String messageId, String content) {
-        return gson.fromJson(applicationCollectionFiles.find(Filters.eq("ApplicationId", messageId)).filter(Filters.eq("FileName", content)).first().toJson(settings), ApplicationFile.class).getFile();
+    public String getApplicationFile(String applicationId, String fileName) {
+        return gson.fromJson(applicationCollectionFiles.find(Filters.eq("ApplicationId", applicationId)).filter(Filters.eq("FileName", fileName)).first().toJson(settings), ApplicationFile.class).getFile();
     }
 
 }

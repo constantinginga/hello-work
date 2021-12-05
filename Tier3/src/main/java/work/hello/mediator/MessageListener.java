@@ -14,6 +14,9 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
+/**
+ * The type Message listener.
+ */
 public abstract class MessageListener {
     private MongoDB data;
     private final Gson gson;
@@ -23,6 +26,12 @@ public abstract class MessageListener {
     private String topic;
 
 
+    /**
+     * Instantiates a new Message listener.
+     *
+     * @param queueName the queue name
+     * @param topic     the topic
+     */
     public MessageListener(String queueName, String topic) {
         this.data = Tier3Application.getData();
         gson = new Gson();
@@ -42,6 +51,11 @@ public abstract class MessageListener {
         }
     }
 
+    /**
+     * Handle response.
+     *
+     * @param message the message
+     */
     public abstract void handleResponse(CustomMessage message);
 
     private void createListener() throws IOException, TimeoutException {
@@ -62,10 +76,20 @@ public abstract class MessageListener {
         channel.basicConsume(queueName, true, deliverCallback, cancelCallback);
     }
 
+    /**
+     * Gets data.
+     *
+     * @return the data
+     */
     public MongoDB getData() {
         return data;
     }
 
+    /**
+     * Gets gson.
+     *
+     * @return the gson
+     */
     public Gson getGson() {
         return gson;
     }

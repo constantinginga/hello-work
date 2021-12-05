@@ -14,6 +14,9 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
+/**
+ * The type Message listener rpc (Remote procedure call).
+ */
 public abstract class MessageListenerRPC {
     private MongoDB data;
     private final Gson gson;
@@ -23,6 +26,12 @@ public abstract class MessageListenerRPC {
     private String topic;
 
 
+    /**
+     * Instantiates a new Message listener rpc.
+     *
+     * @param queueName the queue name
+     * @param topic     the topic
+     */
     public MessageListenerRPC(String queueName, String topic) {
         this.data = Tier3Application.getData();
         gson = new Gson();
@@ -42,6 +51,12 @@ public abstract class MessageListenerRPC {
         }
     }
 
+    /**
+     * Handle response .
+     *
+     * @param message the message
+     * @return the response to msg
+     */
     public abstract String handleResponse(CustomMessage message);
 
     private void createListener() throws IOException, TimeoutException {
@@ -76,10 +91,20 @@ public abstract class MessageListenerRPC {
         }));
     }
 
+    /**
+     * Gets data.
+     *
+     * @return the data
+     */
     public MongoDB getData() {
         return data;
     }
 
+    /**
+     * Gets gson.
+     *
+     * @return the gson
+     */
     public Gson getGson() {
         return gson;
     }

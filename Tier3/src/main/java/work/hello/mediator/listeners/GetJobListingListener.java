@@ -4,8 +4,14 @@ import work.hello.data.CustomMessage;
 import work.hello.data.MessageType;
 import work.hello.mediator.MessageListenerRPC;
 
+/**
+ * The type Get job listing listener.
+ */
 public class GetJobListingListener extends MessageListenerRPC
 {
+  /**
+   * Instantiates a new Get job listing listener.
+   */
   public GetJobListingListener()
   {
     super(MessageType.getJobListing.toString(),

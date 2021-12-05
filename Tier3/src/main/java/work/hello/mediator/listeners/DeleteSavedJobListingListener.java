@@ -4,8 +4,14 @@ import work.hello.data.CustomMessage;
 import work.hello.data.MessageType;
 import work.hello.mediator.MessageListener;
 
+/**
+ * The type Delete saved job listing listener.
+ */
 public class DeleteSavedJobListingListener extends MessageListener {
 
+    /**
+     * Instantiates a new Delete saved job listing listener.
+     */
     public DeleteSavedJobListingListener()
     {
         super(MessageType.deletingSavedJobListing.name(),MessageType.deletingSavedJobListing.name());

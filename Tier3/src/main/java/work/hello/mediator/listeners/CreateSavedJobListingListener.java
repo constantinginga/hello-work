@@ -5,8 +5,14 @@ import work.hello.data.MessageType;
 import work.hello.data.SavedJobListing;
 import work.hello.mediator.MessageListener;
 
+/**
+ * The type Create saved job listing listener.
+ */
 public class CreateSavedJobListingListener extends MessageListener {
 
+    /**
+     * Instantiates a new Create saved job listing listener.
+     */
     public CreateSavedJobListingListener() {
         super(MessageType.createSavedJobListing.toString(), MessageType.createSavedJobListing.toString());
     }

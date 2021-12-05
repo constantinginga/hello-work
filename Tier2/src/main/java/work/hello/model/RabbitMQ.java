@@ -9,6 +9,9 @@ import java.util.Collections;
 
 import java.util.UUID;
 
+/**
+ * The type Rabbit mq.
+ */
 public class RabbitMQ implements MessagingHandler {
     private Gson gson;
     private RabbitClient rabbitClient;
@@ -266,6 +269,11 @@ public class RabbitMQ implements MessagingHandler {
         rabbitClient.sendMessage(message, MessageType.updateJobSeeker.name());
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static MessagingHandler getInstance() {
         if (instance == null) {
             instance = new RabbitMQ();

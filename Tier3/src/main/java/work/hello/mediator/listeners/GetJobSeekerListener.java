@@ -8,7 +8,13 @@ import work.hello.mediator.MessageListenerRPC;
 
 import java.awt.*;
 
+/**
+ * The type Get job seeker listener.
+ */
 public class GetJobSeekerListener extends MessageListenerRPC {
+    /**
+     * Instantiates a new Get job seeker listener.
+     */
     public GetJobSeekerListener() {
         super(MessageType.getJobSeeker.name(), MessageType.getJobSeeker.name());
     }

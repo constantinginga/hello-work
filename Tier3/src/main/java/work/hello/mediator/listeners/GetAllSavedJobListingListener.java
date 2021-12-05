@@ -5,8 +5,14 @@ import work.hello.mediator.MessageListener;
 import work.hello.mediator.MessageListenerRPC;
 
 
+/**
+ * The type Get all saved job listing listener.
+ */
 public class GetAllSavedJobListingListener extends MessageListenerRPC {
 
+    /**
+     * Instantiates a new Get all saved job listing listener.
+     */
     public GetAllSavedJobListingListener() {
         super("getSavedJobListings", "getSavedJobListings");
     }

@@ -19,12 +19,24 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeoutException;
 
+/**
+ * The type Rabbit client.
+ */
 public class RabbitClient implements AutoCloseable {
 
     private Connection connection;
     private Channel channel;
     private final Gson gson;
 
+    /**
+     * Instantiates a new Rabbit client.
+     *
+     * @throws IOException              the io exception
+     * @throws TimeoutException         the timeout exception
+     * @throws KeyManagementException   the key management exception
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     * @throws URISyntaxException       the uri syntax exception
+     */
     @SneakyThrows
     public RabbitClient()
             throws IOException, TimeoutException, KeyManagementException,
@@ -43,6 +55,15 @@ public class RabbitClient implements AutoCloseable {
         gson = new Gson();
     }
 
+    /**
+     * Send message and get rpc string.
+     *
+     * @param customMessage the custom message
+     * @param topic         the topic
+     * @return the string
+     * @throws IOException          the io exception
+     * @throws InterruptedException the interrupted exception
+     */
     public String sendMessageRPC(CustomMessage customMessage, String topic) throws IOException, InterruptedException {
         String message = gson.toJson(customMessage);
         final String corrId = UUID.randomUUID().toString();
@@ -70,6 +91,12 @@ public class RabbitClient implements AutoCloseable {
         return result;
     }
 
+    /**
+     * Send message.
+     *
+     * @param customMessage the custom message
+     * @param topic         the topic
+     */
     public void sendMessage(CustomMessage customMessage, String topic) {
         try {
             String message = gson.toJson(customMessage);
