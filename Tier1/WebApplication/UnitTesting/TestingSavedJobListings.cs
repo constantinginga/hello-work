@@ -38,13 +38,11 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception:" + exception.Message);
-                Assert.IsType<Exception>(exception);
-                
+                Assert.Null(exception);
             }
-            if (exception == null)
-            {
-                output.WriteLine("No exception thrown saving job listing to favorites was successful");
-            }
+            Assert.NotNull(savedjoblist.Result);
+            output.WriteLine("No exception thrown saving job listing to favorites was successful");
+            
         }
         [Fact]
         public async void RemovingSavedJobListing()
@@ -52,7 +50,7 @@ namespace UnitTesting
             _savedJobListings = await savedJobListingdata.GetSavedJobListings();
             savedJobListing = _savedJobListings.FirstOrDefault(t => t.Email == "UnitTestingJobSeeker@gmail.com");
 
-            var savedjoblist =  savedJobListingdata.RemoveSavedJobListing(savedJobListing);
+            var savedjoblist = savedJobListingdata.RemoveSavedJobListing(savedJobListing);
             
             var exception = await Record.ExceptionAsync(() =>
                 savedjoblist);
@@ -62,6 +60,7 @@ namespace UnitTesting
                 output.WriteLine("Removing was not successful,Throwing exception:" + exception.Message);
                 Assert.Null(exception);
             }
+            Assert.NotNull(savedjoblist);
             output.WriteLine("No exception thrown removing  job listing from favorites was successful");
             
         }
@@ -76,7 +75,7 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception :" + exception.Message);
-                Assert.NotNull(exception);
+                Assert.Null(exception);
             }
             Assert.NotNull(savedjoblist.Result);
             output.WriteLine("No exception thrown process was successful: " + savedjoblist.Result.Count);

@@ -25,7 +25,6 @@ namespace UnitTesting
         [Fact]
         public async void RegisterEmployer()
         {
-            
             int stringlen = rand.Next(4, 10);
             int randValue;
             string str = "";
@@ -48,7 +47,7 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception :" + exception.Message);
-                Assert.NotNull(exception);
+                Assert.Null(exception);
             }
             Assert.NotNull(user.Result);
             output.WriteLine("No exception thrown process was successful: " + user.Result.Email);
@@ -81,7 +80,7 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception :" + exception.Message);
-                Assert.NotNull(exception);
+                Assert.Null(exception);
             }
             Assert.NotNull(user.Result);
             output.WriteLine("No exception thrown process was successful: " + user.Result);
@@ -115,7 +114,7 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception :" + exception.Message);
-                Assert.False(false);
+                Assert.Null(exception);
             }
         }
         
