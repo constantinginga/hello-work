@@ -23,7 +23,6 @@ import java.util.ArrayList;
     JobListing newJobListing = JobListing.fromJson(json);
     if (newJobListing.validate())
     {
-
       RabbitMQ.getInstance().createJobListing(newJobListing);
       return newJobListing.toJson();
     }
