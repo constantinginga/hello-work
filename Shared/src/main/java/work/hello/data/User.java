@@ -59,8 +59,7 @@ public class User {
     }
 
     public boolean validate() {
-        boolean result = EmailValidator.getInstance().isValid(email);
-        return result;
+        return EmailValidator.getInstance().isValid(email) && phoneNumber.length() >= 8;
     }
 
     public static User fromJson(String user) {

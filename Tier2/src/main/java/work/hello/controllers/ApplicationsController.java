@@ -22,7 +22,7 @@ public class ApplicationsController {
     @PostMapping("/application")
     public synchronized String applyJobListing(@RequestBody String json) {
         Application newApplication = Application.fromJson(json);
-        if (true) {
+        if (newApplication.validate()) {
             RabbitMQ.getInstance().applyForJob(newApplication);
             return newApplication.toJson();
         } else {
@@ -44,7 +44,7 @@ public class ApplicationsController {
     @PatchMapping("/application")
     public synchronized String patchApplication(@RequestBody String json) {
         Application updatedApplication = Application.fromJson(json);
-        if (true) {
+        if (updatedApplication.validate()) {
             RabbitMQ.getInstance().updateApplication(updatedApplication);
             return updatedApplication.toJson();
         } else {

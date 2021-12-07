@@ -43,6 +43,11 @@ public class SavedJobListing {
         return gson.toJson(this);
     }
 
+    public boolean validate()
+    {
+        return true;
+    }
+
     public static SavedJobListing fromJson(String json) {
         SavedJobListing savedJobListing = gson.fromJson(json, SavedJobListing.class);
         return savedJobListing;
