@@ -1,6 +1,7 @@
 package work.hello.data;
 
 import com.google.gson.Gson;
+import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.ArrayList;
 
@@ -47,9 +48,9 @@ public class JobListing
     JobId = jobId;
   }
 
-  public boolean validate(JobListing jobListing)
+  public boolean validate()
   {
-    return false;
+    return EmailValidator.getInstance().isValid(getEmail()) && getJobId() >= 0 && getJobId() != 0;
   }
 
   public String toJson()

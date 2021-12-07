@@ -14,7 +14,6 @@ public class EmployerController {
     @PostMapping("/employer")
     public synchronized String postJobSeeker(@RequestBody String json) throws Exception {
         Employer newEmployer = gson.fromJson(json, Employer.class);
-        System.out.println(newEmployer.getEmail());
         if (newEmployer.validate()) {
             User user = RabbitMQ.getInstance().getUser(newEmployer.getEmail());
             if (user == null) {

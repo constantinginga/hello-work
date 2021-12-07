@@ -18,12 +18,13 @@ namespace UnitTesting
         UserService UserCervice = new();
         JobSeeker jobSeeker = new();
         Employer Employer = new();
+        Random rand = new ();
+
 
 
         [Fact]
         public async void RegisterEmployer()
         {
-            Random rand = new Random();
             
             int stringlen = rand.Next(4, 10);
             int randValue;
@@ -39,7 +40,7 @@ namespace UnitTesting
             Employer.CompanyName = "Company";
             Employer.Email = str+"UnitTesting@gmail.com";
             Employer.Role = "Employer";
-            Employer.PhoneNumber = "89562356";
+            Employer.PhoneNumber = rand.Next(10000000,99999999).ToString();
             Employer.Password = "password";
             var user = UserCervice.CreateEmployer(Employer);
             var exception = await Record.ExceptionAsync(() =>
@@ -57,7 +58,6 @@ namespace UnitTesting
         [Fact]
         public async void RegisterJobSeeker()
         {
-            Random rand = new Random();
             
             int stringlen = rand.Next(4, 10);
             int randValue;
@@ -73,7 +73,7 @@ namespace UnitTesting
             jobSeeker.FirstName = "bob";
             jobSeeker.LastName = "yes";
             jobSeeker.Role = "JobSeeker";
-            jobSeeker.PhoneNumber = "23313452";
+            jobSeeker.PhoneNumber = rand.Next(10000000,99999999).ToString();
             jobSeeker.Password = "password";
             var user = UserCervice.CreateJobSeeker(jobSeeker);
             var exception = await Record.ExceptionAsync(() =>
@@ -107,7 +107,7 @@ namespace UnitTesting
             jobSeeker.FirstName = "bob";
             jobSeeker.LastName = "yes";
             jobSeeker.Role = "JobSeeker";
-            jobSeeker.PhoneNumber = "23313452";
+            jobSeeker.PhoneNumber = rand.Next(10000000,99999999).ToString();
             jobSeeker.Password = "password";
             var user = UserCervice.CreateJobSeeker(jobSeeker);
             var exception = await Record.ExceptionAsync(() =>
