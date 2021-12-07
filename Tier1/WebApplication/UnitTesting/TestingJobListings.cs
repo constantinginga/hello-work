@@ -56,7 +56,7 @@ namespace UnitTesting
             if (joblistingtoremove == null)
             {
                 output.WriteLine("Throwing exception could not find matching joblisting in database");
-                Assert.Null(joblistingtoremove);
+                Assert.NotNull(joblistingtoremove);
             }
             var joblisting = jobListingsData.UpdateJobListing(joblistingtoremove);
             
@@ -91,7 +91,7 @@ namespace UnitTesting
             if (joblistingtoupdate == null)
             {
                 output.WriteLine("Throwing exception could not find matching joblisting in database");
-                Assert.Null(joblistingtoupdate);
+                Assert.NotNull(joblistingtoupdate);
             }
             var joblisting = jobListingsData.UpdateJobListing(joblistingtoupdate);
             
