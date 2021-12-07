@@ -33,7 +33,17 @@ public class ApplicationsController {
     @PostMapping("/file")
     public synchronized void uploadFile(@RequestBody String json, @RequestParam String id, @RequestParam String name) {
         ApplicationFile applicationFile = new ApplicationFile(name, id, json);
-        RabbitMQ.getInstance().uploadFile(applicationFile);
+        try {
+            if(name != null && id != null && json != null)
+            {
+                RabbitMQ.getInstance().uploadFile(applicationFile);
+            }
+            else {
+                throw new Exception("Uploading was not successful");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @GetMapping("/file")
