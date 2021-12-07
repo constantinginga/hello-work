@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
   @GetMapping("/job") public synchronized String getJobListings()
   {
-    ArrayList<JobListing> jobListings = RabbitMQ.getInstance().getJobListings();
     return gson.toJson(RabbitMQ.getInstance().getJobListings());
   }
 

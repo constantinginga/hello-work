@@ -27,8 +27,15 @@ public class SavedJobListingController {
     @DeleteMapping("/saved") public synchronized String deleteSavedJobListing(
             @RequestParam String id) {
         if (id != null) {
-            RabbitMQ.getInstance().deleteSavedJobListing(id);
-            return "Deleted";
+            try{
+                RabbitMQ.getInstance().deleteSavedJobListing(id);
+                return "Deleted";
+            }
+            catch (Exception e)
+            {
+                return e.getMessage();
+            }
+
         } else {
             return "Validation incorrect";
         }

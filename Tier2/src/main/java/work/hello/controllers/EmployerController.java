@@ -29,8 +29,15 @@ public class EmployerController {
     @GetMapping("/employer")
     public synchronized String getEmployer(@RequestParam String email) {
         try {
-            return RabbitMQ.getInstance().getEmployer(email).toJson();
-        } catch (Exception e) {
+            User user = RabbitMQ.getInstance().getUser(email);
+            if (user != null) {
+                return RabbitMQ.getInstance().getJobSeeker(email).toJson();
+            }
+            else {
+                return "User not found";
+            }
+        }
+        catch (Exception e) {
             return e.getMessage();
         }
     }

@@ -19,7 +19,8 @@ namespace UnitTesting
         }
         JobListingData jobListingsData = new();
         JobListing jobListing = new();
-        
+        private IList<JobListing> _jobListings = new List<JobListing>();
+
 
         [Fact]
         public async void CreatingJobListing()
@@ -42,27 +43,21 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception:" + exception.Message);
-                Assert.IsType<Exception>(exception);
+                Assert.Null(exception);
                 
             }
-            if (exception == null)
-            {
-                output.WriteLine("No exception thrown job listing was created");
-            }
-            
+            Assert.NotNull(jobListing);
+            output.WriteLine("No exception thrown job listing was created");
         }
         [Fact]
         public async void RemoveJobListing()
         {
-            
             var joblistingtoremove = jobListingsData.GetJobListings().Result.FirstOrDefault(t => t.Email == "UnitTesting@gmail.com");
             if (joblistingtoremove == null)
             {
                 output.WriteLine("Throwing exception could not find matching joblisting in database");
                 Assert.Null(joblistingtoremove);
             }
-            
-            
             var joblisting = jobListingsData.UpdateJobListing(joblistingtoremove);
             
             
@@ -72,14 +67,22 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception:"+ exception.Message);
-                Assert.IsType<Exception>(exception);
+                Assert.Null(exception);
                 
             }
-            if (exception == null)
-            {
-                output.WriteLine("No exception thrown job listing was removed");
-            }
+            Assert.NotNull(jobListing);
+            output.WriteLine("No exception thrown job listing was removed");
+            
         }
+
+        [Fact]
+        public void GetJobListings()
+        {
+            _jobListings = jobListingsData.JobListings;
+            Assert.NotNull(_jobListings);
+        }
+        
+
         [Fact]
         public async void UpdateJobListing()
         {
@@ -98,13 +101,11 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception:"+ exception.Message);
-                Assert.IsType<Exception>(exception);
-                
+                Assert.Null(exception);
             }
-            if (exception == null)
-            {
-                output.WriteLine("No exception thrown job listing was updated");
-            }
+            Assert.NotNull(jobListing);
+            output.WriteLine("No exception thrown job listing was updated");
+            
         }
         
     }

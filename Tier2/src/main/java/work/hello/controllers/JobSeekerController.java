@@ -24,18 +24,36 @@ public class JobSeekerController {
     }
 
     @PatchMapping("/jobSeeker")
-    public synchronized String patchJobSeeker(@RequestBody String json) throws Exception {
-        JobSeeker newJobSeeker = JobSeeker.fromJson(json);
-        RabbitMQ.getInstance().updateJobSeeker(newJobSeeker);
-
-        return "Ok";
+    public synchronized String patchJobSeeker(@RequestBody String json){
+        try {
+            JobSeeker newJobSeeker = JobSeeker.fromJson(json);
+            User user = RabbitMQ.getInstance().getUser(newJobSeeker.getEmail());
+            if (user != null) {
+                RabbitMQ.getInstance().updateJobSeeker(newJobSeeker);
+                return "Ok";
+            }
+            else {
+                return "User not found";
+            }
+        }
+        catch (Exception e)
+        {
+            return e.getMessage();
+        }
     }
 
     @GetMapping("/jobSeeker")
     public synchronized String getJobSeeker(@RequestParam String email) {
         try {
-            return RabbitMQ.getInstance().getJobSeeker(email).toJson();
-        } catch (Exception e) {
+            User user = RabbitMQ.getInstance().getUser(email);
+                if (user != null) {
+                    return RabbitMQ.getInstance().getJobSeeker(email).toJson();
+                }
+                else {
+                    return "User not found";
+                }
+        }
+        catch (Exception e) {
             return e.getMessage();
         }
     }
