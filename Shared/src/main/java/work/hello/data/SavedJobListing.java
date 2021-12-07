@@ -1,5 +1,6 @@
 package work.hello.data;
 import com.google.gson.Gson;
+import org.apache.commons.validator.routines.EmailValidator;
 
 public class SavedJobListing {
     public String Email;
@@ -45,7 +46,7 @@ public class SavedJobListing {
 
     public boolean validate()
     {
-        return true;
+        return EmailValidator.getInstance().isValid(Email) && JobId != 0 && Id != 0;
     }
 
     public static SavedJobListing fromJson(String json) {
