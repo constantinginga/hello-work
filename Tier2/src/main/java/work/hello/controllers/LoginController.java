@@ -7,7 +7,6 @@ import work.hello.data.User;
 
 @RestController
 public class LoginController {
-    private static final Gson gson = new Gson();
 
     @GetMapping("/user")
     public synchronized String applyJobListing(@RequestParam String email, @RequestParam String password) {
