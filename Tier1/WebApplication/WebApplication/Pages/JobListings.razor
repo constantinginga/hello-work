@@ -1,10 +1,13 @@
 @page "/job-listings"
 @using Microsoft.AspNetCore.WebUtilities
+@using WebApplication.Auth
 @using WebApplication.Models
 @using WebApplication.Data
-
+@using WebApplication.Data.SavedJobListings
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @inject IJobListingData JobListingData
+@inject ISavedJobListingsData _savedJobListingsData;
 
 <div class="hw-joblistings">
     <div class="hw-joblistings__header">
@@ -68,6 +71,17 @@
                     </div>
                 </div>
             </div>
+             @if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
+                            {
+                                <div class="filter-section__experience">
+                                    <div class="cb-groups">
+                                        <div class="cb-groups__group">
+                                            <input type="checkbox" name="favorites" value="entry" id="entry" @onchange="@(arg => FilterByFavorites(arg, "favorites"))"/>
+                                            <label for="entry">Favorite</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
         </div>
         <div class="jobs-section">
             @if (jobListingToShow != null && jobListingToShow.Any())
@@ -94,8 +108,34 @@
                             <button class="apply-btn" @onclick="() => Display(jl.JobId)">Apply</button>
                             <button class="details-btn">Details</button>
                         </div>
+                         @if(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null){
+                                                    if (_savedJobListings != null)
+                                                    {
+                                                        @if (!_savedJobListings.Contains(_savedJobListings.FirstOrDefault(t => t.JobId == jl.JobId && t.Email.Equals(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email))))
+                                                        {
+                                                            <button class="w-min" @onclick="() => saveJobListing(jl.JobId)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2f5dd3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/>
+                                                                </svg>
+                                                            </button>
+                                                        }
+                                                        else
+                                                        {
+                                                            <button class="w-min" @onclick="() => deleteSavedJobListing(jl.JobId)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-off" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2f5dd3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                    <line x1="3" y1="3" x2="21" y2="21"/>
+                                                                    <path d="M10.012 6.016l1.981 -4.014l3.086 6.253l6.9 1l-4.421 4.304m.012 4.01l.588 3.426l-6.158 -3.245l-6.172 3.245l1.179 -6.873l-5 -4.867l6.327 -.917"/>
+                                                                </svg>
+                                                            </button>
+                                                        }
+                                                    }
+                                                }
                     </div>
+                   
                 }
+                
             }
         </div>
     </div>
@@ -106,12 +146,15 @@
     private IList<JobListing> jobListingToShow;
     private IList<JobListing> filteredJobs;
     private IList<JobListing> filteredByExperience;
-
+    private SavedJobListing _savedJobListing;
+    private IList<SavedJobListing> _savedJobListings;
+    
     protected override async Task OnInitializedAsync()
     {
         jobListings = await JobListingData.GetJobListings();
         filteredJobs = new List<JobListing>();
         filteredByExperience = new List<JobListing>();
+        _savedJobListings = await _savedJobListingsData.GetSavedJobListings();
 
         var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
         if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("title", out var _title))
@@ -125,6 +168,64 @@
         else jobListingToShow = jobListings;
         StateHasChanged();
     }
+    
+    private async void deleteSavedJobListing(int JobId)
+    {
+        await _savedJobListingsData.RemoveSavedJobListing(_savedJobListings.FirstOrDefault(t => t.JobId == JobId && t.Email == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email));
+    }
+    private async void saveJobListing(int JobId)
+    {
+        _savedJobListing = new SavedJobListing();
+        _savedJobListing.Email = ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email;
+        _savedJobListing.JobId = JobId;
+        await _savedJobListingsData.CreateSavedJobListing(_savedJobListing);
+        _savedJobListings = await _savedJobListingsData.GetSavedJobListings();
+    }
+    
+    private void FilterByFavorites(ChangeEventArgs args, string favorites)
+    {
+        if ((bool)args.Value)
+        {
+            foreach (var jl in jobListings)
+            {
+                if (_savedJobListings.Contains(_savedJobListings.FirstOrDefault(j => jl.JobId == j.JobId))) filteredJobs.Add(jl);
+            }
+
+            jobListingToShow = (filteredByExperience.Any()) ? filteredJobs.Intersect(filteredByExperience).ToList() : filteredJobs;
+            StateHasChanged();
+        }
+        else
+        {
+            if (filteredJobs.Count != 0)
+            {
+                foreach (var jl in filteredJobs.ToList())
+                {
+                    if (_savedJobListings.Contains(_savedJobListings.FirstOrDefault(j => jl.JobId == j.JobId))) filteredJobs.Remove(jl);
+                }
+            }
+
+            if (!filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = jobListings;
+            }
+            else if (filteredJobs.Any() && !filteredByExperience.Any())
+            {
+                jobListingToShow = filteredJobs;
+            }
+            else if (filteredByExperience.Any() && !filteredJobs.Any())
+            {
+                jobListingToShow = filteredByExperience;
+            }
+            else
+            {
+                jobListingToShow = filteredJobs.Intersect(filteredByExperience).ToList();
+            }
+            StateHasChanged();
+        }
+        
+    }
+
+
 
     private void FilterBySchedule(ChangeEventArgs arg, string schedule)
     {
