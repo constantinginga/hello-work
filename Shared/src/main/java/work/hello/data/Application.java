@@ -34,14 +34,14 @@ public class Application {
      * @param job           the job
      * @param Files         the files
      */
-    public Application(int Id,int jobId, String details,String EmployeEmail,int status,String EmployerEmail,String job, ArrayList<String>  Files) {
+    public Application(int Id, int jobId, String details, String EmployeEmail, int status, String EmployerEmail, String job, ArrayList<String> Files) {
         JobId = jobId;
         Details = details;
         employeEmail = EmployeEmail;
         employerEmail = EmployerEmail;
         Status = status;
         this.Files = Files;
-        Name =  job;
+        Name = job;
         this.Id = Id;
 
     }
@@ -144,7 +144,7 @@ public class Application {
      *
      * @return the files
      */
-    public ArrayList<String>  getFiles() {
+    public ArrayList<String> getFiles() {
         return this.Files;
     }
 

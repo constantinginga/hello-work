@@ -6,13 +6,13 @@ import work.hello.mediator.MessageListener;
 
 
 /**
- * The type Update application listner.
+ * The type Update application listener.
  */
-public class UpdateApplicationListner extends MessageListener {
+public class UpdateApplicationListener extends MessageListener {
     /**
-     * Instantiates a new Update application listner.
+     * Instantiates a new Update application listener.
      */
-    public UpdateApplicationListner() {
+    public UpdateApplicationListener() {
         super("updateApplication", "updateApplication");
     }
 

@@ -82,7 +82,7 @@ public class ApplicationsController {
     }
 
     /**
-     * Patch application string.
+     * Patch application from json.
      *
      * @param json the application
      * @return the response

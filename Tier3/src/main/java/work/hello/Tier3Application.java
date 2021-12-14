@@ -29,7 +29,7 @@ public class Tier3Application {
         new RemoveJobListingListener();
         new GetJobListingListener();
         new GetAllApplicationsListner();
-        new UpdateApplicationListner();
+        new UpdateApplicationListener();
         new UploadApplicationFileListener();
         new GetApplicationFileController();
         new UpdateJobSeekerListener();
