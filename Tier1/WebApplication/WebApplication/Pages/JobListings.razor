@@ -106,7 +106,7 @@
                         </div>
                         <div class="job-card__btns">
                             <button class="apply-btn" @onclick="() => Display(jl.JobId)">Apply</button>
-                            <button class="details-btn">Details</button>
+                            <button class="details-btn" @onclick="() => Display(jl.JobId)">Details</button>
                         </div>
                          @if(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null){
                                                     if (_savedJobListings != null)

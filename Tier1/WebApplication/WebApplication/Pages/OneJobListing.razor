@@ -121,12 +121,12 @@
             <polygon fill="currentColor" points="0 0 10 0 10 10"></polygon>
         </svg>
     </div>
-    <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="Apply" type="submit">Apply Job Listing</button>
 
     @if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
     {
         @if (jobListing.Employer.Equals(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email))
         {
+            <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="Apply" type="submit">Apply Job Listing</button>
             <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="DeleteJobListing" type="submit">Remove Job Listing</button>
             <button class="btn btn-outline-dark w-full hover:bg-blue-700" @onclick="UpdateJobListing" type="submit">Edit job listing</button>
         }
