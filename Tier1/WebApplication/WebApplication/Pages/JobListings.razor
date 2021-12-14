@@ -33,19 +33,19 @@
                 <p>Schedule</p>
                 <div class="cb-groups">
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="schedule" value="full-time" id="full-time" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)))" />
+                        <input type="checkbox" name="schedule" value="full-time" id="full-time" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)))"/>
                         <label for="full-time">@JobSchedule.ToDescription(@JobSchedule.Schedule.FullTime)</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="schedule" value="part-time" id="part-time" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.PartTime)))" />
+                        <input type="checkbox" name="schedule" value="part-time" id="part-time" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.PartTime)))"/>
                         <label for="part-time">@JobSchedule.ToDescription(@JobSchedule.Schedule.PartTime)</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="schedule" value="internship" id="internship" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.Internship)))" />
+                        <input type="checkbox" name="schedule" value="internship" id="internship" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.Internship)))"/>
                         <label for="internship">@JobSchedule.ToDescription(@JobSchedule.Schedule.Internship)</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="schedule" value="volunteering" id="volunteering" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.Volunteering)))" />
+                        <input type="checkbox" name="schedule" value="volunteering" id="volunteering" @onchange="@(arg => FilterBySchedule(arg, JobSchedule.ToDescription(JobSchedule.Schedule.Volunteering)))"/>
                         <label for="volunteering">@JobSchedule.ToDescription(@JobSchedule.Schedule.Volunteering)</label>
                     </div>
                 </div>
@@ -54,34 +54,34 @@
                 <p>Experience level</p>
                 <div class="cb-groups">
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="experience" value="entry" id="entry" @onchange="@(arg => FilterByExperience(arg, new int[] { 0, 3 }))" />
+                        <input type="checkbox" name="experience" value="entry" id="entry" @onchange="@(arg => FilterByExperience(arg, new int[] {0, 3}))"/>
                         <label for="entry">0-3 years</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="experience" value="junior" id="junior" @onchange="@(arg => FilterByExperience(arg, new int[] {3, 5}))" />
+                        <input type="checkbox" name="experience" value="junior" id="junior" @onchange="@(arg => FilterByExperience(arg, new int[] {3, 5}))"/>
                         <label for="junior">3-5 years</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="experience" value="middle" id="middle" @onchange="@(arg => FilterByExperience(arg, new int[] { 5, 10}))" />
+                        <input type="checkbox" name="experience" value="middle" id="middle" @onchange="@(arg => FilterByExperience(arg, new int[] {5, 10}))"/>
                         <label for="middle">5-10 years</label>
                     </div>
                     <div class="cb-groups__group">
-                        <input type="checkbox" name="experience" value="senior" id="senior" @onchange="@(arg => FilterByExperience(arg, new int[] {10, int.MaxValue}))" />
+                        <input type="checkbox" name="experience" value="senior" id="senior" @onchange="@(arg => FilterByExperience(arg, new int[] {10, int.MaxValue}))"/>
                         <label for="senior">10+ years</label>
                     </div>
                 </div>
             </div>
-             @if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
-                            {
-                                <div class="filter-section__experience">
-                                    <div class="cb-groups">
-                                        <div class="cb-groups__group">
-                                            <input type="checkbox" name="favorites" value="entry" id="entry" @onchange="@(arg => FilterByFavorites(arg, "favorites"))"/>
-                                            <label for="entry">Favorite</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+            @if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
+            {
+                <div class="filter-section__experience">
+                    <div class="cb-groups">
+                        <div class="cb-groups__group">
+                            <input type="checkbox" name="favorites" value="entry" id="entry" @onchange="@(arg => FilterByFavorites(arg, "favorites"))"/>
+                            <label for="entry">Favorite</label>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
         <div class="jobs-section">
             @if (jobListingToShow != null && jobListingToShow.Any())
@@ -106,36 +106,35 @@
                         </div>
                         <div class="job-card__btns">
                             <button class="apply-btn" @onclick="() => Display(jl.JobId)">Apply</button>
-                            <button class="details-btn">Details</button>
+                            <button class="details-btn "@onclick="() => Display(jl.JobId)">Details</button>
                         </div>
-                         @if(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null){
-                                                    if (_savedJobListings != null)
-                                                    {
-                                                        @if (!_savedJobListings.Contains(_savedJobListings.FirstOrDefault(t => t.JobId == jl.JobId && t.Email.Equals(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email))))
-                                                        {
-                                                            <button class="w-min" @onclick="() => saveJobListing(jl.JobId)">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2f5dd3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/>
-                                                                </svg>
-                                                            </button>
-                                                        }
-                                                        else
-                                                        {
-                                                            <button class="w-min" @onclick="() => deleteSavedJobListing(jl.JobId)">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-off" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2f5dd3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                                    <line x1="3" y1="3" x2="21" y2="21"/>
-                                                                    <path d="M10.012 6.016l1.981 -4.014l3.086 6.253l6.9 1l-4.421 4.304m.012 4.01l.588 3.426l-6.158 -3.245l-6.172 3.245l1.179 -6.873l-5 -4.867l6.327 -.917"/>
-                                                                </svg>
-                                                            </button>
-                                                        }
-                                                    }
-                                                }
+                        @if (((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser != null)
+                        {
+                            if (_savedJobListings != null)
+                            {
+                                @if (!_savedJobListings.Contains(_savedJobListings.FirstOrDefault(t => t.JobId == jl.JobId && t.Email.Equals(((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email))))
+                                {
+                                    <button class="w-min" @onclick="() => saveJobListing(jl.JobId)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2f5dd3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/>
+                                        </svg>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button class="w-min" @onclick="() => deleteSavedJobListing(jl.JobId)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-off" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2f5dd3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <line x1="3" y1="3" x2="21" y2="21"/>
+                                            <path d="M10.012 6.016l1.981 -4.014l3.086 6.253l6.9 1l-4.421 4.304m.012 4.01l.588 3.426l-6.158 -3.245l-6.172 3.245l1.179 -6.873l-5 -4.867l6.327 -.917"/>
+                                        </svg>
+                                    </button>
+                                }
+                            }
+                        }
                     </div>
-                   
                 }
-                
             }
         </div>
     </div>
@@ -148,7 +147,7 @@
     private IList<JobListing> filteredByExperience;
     private SavedJobListing _savedJobListing;
     private IList<SavedJobListing> _savedJobListings;
-    
+
     protected override async Task OnInitializedAsync()
     {
         jobListings = await JobListingData.GetJobListings();
@@ -162,17 +161,18 @@
             jobListingToShow = new List<JobListing>();
             foreach (var j in jobListings)
             {
-                if (j.JobTitle.ToLower().Contains(((string)_title).ToLower())) jobListingToShow.Add(j);
+                if (j.JobTitle.ToLower().Contains(((string) _title).ToLower())) jobListingToShow.Add(j);
             }
         }
         else jobListingToShow = jobListings;
         StateHasChanged();
     }
-    
+
     private async void deleteSavedJobListing(int JobId)
     {
         await _savedJobListingsData.RemoveSavedJobListing(_savedJobListings.FirstOrDefault(t => t.JobId == JobId && t.Email == ((CustomAuthenticationStateProvider) AuthenticationStateProvider).cachedUser.Email));
     }
+
     private async void saveJobListing(int JobId)
     {
         _savedJobListing = new SavedJobListing();
@@ -181,10 +181,10 @@
         await _savedJobListingsData.CreateSavedJobListing(_savedJobListing);
         _savedJobListings = await _savedJobListingsData.GetSavedJobListings();
     }
-    
+
     private void FilterByFavorites(ChangeEventArgs args, string favorites)
     {
-        if ((bool)args.Value)
+        if ((bool) args.Value)
         {
             foreach (var jl in jobListings)
             {
@@ -222,15 +222,12 @@
             }
             StateHasChanged();
         }
-        
     }
-
 
 
     private void FilterBySchedule(ChangeEventArgs arg, string schedule)
     {
-
-        if ((bool)arg.Value)
+        if ((bool) arg.Value)
         {
             foreach (var jl in jobListings)
             {
@@ -272,7 +269,7 @@
 
     private void FilterByExperience(ChangeEventArgs arg, int[] exp)
     {
-        if ((bool)arg.Value)
+        if ((bool) arg.Value)
         {
             foreach (var jl in jobListings)
             {
@@ -281,7 +278,6 @@
 
             jobListingToShow = (filteredJobs.Any()) ? filteredByExperience.Intersect(filteredJobs).ToList() : filteredByExperience;
             StateHasChanged();
-
         }
         else
         {
@@ -317,8 +313,10 @@
     {
         NavigationManager.NavigateTo($"apply/{id}");
     }
+
     private void Display(int id)
     {
         NavigationManager.NavigateTo($"job-listings/{id}");
     }
+
 }
