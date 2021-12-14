@@ -1,6 +1,7 @@
 package work.hello.data;
 
 import com.google.gson.Gson;
+import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.ArrayList;
 
@@ -75,15 +76,9 @@ public class JobListing
     JobId = jobId;
   }
 
-  /**
-   * Validate boolean.
-   *
-   * @param jobListing the job listing
-   * @return the boolean
-   */
-  public boolean validate(JobListing jobListing)
+  public boolean validate()
   {
-    return false;
+    return EmailValidator.getInstance().isValid(getEmail()) && getJobId() >= 0 && getJobId() != 0;
   }
 
   /**
@@ -296,12 +291,6 @@ public class JobListing
     ApplicationDeadline = applicationDeadline;
   }
 
-  /**
-   * From json job listing.
-   *
-   * @param json the json
-   * @return the job listing
-   */
   public static JobListing fromJson(String json)
   {
     return gson.fromJson(json, JobListing.class);

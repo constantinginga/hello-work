@@ -24,7 +24,6 @@ public class EmployerController {
     @PostMapping("/employer")
     public synchronized String postJobSeeker(@RequestBody String json) throws Exception {
         Employer newEmployer = gson.fromJson(json, Employer.class);
-        System.out.println(newEmployer.getEmail());
         if (newEmployer.validate()) {
             User user = RabbitMQ.getInstance().getUser(newEmployer.getEmail());
             if (user == null) {
@@ -46,8 +45,15 @@ public class EmployerController {
     @GetMapping("/employer")
     public synchronized String getEmployer(@RequestParam String email) {
         try {
-            return RabbitMQ.getInstance().getEmployer(email).toJson();
-        } catch (Exception e) {
+            User user = RabbitMQ.getInstance().getUser(email);
+            if (user != null) {
+                return RabbitMQ.getInstance().getJobSeeker(email).toJson();
+            }
+            else {
+                return "User not found";
+            }
+        }
+        catch (Exception e) {
             return e.getMessage();
         }
     }

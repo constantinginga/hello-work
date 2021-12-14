@@ -18,6 +18,7 @@ namespace UnitTesting
         {
             output = outputWriter;
         }
+        IList<Application> applications = new List<Application>();
         Application application = new(); 
         ApplicationData ApplicationData = new();
         JobListingData JobListingData = new();
@@ -41,14 +42,47 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception:" + exception.Message);
-                Assert.IsType<Exception>(exception);
+                Assert.Null(exception);
                 
             }
-            if (exception == null)
-            {
-                output.WriteLine("No exception thrown application was created");
-            }
-            
+            Assert.NotNull(newapplication.Result);
+            output.WriteLine("No exception thrown application was created");
         }
+        [Fact]
+        public async void UpdatingApplication()
+        {
+            application = ApplicationData.GetApplications().Result.FirstOrDefault();
+            application.Details = "Updated details";
+            var updateApplication =  ApplicationData.UpdateApplication(application);
+            var exception = await Record.ExceptionAsync(() =>
+                updateApplication);
+            
+            if (exception != null)
+            {
+                output.WriteLine("Throwing exception:" + exception.Message);
+                Assert.Null(exception);
+                
+            }
+            Assert.NotNull(updateApplication);
+            output.WriteLine("No exception thrown application was updated");
+        }
+
+        [Fact]
+        public void GetApplications()
+        {
+            applications = ApplicationData.GetApplications().Result;
+
+            if (applications != null)
+            {
+                output.WriteLine("No exception thrown application were retrieved");
+                Assert.NotNull(applications);
+            }
+            else
+            {
+                output.WriteLine("Applications were not retrieved");
+                Assert.NotNull(applications);
+            }
+        }
+        
     }
 }

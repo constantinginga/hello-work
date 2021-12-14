@@ -18,10 +18,10 @@ namespace UnitTesting
         }
         SavedJobListingsData savedJobListingdata = new();
         JobListingData jobListingsData = new();
-        JobListing jobListing = new JobListing();
+        SavedJobListing savedJobListing = new();
+        JobListing jobListing = new();
         IList<JobListing> _jobListings;
         private IList<SavedJobListing> _savedJobListings;
-        SavedJobListing savedJobListing = new SavedJobListing();
         
         [Fact]
         public async void SavingJobListing()
@@ -38,20 +38,19 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception:" + exception.Message);
-                Assert.IsType<Exception>(exception);
-                
+                Assert.Null(exception);
             }
-            if (exception == null)
-            {
-                output.WriteLine("No exception thrown saving job listing to favorites was successful");
-            }
+            Assert.NotNull(savedjoblist.Result);
+            output.WriteLine("No exception thrown saving job listing to favorites was successful");
+            
         }
         [Fact]
         public async void RemovingSavedJobListing()
         {
-            savedJobListing = savedJobListingdata.savedJobListings.FirstOrDefault(t => t.Email == "UnitTestingJobSeeker@gmail.com");
+            _savedJobListings = await savedJobListingdata.GetSavedJobListings();
+            savedJobListing = _savedJobListings.FirstOrDefault(t => t.Email == "UnitTestingJobSeeker@gmail.com");
 
-            var savedjoblist =  savedJobListingdata.RemoveSavedJobListing(savedJobListing);
+            var savedjoblist = savedJobListingdata.RemoveSavedJobListing(savedJobListing);
             
             var exception = await Record.ExceptionAsync(() =>
                 savedjoblist);
@@ -59,11 +58,11 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Removing was not successful,Throwing exception:" + exception.Message);
+                Assert.Null(exception);
             }
-            if (exception == null)
-            {
-                output.WriteLine("No exception thrown removing  job listing from favorites was successful");
-            }
+            Assert.NotNull(savedjoblist);
+            output.WriteLine("No exception thrown removing  job listing from favorites was successful");
+            
         }
         [Fact]
         public async void GetSavedJobListings()
@@ -76,7 +75,7 @@ namespace UnitTesting
             if (exception != null)
             {
                 output.WriteLine("Throwing exception :" + exception.Message);
-                Assert.NotNull(exception);
+                Assert.Null(exception);
             }
             Assert.NotNull(savedjoblist.Result);
             output.WriteLine("No exception thrown process was successful: " + savedjoblist.Result.Count);

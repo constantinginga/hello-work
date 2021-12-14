@@ -31,7 +31,7 @@ public class SavedJobListingController {
     @PostMapping("/saved")
     public synchronized String createSavedJobListing(@RequestBody String json) {
         SavedJobListing savedJobListing = SavedJobListing.fromJson(json);
-        if (true) {
+        if (savedJobListing.validate()) {
             RabbitMQ.getInstance().createSavedJobListing(savedJobListing);
             return savedJobListing.toJson();
         } else {
@@ -47,9 +47,16 @@ public class SavedJobListingController {
      */
     @DeleteMapping("/saved") public synchronized String deleteSavedJobListing(
             @RequestParam String id) {
-        if (true) {
-            RabbitMQ.getInstance().deleteSavedJobListing(id);
-            return "Deleted";
+        if (id != null) {
+            try{
+                RabbitMQ.getInstance().deleteSavedJobListing(id);
+                return "Deleted";
+            }
+            catch (Exception e)
+            {
+                return e.getMessage();
+            }
+
         } else {
             return "Validation incorrect";
         }

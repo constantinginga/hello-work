@@ -10,7 +10,6 @@ import work.hello.data.User;
  */
 @RestController
 public class LoginController {
-    private static final Gson gson = new Gson();
 
     /**
      * Login User.

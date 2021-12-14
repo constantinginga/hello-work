@@ -35,8 +35,7 @@ import java.util.ArrayList;
       @RequestBody String json)
   {
     JobListing newJobListing = JobListing.fromJson(json);
-    //todo implement validation
-    if (true)
+    if (newJobListing.validate())
     {
 
       RabbitMQ.getInstance().createJobListing(newJobListing);
@@ -57,9 +56,7 @@ import java.util.ArrayList;
   @PatchMapping("/job") public synchronized String updateJobListing(@RequestBody String json)
   {
     JobListing updateJobListing = JobListing.fromJson(json);
-    //todo implement validation
-
-    if(true)
+    if(updateJobListing.validate())
     {
       RabbitMQ.getInstance().updateJobListing(updateJobListing);
       return updateJobListing.toJson();

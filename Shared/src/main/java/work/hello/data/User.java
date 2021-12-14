@@ -129,8 +129,7 @@ public class User {
      * @return the boolean
      */
     public boolean validate() {
-        boolean result = EmailValidator.getInstance().isValid(email);
-        return result;
+        return EmailValidator.getInstance().isValid(email) && phoneNumber.length() >= 8;
     }
 
     /**

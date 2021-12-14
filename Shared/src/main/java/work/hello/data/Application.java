@@ -1,6 +1,7 @@
 package work.hello.data;
 
 import com.google.gson.Gson;
+import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -162,7 +163,8 @@ public class Application {
      * @return the boolean
      */
     public boolean validate() {
-        return getJobID() >= 0 && getJobID() != 0 && getApplication() != null && getApplication().length() > 1;
+        return getJobID() >= 0 && getJobID() != 0 && getApplication() != null && getApplication().length() > 1
+                && EmailValidator.getInstance().isValid(employeEmail) && EmailValidator.getInstance().isValid(employerEmail);
     }
 
 }

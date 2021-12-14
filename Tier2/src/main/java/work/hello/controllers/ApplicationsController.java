@@ -36,7 +36,7 @@ public class ApplicationsController {
     @PostMapping("/application")
     public synchronized String applyJobListing(@RequestBody String json) {
         Application newApplication = Application.fromJson(json);
-        if (true) {
+        if (newApplication.validate()) {
             RabbitMQ.getInstance().applyForJob(newApplication);
             return newApplication.toJson();
         } else {
@@ -54,7 +54,17 @@ public class ApplicationsController {
     @PostMapping("/file")
     public synchronized void uploadFile(@RequestBody String json, @RequestParam String id, @RequestParam String name) {
         ApplicationFile applicationFile = new ApplicationFile(name, id, json);
-        RabbitMQ.getInstance().uploadFile(applicationFile);
+        try {
+            if(name != null && id != null && json != null)
+            {
+                RabbitMQ.getInstance().uploadFile(applicationFile);
+            }
+            else {
+                throw new Exception("Uploading was not successful");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -80,7 +90,7 @@ public class ApplicationsController {
     @PatchMapping("/application")
     public synchronized String patchApplication(@RequestBody String json) {
         Application updatedApplication = Application.fromJson(json);
-        if (true) {
+        if (updatedApplication.validate()) {
             RabbitMQ.getInstance().updateApplication(updatedApplication);
             return updatedApplication.toJson();
         } else {

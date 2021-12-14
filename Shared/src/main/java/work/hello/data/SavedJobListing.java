@@ -1,5 +1,6 @@
 package work.hello.data;
 import com.google.gson.Gson;
+import org.apache.commons.validator.routines.EmailValidator;
 
 /**
  * The type Saved job listing.
@@ -97,12 +98,11 @@ public class SavedJobListing {
         return gson.toJson(this);
     }
 
-    /**
-     * From json saved job listing.
-     *
-     * @param json the json
-     * @return the saved job listing
-     */
+    public boolean validate()
+    {
+        return EmailValidator.getInstance().isValid(Email) && JobId != 0 && Id != 0;
+    }
+
     public static SavedJobListing fromJson(String json) {
         SavedJobListing savedJobListing = gson.fromJson(json, SavedJobListing.class);
         return savedJobListing;
